@@ -4,9 +4,13 @@ public class WeaponVisualController : MonoBehaviour
 {
     [SerializeField] private Transform[] gunTransforms;
 
+    private Transform currentGun;
+    [Header("Left hand IK")]
+    [SerializeField] private Transform leftHand;
+
     private void Start()
     {
-        
+        SwitchOn(1);
     }
 
     private void Update()
@@ -28,6 +32,9 @@ public class WeaponVisualController : MonoBehaviour
     {
         SwitchOffGuns();
         gunTransforms[num - 1].gameObject.SetActive(true);
+        currentGun = gunTransforms[num - 1];
+
+        AttachLeftHand();
     }
 
     private void SwitchOffGuns()
@@ -36,5 +43,12 @@ public class WeaponVisualController : MonoBehaviour
         {
             transform.gameObject.SetActive(false);
         }
+    }
+
+    private void AttachLeftHand()
+    {
+        Transform targetTransform = currentGun.GetComponentInChildren<LeftHandTargetTransform>().transform;
+        leftHand.localPosition = targetTransform.localPosition;
+        leftHand.localRotation = targetTransform.localRotation;
     }
 }
