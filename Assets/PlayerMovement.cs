@@ -45,11 +45,6 @@ public class PlayerMovement : MonoBehaviour
         AnimatorController();
     }
 
-    private void Shoot()
-    {
-        animator.SetTrigger("Fire");
-    }
-
     private void AnimatorController()
     {
         float xVelocity = Vector3.Dot(movementDirection.normalized, transform.right);
@@ -74,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.forward = lookingDirection;
 
-            aim.position = new Vector3(hitInfor.point.x, transform.position.y, hitInfor.point.z);
+            aim.position = new Vector3(hitInfor.point.x, transform.position.y + 0.8f, hitInfor.point.z);
         }
     }
 
@@ -123,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
             speed = walkSpeed;
         };
 
-        controlls.Character.Fire.performed += context => Shoot();
     }
 
 }
