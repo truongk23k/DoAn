@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimationEvent : MonoBehaviour
@@ -16,5 +14,21 @@ public class PlayerAnimationEvent : MonoBehaviour
         visualController.ReturnRigWeightToOne();
 
         //refill bullets
+    }
+
+    public void WeaponGrabIsOver()
+    {
+        visualController.SetBusyGrabbingWeaponTo(false);
+    }
+
+    public void ReturnRig()
+    {
+        visualController.ReturnRigWeightToOne();
+        visualController.ReturnLeftHandIKWeightToOne();
+    }
+
+    public void ResetWeightRigAndLeftHandIK()
+    {
+        visualController.ResetWeightRigAndLeftHandIK();
     }
 }
