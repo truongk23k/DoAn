@@ -4,24 +4,26 @@ using UnityEngine.Animations.Rigging;
 public class WeaponVisualController : MonoBehaviour
 {
     private Animator anim;
+    private bool busyGrabbingWeapon;
 
+    #region Gun Transform region
     [SerializeField] private Transform[] gunTransforms;
 
     private Transform currentGun;
+    #endregion
 
     [Header("Rig")]
-    [SerializeField] private float rigIncreaseStep;
-    private bool rigShouldBeIncreased;
+    [SerializeField] private float rigWeigtIncreaseRate;
+    private bool shouldIncrease_RigWeight;
+    private Rig rig;
 
     [Header("Left hand IK")]
     [SerializeField] private TwoBoneIKConstraint leftHandIK;
     [SerializeField] private Transform leftHand_Target;
-    [SerializeField] private float leftHandIKIncreaseStep;
-    private bool shouldIncreaseLeftHandIKWeight;
+    [SerializeField] private float leftHandIKWeightIncreaseRate;
+    private bool shouldIncrease_LeftHandIKWeight;
 
-    private Rig rig;
 
-    private bool busyGrabbingWeapon;
 
     private void Start()
     {
@@ -48,23 +50,23 @@ public class WeaponVisualController : MonoBehaviour
 
     private void UpdateLeftHandIKWeight()
     {
-        if (shouldIncreaseLeftHandIKWeight)
+        if (shouldIncrease_LeftHandIKWeight)
         {
-            leftHandIK.weight += leftHandIKIncreaseStep * Time.deltaTime;
+            leftHandIK.weight += leftHandIKWeightIncreaseRate * Time.deltaTime;
 
             if (leftHandIK.weight >= 1)
-                shouldIncreaseLeftHandIKWeight = false;
+                shouldIncrease_LeftHandIKWeight = false;
         }
     }
 
     private void UpdateRigWeight()
     {
-        if (rigShouldBeIncreased)
+        if (shouldIncrease_RigWeight)
         {
-            rig.weight += rigIncreaseStep * Time.deltaTime;
+            rig.weight += rigWeigtIncreaseRate * Time.deltaTime;
 
             if (rig.weight >= 1)
-                rigShouldBeIncreased = false;
+                shouldIncrease_RigWeight = false;
         }
     }
 
@@ -95,12 +97,12 @@ public class WeaponVisualController : MonoBehaviour
         PauseLeftHandIK();
 
         //last Grab can make error, fix it by add event reset weight
-        rigShouldBeIncreased = false;
-        shouldIncreaseLeftHandIKWeight = false;
+        shouldIncrease_RigWeight = false;
+        shouldIncrease_LeftHandIKWeight = false;
     }
 
-    public void ReturnRigWeightToOne() => rigShouldBeIncreased = true;
-    public void ReturnLeftHandIKWeightToOne() => shouldIncreaseLeftHandIKWeight = true;
+    public void ReturnRigWeightToOne() => shouldIncrease_RigWeight = true;
+    public void ReturnLeftHandIKWeightToOne() => shouldIncrease_LeftHandIKWeight = true;
 
     private void SwitchOn(int num)
     {
