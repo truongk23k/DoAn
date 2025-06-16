@@ -15,6 +15,10 @@
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace\\unity\\topdown3dfull\\assets\\playeranimationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\playeranimationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE\\Unity\\TopDown3DFull\\assets\\lefthandtargettransform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\lefthandtargettransform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,11 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "PlayerAnimationEvent.cs",
+              "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\PlayerAnimationEvent.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerAnimationEvent.cs",
+              "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\PlayerAnimationEvent.cs",
+              "RelativeToolTip": "Assets\\PlayerAnimationEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T04:31:46.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "LeftHandTargetTransform.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\LeftHandTargetTransform.cs",
               "RelativeDocumentMoniker": "Assets\\LeftHandTargetTransform.cs",
@@ -56,7 +73,7 @@
               "RelativeDocumentMoniker": "Assets\\WeaponVisualController.cs",
               "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\WeaponVisualController.cs",
               "RelativeToolTip": "Assets\\WeaponVisualController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAQwC4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAIwCAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T09:26:50.177Z",
               "EditorCaption": ""
@@ -76,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Player.cs",
               "RelativeDocumentMoniker": "Assets\\Player.cs",
@@ -101,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PlayerControlls.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\PlayerControlls.cs",
               "RelativeDocumentMoniker": "Assets\\PlayerControlls.cs",

@@ -36,7 +36,7 @@ public class WeaponVisualController : MonoBehaviour
             rig.weight = 0.15f;
         }
 
-        if (rigShouldBeIncreased)
+        if (rigShouldBeIncreased)   
         {
             rig.weight += rigIncreaseStep * Time.deltaTime;
             
