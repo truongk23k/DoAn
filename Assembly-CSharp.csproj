@@ -60,13 +60,13 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Player.cs" />
-    <Compile Include="Assets\LeftHandTargetTransform.cs" />
-    <Compile Include="Assets\WeaponVisualController.cs" />
-    <Compile Include="Assets\PlayerMovement.cs" />
-    <Compile Include="Assets\PlayerWeaponController.cs" />
-    <Compile Include="Assets\PlayerAnimationEvent.cs" />
-    <Compile Include="Assets\PlayerControlls.cs" />
+    <Compile Include="Assets\Scripts\PlayerWeaponVisuals.cs" />
+    <Compile Include="Assets\Scripts\LeftHandTargetTransform.cs" />
+    <Compile Include="Assets\Scripts\PlayerAnimationEvent.cs" />
+    <Compile Include="Assets\InputManager\PlayerControlls.cs" />
+    <Compile Include="Assets\Scripts\PlayerWeaponController.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

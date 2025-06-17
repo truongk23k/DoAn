@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class WeaponVisualController : MonoBehaviour
+public class PlayerWeaponVisuals : MonoBehaviour
 {
     private Animator anim;
-    private bool busyGrabbingWeapon;
+    private bool isGrabbingWeapon;
 
     #region Gun Transform region
     [SerializeField] private Transform[] gunTransforms;
@@ -28,19 +28,20 @@ public class WeaponVisualController : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        SwitchOn(1);
 
         rig = GetComponentInChildren<Rig>();
+
+        SwitchOn(1);
     }
 
     private void Update()
     {
         CheckWeaponSwitch();
 
-        if (Input.GetKeyDown(KeyCode.R) && !busyGrabbingWeapon)
+        if (Input.GetKeyDown(KeyCode.R) && !isGrabbingWeapon)
         {
             anim.SetTrigger("Reload");
-            PauseRig();
+            ReduceRigWeight();
         }
 
         UpdateRigWeight();
@@ -70,7 +71,7 @@ public class WeaponVisualController : MonoBehaviour
         }
     }
 
-    private void PauseRig() => rig.weight = 0.15f;
+    private void ReduceRigWeight() => rig.weight = 0.15f;
     private void PauseLeftHandIK() => leftHandIK.weight = 0f;
 
 
@@ -87,13 +88,13 @@ public class WeaponVisualController : MonoBehaviour
 
     public void SetBusyGrabbingWeaponTo(bool busy)
     {
-        busyGrabbingWeapon = busy;
-        anim.SetBool("BusyGrabbingWeapon", busyGrabbingWeapon);
+        isGrabbingWeapon = busy;
+        anim.SetBool("BusyGrabbingWeapon", isGrabbingWeapon);
     }
 
     public void ResetWeightRigAndLeftHandIK()
     {
-        PauseRig();
+        ReduceRigWeight();
         PauseLeftHandIK();
 
         //last Grab can make error, fix it by add event reset weight
@@ -101,8 +102,8 @@ public class WeaponVisualController : MonoBehaviour
         shouldIncrease_LeftHandIKWeight = false;
     }
 
-    public void ReturnRigWeightToOne() => shouldIncrease_RigWeight = true;
-    public void ReturnLeftHandIKWeightToOne() => shouldIncrease_LeftHandIKWeight = true;
+    public void MaximizeRigWeight() => shouldIncrease_RigWeight = true;
+    public void MaximizeLeftHandWeight() => shouldIncrease_LeftHandIKWeight = true;
 
     private void SwitchOn(int num)
     {

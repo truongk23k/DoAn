@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class PlayerAnimationEvent : MonoBehaviour
 {
-    private WeaponVisualController visualController;
+    private PlayerWeaponVisuals visualController;
 
     private void Start()
     {
-        visualController = GetComponentInParent<WeaponVisualController>();
+        visualController = GetComponentInParent<PlayerWeaponVisuals>();
     }
 
     public void ReloadIsOver()
     {
-        visualController.ReturnRigWeightToOne();
+        Debug.Log("reload done");
+        visualController.MaximizeRigWeight();
 
         //refill bullets
     }
@@ -23,8 +24,8 @@ public class PlayerAnimationEvent : MonoBehaviour
 
     public void ReturnRig()
     {
-        visualController.ReturnRigWeightToOne();
-        visualController.ReturnLeftHandIKWeightToOne();
+        visualController.MaximizeRigWeight();
+        visualController.MaximizeLeftHandWeight();
     }
 
     public void ResetWeightRigAndLeftHandIK()
