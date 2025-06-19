@@ -4,7 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Player player;
     private CharacterController characterController;
-    private PlayerControlls controlls;
+    private PlayerControlls controls;
     private Animator animator;
 
     [Header("Movement info")]
@@ -12,18 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float runSpeed;
     private float speed;
     private Vector3 movementDirection;
+    private Vector2 moveInput;
     [SerializeField] private float gravityScale = 9.81f;
     private float verticalVelocity;
 
-    [Header("Aim info")]
-    [SerializeField] private Transform aim;
-    [SerializeField] private LayerMask aimLayerMask;
-    private Vector3 lookingDirection;
-
     private bool isRunning;
-
-    private Vector2 moveInput;
-    private Vector2 aimInput;
 
     private void Start()
     {
@@ -40,12 +33,12 @@ public class PlayerMovement : MonoBehaviour
     {
         ApplyMovement();
 
-        AimTowardsMouse();
+        ApplyRotation();
 
-        AnimatorController();
+        AnimatorControllers();
     }
 
-    private void AnimatorController()
+    private void AnimatorControllers()
     {
         float xVelocity = Vector3.Dot(movementDirection.normalized, transform.right);
         float zVelocity = Vector3.Dot(movementDirection.normalized, transform.forward);
@@ -57,20 +50,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isRunning", playRunAnim);
     }
 
-    private void AimTowardsMouse()
+    private void ApplyRotation()
     {
-        Ray ray = Camera.main.ScreenPointToRay(aimInput);
+        Vector3 lookingDirection = player.aim.GetMousePosition() - transform.position;
+        lookingDirection.y = 0f;
+        lookingDirection.Normalize();
 
-        if (Physics.Raycast(ray, out var hitInfor, Mathf.Infinity, aimLayerMask))
-        {
-            lookingDirection = hitInfor.point - transform.position;
-            lookingDirection.y = 0f;
-            lookingDirection.Normalize();
+        transform.forward = lookingDirection;
 
-            transform.forward = lookingDirection;
-
-            aim.position = new Vector3(hitInfor.point.x, transform.position.y + 0.8f, hitInfor.point.z);
-        }
     }
 
     private void ApplyMovement()
@@ -98,21 +85,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void AssignInputEvents()
     {
-        controlls = player.controls;
+        controls = player.controls;
 
-        controlls.Character.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
-        controlls.Character.Movement.canceled += context => moveInput = Vector2.zero;
+        controls.Character.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
+        controls.Character.Movement.canceled += context => moveInput = Vector2.zero;
 
-        controlls.Character.Aim.performed += context => aimInput = context.ReadValue<Vector2>();
-        controlls.Character.Aim.canceled += context => aimInput = Vector2.zero;
 
-        controlls.Character.Run.performed += context =>
+        controls.Character.Run.performed += context =>
         {
             isRunning = true;
             speed = runSpeed;
         };
 
-        controlls.Character.Run.canceled += context =>
+        controls.Character.Run.canceled += context =>
         {
             isRunning = false;
             speed = walkSpeed;
@@ -121,3 +106,4 @@ public class PlayerMovement : MonoBehaviour
     }
 
 }
+
