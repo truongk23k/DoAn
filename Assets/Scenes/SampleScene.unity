@@ -1933,6 +1933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
   runSpeed: 3
+  turnSpeed: 10
   gravityScale: 9.81
 --- !u!143 &1778173097
 CharacterController:
