@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSpeed;
     private float speed;
     private Vector3 movementDirection;
-    private Vector2 moveInput;
+    public Vector2 moveInput {  get; private set; }
     [SerializeField] private float gravityScale = 9.81f;
     private float verticalVelocity;
 
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyRotation()
     {
-        Vector3 lookingDirection = player.aim.GetMousePosition() - transform.position;
+        Vector3 lookingDirection = player.aim.GetMouseHitInfor().point - transform.position;
         lookingDirection.y = 0f;
         lookingDirection.Normalize();
 

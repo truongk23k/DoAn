@@ -5,10 +5,21 @@ public class PlayerAim : MonoBehaviour
     private Player player;
     private PlayerControlls controls;
 
-    [Header("Aim info")]
+    [Header("Aim control")]
     [SerializeField] private Transform aim;
+
+    [Header("Camera control")]
+    [SerializeField] private Transform cameraTarget;
+    [Range(0.5f, 1)]
+    [SerializeField] private float minCameraDistance = 1f;
+    [Range(1f, 3f)]
+    [SerializeField] private float maxCameraDistance = 3f;
+    [Range(3f, 5f)]
+    [SerializeField] private float cameraSensitivity = 5;
+
+    [Space]
     [SerializeField] private LayerMask aimLayerMask;
-    private Vector3 lookingDirection;
+    private RaycastHit lastKnownMouseHit;
 
     private Vector2 aimInput;
 
@@ -21,17 +32,37 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        aim.position = new Vector3(GetMousePosition().x, transform.position.y + 0.85f, GetMousePosition().z);
+        aim.position = new Vector3(GetMouseHitInfor().point.x, transform.position.y + 1, GetMouseHitInfor().point.z);
+        cameraTarget.position = Vector3.Lerp(cameraTarget.position, DesiredCameraPosition(), cameraSensitivity * Time.deltaTime);
     }
 
-    public Vector3 GetMousePosition()
+    private Vector3 DesiredCameraPosition()
+    {
+        float actualMaxCameraDistance = player.movement.moveInput.y < -0.5f ? minCameraDistance : maxCameraDistance;
+        Debug.Log(actualMaxCameraDistance);
+        Vector3 desiredCameraPosition = GetMouseHitInfor().point;
+        desiredCameraPosition.y = transform.position.y + 1;
+        Vector3 aimDirection = (desiredCameraPosition - transform.position).normalized;
+
+        float distanceToDesiredPosition = Vector3.Distance(desiredCameraPosition, transform.position);
+
+        float clampedDistance = Mathf.Clamp(distanceToDesiredPosition, minCameraDistance, actualMaxCameraDistance);
+        desiredCameraPosition = transform.position + aimDirection * clampedDistance;
+
+        return desiredCameraPosition;
+    }
+
+    public RaycastHit GetMouseHitInfor()
     {
         Ray ray = Camera.main.ScreenPointToRay(aimInput);
 
         if (Physics.Raycast(ray, out var hitInfor, Mathf.Infinity, aimLayerMask))
-            return hitInfor.point;
+        {
+            lastKnownMouseHit = hitInfor;
+            return hitInfor;
+        }
 
-        return Vector3.zero;
+        return lastKnownMouseHit;
     }
 
     private void AssignInputEvents()

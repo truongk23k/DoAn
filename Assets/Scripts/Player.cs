@@ -6,11 +6,13 @@ public class Player : MonoBehaviour
 {
     public PlayerControlls controls { get; private set; }
     public PlayerAim aim  { get; private set; } 
+    public PlayerMovement movement { get; private set; }
 
     private void Awake()
     {
         controls = new PlayerControlls();   
         aim = GetComponent<PlayerAim>();    
+        movement = GetComponent<PlayerMovement>();
     }
     private void OnEnable()
     {
