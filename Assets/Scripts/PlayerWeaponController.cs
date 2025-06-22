@@ -26,7 +26,7 @@ public class PlayerWeaponController : MonoBehaviour
         Destroy(newBullet, 10);
     }
 
-    private Vector3 BulletDirection()
+    public Vector3 BulletDirection()
     {
         weaponHolder.LookAt(aim);
         gunPoint.LookAt(aim);
@@ -38,6 +38,8 @@ public class PlayerWeaponController : MonoBehaviour
 
         return direction;
     }
+
+    public Transform GunPoint() => gunPoint;    
 
     /*private void OnDrawGizmos()
     {

@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
     private Player player;
     private PlayerControlls controls;
+
+    [Header("Aim visual - laser")]
+    [SerializeField] private LineRenderer aimLaser;
 
     [Header("Aim control")]
     [SerializeField] private Transform aim;
@@ -40,9 +44,32 @@ public class PlayerAim : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.L))
             isLockingToTarget = !isLockingToTarget;
 
+        UpdateAimLaer();
+
         UpdateAimPosition();
 
         UpdateCameraPosition();
+    }
+
+    private void UpdateAimLaer()
+    {
+        Transform gunPoint = player.weapon.GunPoint();
+        Vector3 laserDirection = player.weapon.BulletDirection();
+
+        float laserTipLenght = 0.5f;
+        float laserDistance = 4f;
+
+        Vector3 endPoint = gunPoint.position + laserDirection * laserDistance;
+
+        if(Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, laserDistance))
+        {
+            endPoint = hit.point;
+            laserTipLenght = 0;
+        }
+
+        aimLaser.SetPosition(0, gunPoint.position);
+        aimLaser.SetPosition(1, endPoint);
+        aimLaser.SetPosition(2, endPoint + laserDirection * laserTipLenght);
     }
 
     public Transform Target()
