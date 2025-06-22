@@ -32,7 +32,7 @@ public class PlayerWeaponController : MonoBehaviour
         gunPoint.LookAt(aim);
 
         Vector3 direction = (aim.position - gunPoint.position).normalized;
-        //direction.y = 0;
+        direction.y = 0;
 
         return direction;
     }
