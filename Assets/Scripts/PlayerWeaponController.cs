@@ -8,7 +8,6 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] Transform gunPoint;
 
     [SerializeField] private Transform weaponHolder;
-    [SerializeField] private Transform aim;
 
     private void Start()
     {
@@ -28,8 +27,10 @@ public class PlayerWeaponController : MonoBehaviour
 
     public Vector3 BulletDirection()
     {
-        weaponHolder.LookAt(aim);
-        gunPoint.LookAt(aim);
+        //find a better place for it because it off when reload or grab
+        /* weaponHolder.LookAt(aim);
+         gunPoint.LookAt(aim);*/
+        Transform aim = player.aim.Aim();
 
         Vector3 direction = (aim.position - gunPoint.position).normalized;
 

@@ -1604,7 +1604,7 @@ GameObject:
   - component: {fileID: 1113050034}
   - component: {fileID: 1113050033}
   m_Layer: 10
-  m_Name: Aim
+  m_Name: Aim_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2728,7 +2728,6 @@ MonoBehaviour:
   bulletSpeed: 20
   gunPoint: {fileID: 760391490}
   weaponHolder: {fileID: 762229060}
-  aim: {fileID: 1113050036}
 --- !u!114 &1778173104
 MonoBehaviour:
   m_ObjectHideFlags: 0

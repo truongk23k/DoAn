@@ -7,7 +7,7 @@ public class PlayerAim : MonoBehaviour
     private PlayerControlls controls;
 
     [Header("Aim visual - laser")]
-    [SerializeField] private LineRenderer aimLaser;
+    [SerializeField] private LineRenderer aimLaser; // child of Weapon Holder
 
     [Header("Aim control")]
     [SerializeField] private Transform aim;
@@ -27,7 +27,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private LayerMask aimLayerMask;
     private RaycastHit lastKnownMouseHit;
 
-    private Vector2 aimInput;
+    private Vector2 mouseInput;
 
     private void Start()
     {
@@ -41,17 +41,17 @@ public class PlayerAim : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
             isAimingPrecisely = !isAimingPrecisely;
 
-        if(Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
             isLockingToTarget = !isLockingToTarget;
 
-        UpdateAimLaer();
+        UpdateAimVIsuals();
 
         UpdateAimPosition();
 
         UpdateCameraPosition();
     }
 
-    private void UpdateAimLaer()
+    private void UpdateAimVIsuals()
     {
         Transform gunPoint = player.weapon.GunPoint();
         Vector3 laserDirection = player.weapon.BulletDirection();
@@ -61,7 +61,7 @@ public class PlayerAim : MonoBehaviour
 
         Vector3 endPoint = gunPoint.position + laserDirection * laserDistance;
 
-        if(Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, laserDistance))
+        if (Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, laserDistance))
         {
             endPoint = hit.point;
             laserTipLenght = 0;
@@ -70,21 +70,6 @@ public class PlayerAim : MonoBehaviour
         aimLaser.SetPosition(0, gunPoint.position);
         aimLaser.SetPosition(1, endPoint);
         aimLaser.SetPosition(2, endPoint + laserDirection * laserTipLenght);
-    }
-
-    public Transform Target()
-    {
-        Transform target = null;
-
-        if (GetMouseHitInfor().transform.GetComponent<Target>() != null)
-            target = GetMouseHitInfor().transform;
-
-        return target;
-    }
-
-    private void UpdateCameraPosition()
-    {
-        cameraTarget.position = Vector3.Lerp(cameraTarget.position, DesiredCameraPosition(), cameraSensitivity * Time.deltaTime);
     }
 
     private void UpdateAimPosition()
@@ -102,12 +87,41 @@ public class PlayerAim : MonoBehaviour
         if (!isAimingPrecisely)
             aim.position = new Vector3(aim.position.x, transform.position.y + 1, aim.position.z);
     }
+    
 
-    public bool CanAimPrecisely()
+    public Transform Target()
     {
-        return isAimingPrecisely;
+        Transform target = null;
+
+        if (GetMouseHitInfor().transform.GetComponent<Target>() != null)
+            target = GetMouseHitInfor().transform;
+
+        return target;
     }
 
+    public Transform Aim() => aim;
+
+    public bool CanAimPrecisely() => isAimingPrecisely;
+
+    public RaycastHit GetMouseHitInfor()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(mouseInput);
+
+        if (Physics.Raycast(ray, out var hitInfor, Mathf.Infinity, aimLayerMask))
+        {
+            lastKnownMouseHit = hitInfor;
+            return hitInfor;
+        }
+
+        return lastKnownMouseHit;
+    }
+
+    #region Camera Rigion
+    private void UpdateCameraPosition()
+    {
+        cameraTarget.position = Vector3.Lerp(cameraTarget.position, DesiredCameraPosition(), cameraSensitivity * Time.deltaTime);
+    }
+    
     private Vector3 DesiredCameraPosition()
     {
         float actualMaxCameraDistance = player.movement.moveInput.y < -0.5f ? minCameraDistance : maxCameraDistance;
@@ -122,26 +136,14 @@ public class PlayerAim : MonoBehaviour
 
         return desiredCameraPosition;
     }
-
-    public RaycastHit GetMouseHitInfor()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(aimInput);
-
-        if (Physics.Raycast(ray, out var hitInfor, Mathf.Infinity, aimLayerMask))
-        {
-            lastKnownMouseHit = hitInfor;
-            return hitInfor;
-        }
-
-        return lastKnownMouseHit;
-    }
+    #endregion
 
     private void AssignInputEvents()
     {
         controls = player.controls;
 
-        controls.Character.Aim.performed += context => aimInput = context.ReadValue<Vector2>();
-        controls.Character.Aim.canceled += context => aimInput = Vector2.zero;
+        controls.Character.Aim.performed += context => mouseInput = context.ReadValue<Vector2>();
+        controls.Character.Aim.canceled += context => mouseInput = Vector2.zero;
     }
 
 }
