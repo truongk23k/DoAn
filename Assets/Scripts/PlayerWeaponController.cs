@@ -17,6 +17,10 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Shoot()
     {
+        //myself
+        if (player.weaponVisuals.isGrabbingWeapon)
+            return;
+
         GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
         newBullet.GetComponent<Rigidbody>().velocity = BulletDirection() * bulletSpeed;
 

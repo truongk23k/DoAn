@@ -4,7 +4,7 @@ using UnityEngine.Animations.Rigging;
 public class PlayerWeaponVisuals : MonoBehaviour
 {
     private Animator anim;
-    private bool isGrabbingWeapon;
+    public bool isGrabbingWeapon {  get; private set; }
 
     #region Gun Transform region
     [SerializeField] private Transform[] gunTransforms;
