@@ -78,7 +78,11 @@ public class PlayerAim : MonoBehaviour
 
         if (target != null && isLockingToTarget)
         {
-            aim.position = target.position;
+            if (target.GetComponent<Renderer>() != null)
+                aim.position = target.GetComponent<Renderer>().bounds.center;
+            else
+                aim.position = target.position;
+
             return;
         }
 
@@ -87,7 +91,7 @@ public class PlayerAim : MonoBehaviour
         if (!isAimingPrecisely)
             aim.position = new Vector3(aim.position.x, transform.position.y + 1, aim.position.z);
     }
-    
+
 
     public Transform Target()
     {
@@ -121,7 +125,7 @@ public class PlayerAim : MonoBehaviour
     {
         cameraTarget.position = Vector3.Lerp(cameraTarget.position, DesiredCameraPosition(), cameraSensitivity * Time.deltaTime);
     }
-    
+
     private Vector3 DesiredCameraPosition()
     {
         float actualMaxCameraDistance = player.movement.moveInput.y < -0.5f ? minCameraDistance : maxCameraDistance;
