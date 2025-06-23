@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    //default bullet speed
+    private const float REFERENCE_BULLET_SPEED = 20f;
+
     private Player player;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float bulletSpeed;
@@ -22,7 +25,10 @@ public class PlayerWeaponController : MonoBehaviour
             return;
 
         GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
-        newBullet.GetComponent<Rigidbody>().velocity = BulletDirection() * bulletSpeed;
+
+        Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
+        rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
+        rbNewBullet.velocity = BulletDirection() * bulletSpeed;
 
         GetComponentInChildren<Animator>().SetTrigger("Fire");
 
@@ -44,7 +50,7 @@ public class PlayerWeaponController : MonoBehaviour
         return direction;
     }
 
-    public Transform GunPoint() => gunPoint;    
+    public Transform GunPoint() => gunPoint;
 
     /*private void OnDrawGizmos()
     {
