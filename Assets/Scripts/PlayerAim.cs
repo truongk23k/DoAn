@@ -44,14 +44,14 @@ public class PlayerAim : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
             isLockingToTarget = !isLockingToTarget;
 
-        UpdateAimVIsuals();
+        UpdateAimVisuals();
 
         UpdateAimPosition();
 
         UpdateCameraPosition();
     }
 
-    private void UpdateAimVIsuals()
+    private void UpdateAimVisuals()
     {
         Transform gunPoint = player.weapon.GunPoint();
         Vector3 laserDirection = player.weapon.BulletDirection();
