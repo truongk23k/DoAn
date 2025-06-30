@@ -3,10 +3,12 @@ using UnityEngine;
 public class PlayerAnimationEvent : MonoBehaviour
 {
     private PlayerWeaponVisuals visualController;
+    private PlayerWeaponController weaponController;
 
     private void Start()
     {
         visualController = GetComponentInParent<PlayerWeaponVisuals>();
+        weaponController = GetComponentInParent<PlayerWeaponController>();
     }
 
     public void ReloadIsOver()
@@ -14,7 +16,7 @@ public class PlayerAnimationEvent : MonoBehaviour
         Debug.Log("reload done");
         visualController.MaximizeRigWeight();
 
-        //refill bullets
+        weaponController.CurrentWeapon.RefillBullets();
     }
 
     public void WeaponGrabIsOver()
