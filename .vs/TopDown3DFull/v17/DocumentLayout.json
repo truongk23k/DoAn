@@ -3,23 +3,31 @@
   "WorkspaceRootPath": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace\\unity\\topdown3dfull\\assets\\scripts\\player\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE\\Unity\\TopDown3DFull\\assets\\scripts\\player\\playerweaponvisuals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerweaponvisuals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE\\Unity\\TopDown3DFull\\assets\\scripts\\player\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace\\unity\\topdown3dfull\\assets\\scripts\\player\\playeraim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playeraim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE\\Unity\\TopDown3DFull\\assets\\scripts\\player\\playeranimationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playeranimationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace\\unity\\topdown3dfull\\assets\\scripts\\backupweaponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\backupweaponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE\\Unity\\TopDown3DFull\\assets\\scripts\\target.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\target.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace\\unity\\topdown3dfull\\assets\\scripts\\weaponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE\\Unity\\TopDown3DFull\\assets\\scripts\\weaponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weaponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -42,11 +50,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerWeaponController.cs",
+              "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerWeaponController.cs",
+              "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerWeaponController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAADgvzcAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T04:23:30.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerAim.cs",
+              "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerAim.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerAim.cs",
+              "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerAim.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerAim.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAADgv2MAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T18:08:02.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerWeaponVisuals.cs",
+              "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
+              "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAuwGAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T04:23:29.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "BackupWeaponModel.cs",
+              "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\BackupWeaponModel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BackupWeaponModel.cs",
+              "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\BackupWeaponModel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BackupWeaponModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T17:17:23.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "WeaponModel.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\WeaponModel.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WeaponModel.cs",
@@ -54,51 +114,24 @@
               "RelativeToolTip": "Assets\\Scripts\\WeaponModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T15:03:47.05Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T15:03:47.05Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PlayerAnimationEvent.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerAnimationEvent.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerAnimationEvent.cs",
               "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerAnimationEvent.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerAnimationEvent.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCAAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAkwCUAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-30T05:06:04.282Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlayerWeaponVisuals.cs",
-              "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
-              "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerWeaponVisuals.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAowCUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T04:23:29.826Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerWeaponController.cs",
-              "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerWeaponController.cs",
-              "ToolTip": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerWeaponController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAD4vyYAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T04:23:30.031Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Item_Pickup.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Item_Pickup.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Item_Pickup.cs",
@@ -106,12 +139,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Item_Pickup.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T04:22:54.034Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-30T04:22:54.034Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Weapon.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Weapon.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Weapon.cs",
@@ -119,12 +151,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Weapon.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T03:42:10.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-30T03:42:10.101Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Target.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Target.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Target.cs",
@@ -132,12 +163,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Target.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T09:17:19.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T09:17:19.47Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Bullet.cs",
               "DocumentMoniker": "C:\\WORKSPACE\\Unity\\TopDown3DFull\\Assets\\Scripts\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Bullet.cs",
