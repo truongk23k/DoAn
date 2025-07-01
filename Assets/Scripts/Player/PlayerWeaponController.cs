@@ -31,7 +31,13 @@ public class PlayerWeaponController : MonoBehaviour
     #region Slot management - Pickup/Equip/Drop
     private void EquipWeapon(int i)
     {
+        if (weaponSlots[i] == null)
+            return;
+
         currentWeapon = weaponSlots[i];
+
+        player.weaponVisuals.SwitchOffWeaponModels();
+        player.weaponVisuals.PlayWeaponEquipAnimation();
     }
 
     public void PickupWeapon(Weapon newWeapon)

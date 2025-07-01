@@ -34,4 +34,6 @@ public class PlayerAnimationEvent : MonoBehaviour
     {
         visualController.ResetWeightRigAndLeftHandIK();
     }
+
+    public void SwitchOnWeaponModel() => visualController.SwitchOnCurrentWeaponModel();
 }
