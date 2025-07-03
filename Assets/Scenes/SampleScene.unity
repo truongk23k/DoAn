@@ -4223,6 +4223,7 @@ MonoBehaviour:
     totalReserveAmmo: 200
     reloadSpeed: 1.25
     equipmentSpeed: 1.98
+    fireRate: 1
 --- !u!4 &1334194214
 Transform:
   m_ObjectHideFlags: 0
@@ -5624,6 +5625,7 @@ MonoBehaviour:
     totalReserveAmmo: 0
     reloadSpeed: 1
     equipmentSpeed: 1
+    fireRate: 1
   bulletPrefab: {fileID: 3024902520240881030, guid: 6d4915b23ad95bf4c90a9bb92bc3aa83, type: 3}
   bulletSpeed: 75
   gunPoint: {fileID: 760391490}
@@ -5636,12 +5638,14 @@ MonoBehaviour:
     totalReserveAmmo: 200
     reloadSpeed: 1
     equipmentSpeed: 1
+    fireRate: 5
   - weaponType: 4
     bulletInMagazine: 5
     magaxineCapacity: 5
     totalReserveAmmo: 342
     reloadSpeed: 1
     equipmentSpeed: 1
+    fireRate: 1
 --- !u!114 &1778173104
 MonoBehaviour:
   m_ObjectHideFlags: 0

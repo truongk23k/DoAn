@@ -76,7 +76,7 @@ public class PlayerWeaponController : MonoBehaviour
         if (player.weaponVisuals.isEquipingWeapon)
             return;
 
-        if (!currentWeapon.CanShot())
+        if (!currentWeapon.CanShoot())
         {
             if (currentWeapon.CanReload())
                 player.weaponVisuals.PlayReloadAnimation();
