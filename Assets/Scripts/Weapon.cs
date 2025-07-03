@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public enum WeaponType
 {
     Pistol,
@@ -14,8 +16,12 @@ public class Weapon
 
     public int bulletInMagazine;
     public int magaxineCapacity;
-
     public int totalReserveAmmo;
+
+    [Range(1, 3)]
+    public float reloadSpeed = 1;
+    [Range(1, 3)]
+    public float equipmentSpeed = 1;
 
     public bool CanShot()
     {
@@ -34,7 +40,7 @@ public class Weapon
 
     public bool CanReload()
     {
-        if(bulletInMagazine == magaxineCapacity)
+        if (bulletInMagazine == magaxineCapacity)
             return false;
 
         if (totalReserveAmmo > 0)

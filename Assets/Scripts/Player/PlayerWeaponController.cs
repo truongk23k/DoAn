@@ -25,13 +25,16 @@ public class PlayerWeaponController : MonoBehaviour
         player = GetComponent<Player>();
         AssignInputEvents();
 
-        currentWeapon.bulletInMagazine = currentWeapon.totalReserveAmmo;
+        Invoke("EquipStartingWeapon", 0.1f);
     }
 
     #region Slot management - Pickup/Equip/Drop
+    private void EquipStartingWeapon() => EquipWeapon(0);
+
+
     private void EquipWeapon(int i)
     {
-        if(weaponSlots.Count <= i)
+        if (weaponSlots.Count <= i)
             return;
 
         if (weaponSlots[i] == null)
@@ -70,7 +73,7 @@ public class PlayerWeaponController : MonoBehaviour
     private void Shoot()
     {
         //myself but we can make fun cancle grab
-        if (player.weaponVisuals.isGrabbingWeapon)
+        if (player.weaponVisuals.isEquipingWeapon)
             return;
 
         if (!currentWeapon.CanShot())
@@ -113,8 +116,8 @@ public class PlayerWeaponController : MonoBehaviour
 
     public Weapon BackupWeapon()
     {
-        foreach(Weapon weapon in weaponSlots) 
-            if(weapon != currentWeapon)
+        foreach (Weapon weapon in weaponSlots)
+            if (weapon != currentWeapon)
                 return weapon;
 
         return null;
