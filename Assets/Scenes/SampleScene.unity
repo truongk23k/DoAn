@@ -4218,12 +4218,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon:
     weaponType: 2
+    shotType: 0
+    fireRate: 1
     bulletInMagazine: 15
     magaxineCapacity: 15
     totalReserveAmmo: 200
     reloadSpeed: 1.25
     equipmentSpeed: 1.98
-    fireRate: 1
 --- !u!4 &1334194214
 Transform:
   m_ObjectHideFlags: 0
@@ -5620,31 +5621,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeapon:
     weaponType: 0
+    shotType: 0
+    fireRate: 1
     bulletInMagazine: 0
     magaxineCapacity: 0
     totalReserveAmmo: 0
     reloadSpeed: 1
     equipmentSpeed: 1
-    fireRate: 1
   bulletPrefab: {fileID: 3024902520240881030, guid: 6d4915b23ad95bf4c90a9bb92bc3aa83, type: 3}
   bulletSpeed: 75
   weaponHolder: {fileID: 762229060}
   maxSlots: 2
   weaponSlots:
   - weaponType: 0
+    shotType: 0
+    fireRate: 3
     bulletInMagazine: 15
     magaxineCapacity: 15
     totalReserveAmmo: 200
     reloadSpeed: 2
     equipmentSpeed: 2.01
-    fireRate: 5
-  - weaponType: 4
-    bulletInMagazine: 5
-    magaxineCapacity: 5
+  - weaponType: 2
+    shotType: 1
+    fireRate: 8
+    bulletInMagazine: 30
+    magaxineCapacity: 30
     totalReserveAmmo: 342
-    reloadSpeed: 1
-    equipmentSpeed: 1
-    fireRate: 1
+    reloadSpeed: 1.38
+    equipmentSpeed: 1.37
 --- !u!114 &1778173104
 MonoBehaviour:
   m_ObjectHideFlags: 0
