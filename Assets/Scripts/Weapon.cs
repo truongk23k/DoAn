@@ -52,6 +52,14 @@ public class Weapon
     #region Reload methods
     private bool HaveEnoughBullets() => bulletInMagazine > 0;
 
+    public bool NeedAutoReload()
+    {
+        if (ReadyToFire() && !HaveEnoughBullets())
+            return true;
+
+        return false;
+    }
+
     public bool CanReload()
     {
         if (bulletInMagazine == magaxineCapacity)

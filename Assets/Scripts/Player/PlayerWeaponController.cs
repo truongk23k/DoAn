@@ -8,11 +8,12 @@ public class PlayerWeaponController : MonoBehaviour
     private const float REFERENCE_BULLET_SPEED = 20f;
 
     [SerializeField] private Weapon currentWeapon;
+    private bool weaponReady;
+    private bool isEquip_NoShoot;
 
     [Header("Bullet details")]
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float bulletSpeed;
-    [SerializeField] Transform gunPoint;
 
     [SerializeField] private Transform weaponHolder;
 
@@ -28,9 +29,8 @@ public class PlayerWeaponController : MonoBehaviour
         Invoke("EquipStartingWeapon", 0.1f);
     }
 
-    #region Slot management - Pickup/Equip/Drop
+    #region Slot management - Pickup/Equip/Drop/Ready
     private void EquipStartingWeapon() => EquipWeapon(0);
-
 
     private void EquipWeapon(int i)
     {
@@ -42,10 +42,15 @@ public class PlayerWeaponController : MonoBehaviour
         if (currentWeapon == weaponSlots[i])
             return;
 
+        SetWeaponReady(false);
+
         currentWeapon = weaponSlots[i];
 
+        isEquip_NoShoot = true;
         player.weaponVisuals.PlayWeaponEquipAnimation();
     }
+
+    public void SetIsEquip(bool isEquip) => isEquip_NoShoot = isEquip;
 
     public void PickupWeapon(Weapon newWeapon)
     {
@@ -68,43 +73,54 @@ public class PlayerWeaponController : MonoBehaviour
 
         EquipWeapon(0);
     }
+
+    public void SetWeaponReady(bool ready) => weaponReady = ready;
+
+    public bool WeaponReady() => weaponReady;
     #endregion
 
     private void Shoot()
     {
-        //myself but we can make fun cancle grab
-        if (player.weaponVisuals.isEquipingWeapon)
+        if (isEquip_NoShoot)
             return;
 
         if (!currentWeapon.CanShoot())
         {
-            if (currentWeapon.CanReload())
-                player.weaponVisuals.PlayReloadAnimation();
+            if (currentWeapon.CanReload() && currentWeapon.NeedAutoReload())
+                Reload();
 
             return;
         }
 
+        SetWeaponReady(true);
+
         //GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
         GameObject newBullet = ObjectPool.instance.GetBullet();
-        newBullet.transform.position = gunPoint.position;
-        newBullet.transform.rotation = Quaternion.LookRotation(gunPoint.forward);
+        newBullet.transform.position = GunPoint().position;
+        newBullet.transform.rotation = Quaternion.LookRotation(GunPoint().forward);
 
         Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
         rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
         rbNewBullet.velocity = BulletDirection() * bulletSpeed;
 
-        GetComponentInChildren<Animator>().SetTrigger("Fire");
+        player.weaponVisuals.PlayFireAnimation();
         //destroy after 10s in Bullet
+    }
+
+    private void Reload()
+    {
+        SetWeaponReady(false);
+        player.weaponVisuals.PlayReloadAnimation();
     }
 
     public Vector3 BulletDirection()
     {
-        //find a better place for it because it off when reload or grab
+        //find a better place for it because it off when reload or grab => OK make it in PlayAim
         /* weaponHolder.LookAt(aim);
          gunPoint.LookAt(aim);*/
         Transform aim = player.aim.Aim();
 
-        Vector3 direction = (aim.position - gunPoint.position).normalized;
+        Vector3 direction = (aim.position - GunPoint().position).normalized;
 
         if (!player.aim.CanAimPrecisely() && player.aim.Target() == null)
             direction.y = 0;
@@ -125,7 +141,7 @@ public class PlayerWeaponController : MonoBehaviour
         return null;
     }
 
-    public Transform GunPoint() => gunPoint;
+    public Transform GunPoint() => player.weaponVisuals.CurrentWeaponModel().gunPoint;
 
     #region Input Events
     private void AssignInputEvents()
@@ -140,10 +156,13 @@ public class PlayerWeaponController : MonoBehaviour
 
         controls.Character.Reload.performed += context =>
         {
-            if (currentWeapon.CanReload())
-                player.weaponVisuals.PlayReloadAnimation();
+            if (currentWeapon.CanReload() && WeaponReady())
+            {
+                Reload();
+            }
         };
     }
+
     #endregion
 
     /*private void OnDrawGizmos()

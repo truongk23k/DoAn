@@ -29,6 +29,8 @@ public class PlayerAim : MonoBehaviour
 
     private Vector2 mouseInput;
 
+    private WeaponModel? weaponModel; // make dir exactly in Update
+
     private void Start()
     {
         player = GetComponent<Player>();
@@ -53,7 +55,16 @@ public class PlayerAim : MonoBehaviour
 
     private void UpdateAimVisuals()
     {
-        Transform gunPoint = player.weapon.GunPoint();
+        aimLaser.enabled = player.weapon.WeaponReady();
+
+        if(!aimLaser.enabled) 
+            return;
+
+        weaponModel = player.weaponVisuals.CurrentWeaponModel();
+        weaponModel.transform.LookAt(aim);
+        weaponModel.gunPoint.LookAt(aim);
+
+       Transform gunPoint = player.weapon.GunPoint();
         Vector3 laserDirection = player.weapon.BulletDirection();
 
         float laserTipLenght = 0.5f;
