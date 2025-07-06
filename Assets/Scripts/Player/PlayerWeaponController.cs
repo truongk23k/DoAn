@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +36,9 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (isShooting)
             Shoot();
+
+        if (Input.GetKeyDown(KeyCode.T))
+            currentWeapon.ToggleBurst();
     }
 
     #region Slot management - Pickup/Equip/Drop/Ready
@@ -87,6 +91,23 @@ public class PlayerWeaponController : MonoBehaviour
     public bool WeaponReady() => weaponReady;
     #endregion
 
+    private IEnumerator BurstFire()
+    {
+        SetWeaponReady(false);
+
+        int numShoot = currentWeapon.bulletInMagazine >= currentWeapon.bulletsPerShoot ? currentWeapon.bulletsPerShoot : currentWeapon.bulletInMagazine;
+
+        for (int i = 1; i <= numShoot; i++)
+        {
+            FireSingleBullet();
+
+            yield return new WaitForSeconds(currentWeapon.burstFireDelay);
+
+            if (i >= currentWeapon.bulletsPerShoot)
+                SetWeaponReady(true);
+        }
+    }
+
     private void Shoot()
     {
         if (isEquip_NoShoot)
@@ -100,12 +121,27 @@ public class PlayerWeaponController : MonoBehaviour
             return;
         }
 
+        player.weaponVisuals.PlayFireAnimation();
+        SetWeaponReady(true); //when equip i shoot
+
         if (currentWeapon.shotType == ShootType.Single)
             isShooting = false;
 
-        SetWeaponReady(true);
+        if (currentWeapon.BurstActivated())
+        {
+            StartCoroutine(BurstFire());
+            return;
+        }
 
-        //GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
+        FireSingleBullet();
+
+        //destroy after 10s in Bullet
+    }
+
+    private void FireSingleBullet()
+    {
+        currentWeapon.bulletInMagazine--;
+
         GameObject newBullet = ObjectPool.instance.GetBullet();
         newBullet.transform.position = GunPoint().position;
         newBullet.transform.rotation = Quaternion.LookRotation(GunPoint().forward);
@@ -116,9 +152,6 @@ public class PlayerWeaponController : MonoBehaviour
 
         rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
         rbNewBullet.velocity = bulletsDirection * bulletSpeed;
-
-        player.weaponVisuals.PlayFireAnimation();
-        //destroy after 10s in Bullet
     }
 
     private void Reload()

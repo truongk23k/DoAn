@@ -4219,6 +4219,8 @@ MonoBehaviour:
   weapon:
     weaponType: 2
     shotType: 0
+    bulletsPerShoot: 0
+    defaultFireRate: 1
     fireRate: 1
     bulletInMagazine: 15
     magaxineCapacity: 15
@@ -4226,10 +4228,15 @@ MonoBehaviour:
     reloadSpeed: 1.25
     equipmentSpeed: 1.98
     baseSpread: 2
-    currentSpread: 2
     maximumSpread: 3
+    currentSpread: 0
     spreadIncreaseRate: 0.15
     spreadCooldown: 0
+    burstAvalible: 0
+    burstActive: 0
+    burstBulletsPerShoot: 0
+    burstFireRate: 0
+    burstFireDelay: 0
 --- !u!4 &1334194214
 Transform:
   m_ObjectHideFlags: 0
@@ -5554,7 +5561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
-  runSpeed: 3
+  runSpeed: 2
   turnSpeed: 10
   gravityScale: 9.81
 --- !u!143 &1778173097
@@ -5627,6 +5634,8 @@ MonoBehaviour:
   currentWeapon:
     weaponType: 0
     shotType: 0
+    bulletsPerShoot: 1
+    defaultFireRate: 1
     fireRate: 1
     bulletInMagazine: 0
     magaxineCapacity: 0
@@ -5634,10 +5643,15 @@ MonoBehaviour:
     reloadSpeed: 1
     equipmentSpeed: 1
     baseSpread: 2
-    currentSpread: 2
     maximumSpread: 3
+    currentSpread: 0
     spreadIncreaseRate: 0.15
     spreadCooldown: 0
+    burstAvalible: 0
+    burstActive: 0
+    burstBulletsPerShoot: 0
+    burstFireRate: 0
+    burstFireDelay: 0
   bulletPrefab: {fileID: 3024902520240881030, guid: 6d4915b23ad95bf4c90a9bb92bc3aa83, type: 3}
   bulletSpeed: 75
   weaponHolder: {fileID: 762229060}
@@ -5645,6 +5659,8 @@ MonoBehaviour:
   weaponSlots:
   - weaponType: 0
     shotType: 0
+    bulletsPerShoot: 0
+    defaultFireRate: 1
     fireRate: 3
     bulletInMagazine: 15
     magaxineCapacity: 15
@@ -5652,12 +5668,19 @@ MonoBehaviour:
     reloadSpeed: 2
     equipmentSpeed: 2.01
     baseSpread: 2
-    currentSpread: 2
     maximumSpread: 3
+    currentSpread: 0
     spreadIncreaseRate: 0.15
     spreadCooldown: 0
+    burstAvalible: 0
+    burstActive: 0
+    burstBulletsPerShoot: 0
+    burstFireRate: 0
+    burstFireDelay: 0
   - weaponType: 2
     shotType: 1
+    bulletsPerShoot: 1
+    defaultFireRate: 8
     fireRate: 8
     bulletInMagazine: 30
     magaxineCapacity: 30
@@ -5665,10 +5688,15 @@ MonoBehaviour:
     reloadSpeed: 1.38
     equipmentSpeed: 1.37
     baseSpread: 1
-    currentSpread: 1
     maximumSpread: 3
+    currentSpread: 0
     spreadIncreaseRate: 0.15
-    spreadCooldown: 0.5
+    spreadCooldown: 0.2
+    burstAvalible: 1
+    burstActive: 0
+    burstBulletsPerShoot: 3
+    burstFireRate: 1.5
+    burstFireDelay: 0.1
 --- !u!114 &1778173104
 MonoBehaviour:
   m_ObjectHideFlags: 0

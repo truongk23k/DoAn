@@ -22,7 +22,9 @@ public class Weapon
 
     [Header("Shooting specifics")]
     public ShootType shotType;
-    public float fireRate = 1; // bullet per second
+    public int bulletsPerShoot;
+    public float defaultFireRate = 1;
+    public float fireRate = 1; // shoot per second
     private float lastShootTime;
 
     [Header("Magazine details")]
@@ -38,12 +40,20 @@ public class Weapon
     [Header("Spread")]
     public float baseSpread = 1;
     public float maximumSpread = 3;
-    private float currentSpread;
+    public float currentSpread;
 
     public float spreadIncreaseRate = 0.15f;
 
     private float lastSpreadUpdateTime;
     public float spreadCooldown;
+
+    [Header("Burst fire")]
+    public bool burstAvalible;
+    public bool burstActive;
+
+    public int burstBulletsPerShoot;
+    public float burstFireRate;
+    public float burstFireDelay;
 
 
     #region Spread methods
@@ -74,11 +84,46 @@ public class Weapon
     }
     #endregion
 
+    #region Burst methods
+    public bool BurstActivated()
+    {
+        if (weaponType == WeaponType.Shotgun)
+        {
+            burstFireDelay = 0;
+            return true; 
+        }
+
+        return burstActive;
+    }
+
+    public void ToggleBurst()
+    {
+        if (!burstAvalible)
+            return;
+        burstActive = !burstActive;
+
+        if (burstActive)
+        {
+            bulletsPerShoot = burstBulletsPerShoot;
+            fireRate = burstFireRate;
+        }
+        else
+        {
+            bulletsPerShoot = 1;
+            fireRate = defaultFireRate;
+        }
+    }
+    #endregion
+
     public bool CanShoot()
     {
         if (HaveEnoughBullets() && ReadyToFire())
         {
-            bulletInMagazine--;
+           /* if (bulletInMagazine >= bulletsPerShoot)
+                bulletInMagazine -= bulletsPerShoot;
+            else
+                bulletInMagazine -= bulletInMagazine;*/
+
             return true;
         }
         return false;
