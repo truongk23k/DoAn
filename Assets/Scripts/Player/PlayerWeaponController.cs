@@ -58,6 +58,8 @@ public class PlayerWeaponController : MonoBehaviour
 
         isEquip_NoShoot = true;
         player.weaponVisuals.PlayWeaponEquipAnimation();
+
+        CameraManager.instance.ChangeCameraDistance(currentWeapon.cameraDistance);
     }
 
     public void SetIsEquip(bool isEquip) => isEquip_NoShoot = isEquip;

@@ -1977,6 +1977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 673198443}
+  - component: {fileID: 673198444}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2001,6 +2002,19 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &673198444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673198442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6613a1fce43424db2c249818bb4669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceChangeRate: 0.5
 --- !u!1 &687861286
 GameObject:
   m_ObjectHideFlags: 0
@@ -4394,6 +4408,7 @@ MonoBehaviour:
     reloadSpeed: 1.25
     equipmentSpeed: 1.98
     gunDistance: 2
+    cameraDistance: 3
     baseSpread: 2
     maximumSpread: 3
     currentSpread: 0
@@ -5651,6 +5666,7 @@ MonoBehaviour:
     reloadSpeed: 1
     equipmentSpeed: 1
     gunDistance: 3.5
+    cameraDistance: 3.5
     baseSpread: 5
     maximumSpread: 10
     currentSpread: 5
@@ -5900,6 +5916,7 @@ MonoBehaviour:
     reloadSpeed: 1
     equipmentSpeed: 1
     gunDistance: 2
+    cameraDistance: 3
     baseSpread: 2
     maximumSpread: 3
     currentSpread: 0
@@ -5911,7 +5928,7 @@ MonoBehaviour:
     burstFireRate: 0
     burstFireDelay: 0
   bulletPrefab: {fileID: 3024902520240881030, guid: 6d4915b23ad95bf4c90a9bb92bc3aa83, type: 3}
-  bulletSpeed: 20
+  bulletSpeed: 75
   weaponHolder: {fileID: 762229060}
   maxSlots: 2
   weaponSlots:
@@ -5926,6 +5943,7 @@ MonoBehaviour:
     reloadSpeed: 2
     equipmentSpeed: 2.01
     gunDistance: 4
+    cameraDistance: 3
     baseSpread: 2
     maximumSpread: 3
     currentSpread: 0
@@ -5947,6 +5965,7 @@ MonoBehaviour:
     reloadSpeed: 1.38
     equipmentSpeed: 1.37
     gunDistance: 6
+    cameraDistance: 7
     baseSpread: 1
     maximumSpread: 3
     currentSpread: 0
