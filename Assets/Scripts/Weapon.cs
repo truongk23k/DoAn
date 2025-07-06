@@ -35,6 +35,45 @@ public class Weapon
     [Range(1, 3)]
     public float equipmentSpeed = 1;
 
+    [Header("Spread")]
+    public float baseSpread = 1;
+    public float maximumSpread = 3;
+    private float currentSpread;
+
+    public float spreadIncreaseRate = 0.15f;
+
+    private float lastSpreadUpdateTime;
+    public float spreadCooldown;
+
+
+    #region Spread methods
+    public Vector3 ApplySpread(Vector3 originalDirection)
+    {
+        UpdateSpread();
+
+        float randomizedValue = Random.Range(-currentSpread, currentSpread);
+
+        Quaternion spreadRotation = Quaternion.Euler(randomizedValue, randomizedValue, randomizedValue);
+
+        return spreadRotation * originalDirection;
+    }
+
+    private void UpdateSpread()
+    {
+        if (Time.time - lastSpreadUpdateTime > spreadCooldown)
+            currentSpread = baseSpread;
+        else
+            IncreaseSpread();
+
+        lastSpreadUpdateTime = Time.time;
+    }
+
+    private void IncreaseSpread()
+    {
+        currentSpread = Mathf.Clamp(currentSpread + spreadIncreaseRate, baseSpread, maximumSpread);
+    }
+    #endregion
+
     public bool CanShoot()
     {
         if (HaveEnoughBullets() && ReadyToFire())
