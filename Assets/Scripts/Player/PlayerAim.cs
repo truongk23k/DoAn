@@ -29,7 +29,7 @@ public class PlayerAim : MonoBehaviour
 
     private Vector2 mouseInput;
 
-    private WeaponModel? weaponModel; // make dir exactly in Update
+    private WeaponModel weaponModel; // make dir exactly in Update
 
     private void Start()
     {
@@ -68,11 +68,11 @@ public class PlayerAim : MonoBehaviour
         Vector3 laserDirection = player.weapon.BulletDirection();
 
         float laserTipLenght = 0.5f;
-        float laserDistance = 4f;
+        float gunDistance = player.weapon.CurrentWeapon().gunDistance;
 
-        Vector3 endPoint = gunPoint.position + laserDirection * laserDistance;
+        Vector3 endPoint = gunPoint.position + laserDirection * gunDistance;
 
-        if (Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, laserDistance))
+        if (Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, gunDistance))
         {
             endPoint = hit.point;
             laserTipLenght = 0;

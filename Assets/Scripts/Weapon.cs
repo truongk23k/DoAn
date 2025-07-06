@@ -36,6 +36,8 @@ public class Weapon
     public float reloadSpeed = 1;
     [Range(1, 3)]
     public float equipmentSpeed = 1;
+    [Range(2, 12)]
+    public float gunDistance = 4;
 
     [Header("Spread")]
     public float baseSpread = 1;
@@ -90,7 +92,7 @@ public class Weapon
         if (weaponType == WeaponType.Shotgun)
         {
             burstFireDelay = 0;
-            return true; 
+            return true;
         }
 
         return burstActive;
@@ -118,14 +120,8 @@ public class Weapon
     public bool CanShoot()
     {
         if (HaveEnoughBullets() && ReadyToFire())
-        {
-           /* if (bulletInMagazine >= bulletsPerShoot)
-                bulletInMagazine -= bulletsPerShoot;
-            else
-                bulletInMagazine -= bulletInMagazine;*/
-
             return true;
-        }
+
         return false;
     }
 

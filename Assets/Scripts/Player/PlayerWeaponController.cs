@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerWeaponController : MonoBehaviour
 {
     private Player player;
-    //default bullet speed
-    private const float REFERENCE_BULLET_SPEED = 20f;
 
     [SerializeField] private Weapon currentWeapon;
     private bool weaponReady;
@@ -134,8 +132,6 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         FireSingleBullet();
-
-        //destroy after 10s in Bullet
     }
 
     private void FireSingleBullet()
@@ -146,12 +142,11 @@ public class PlayerWeaponController : MonoBehaviour
         newBullet.transform.position = GunPoint().position;
         newBullet.transform.rotation = Quaternion.LookRotation(GunPoint().forward);
 
-        Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
-
         Vector3 bulletsDirection = currentWeapon.ApplySpread(BulletDirection());
 
-        rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
-        rbNewBullet.velocity = bulletsDirection * bulletSpeed;
+        Bullet bulletScript = newBullet.GetComponent<Bullet>();
+        bulletScript.BulletSetup(currentWeapon.gunDistance, bulletsDirection, bulletSpeed);
+
     }
 
     private void Reload()
@@ -177,7 +172,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     private bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
 
-    public Weapon CurrentWeapon => currentWeapon;
+    public Weapon CurrentWeapon() => currentWeapon;
 
     public Weapon BackupWeapon()
     {
