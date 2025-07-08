@@ -35,8 +35,6 @@ public class PlayerWeaponController : MonoBehaviour
         if (isShooting)
             Shoot();
 
-        if (Input.GetKeyDown(KeyCode.T))
-            currentWeapon.ToggleBurst();
     }
 
     #region Slot management - Pickup/Equip/Drop/Ready
@@ -174,13 +172,13 @@ public class PlayerWeaponController : MonoBehaviour
 
     private bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
 
-    public bool HasWeaponTypeInInventory(WeaponType weaponType)
+    public Weapon WeaponInSlots(WeaponType weaponType)
     {
         foreach(Weapon weapon in weaponSlots)
             if(weapon.weaponType == weaponType)
-                return true;
+                return weapon;
 
-        return false;
+        return null;
     }
 
     public Weapon CurrentWeapon() => currentWeapon;
@@ -211,6 +209,7 @@ public class PlayerWeaponController : MonoBehaviour
                 Reload();
             }
         };
+        controls.Character.ToogleWeaponMode.performed += context => currentWeapon.ToggleBurst();
     }
 
     #endregion

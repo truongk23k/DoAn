@@ -104,7 +104,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
             if (backupModel.weaponType == player.weapon.CurrentWeapon().weaponType)
                 continue;
 
-            if (player.weapon.HasWeaponTypeInInventory(backupModel.weaponType))
+            if (player.weapon.WeaponInSlots(backupModel.weaponType) != null)
             {
                 if(backupModel.HangTypeIs(HangType.LowBackHang))
                     lowBackHangWeapon = backupModel;
