@@ -7028,6 +7028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3024902520240881030, guid: 6d4915b23ad95bf4c90a9bb92bc3aa83, type: 3}
   bulletSize: 50
+  bulletFxPrefab: {fileID: 1180017215954271981, guid: e54e32a0e2699fc4187a8a44c47a753e, type: 3}
+  bulletFxSize: 10
 --- !u!4 &1948610784
 Transform:
   m_ObjectHideFlags: 0
