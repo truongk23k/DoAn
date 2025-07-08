@@ -174,16 +174,17 @@ public class PlayerWeaponController : MonoBehaviour
 
     private bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
 
+    public bool HasWeaponTypeInInventory(WeaponType weaponType)
+    {
+        foreach(Weapon weapon in weaponSlots)
+            if(weapon.weaponType == weaponType)
+                return true;
+
+        return false;
+    }
+
     public Weapon CurrentWeapon() => currentWeapon;
 
-    public Weapon BackupWeapon()
-    {
-        foreach (Weapon weapon in weaponSlots)
-            if (weapon != currentWeapon)
-                return weapon;
-
-        return null;
-    }
 
     public Transform GunPoint() => player.weaponVisuals.CurrentWeaponModel().gunPoint;
 
@@ -197,6 +198,9 @@ public class PlayerWeaponController : MonoBehaviour
 
         controls.Character.EquipSlot1.performed += context => EquipWeapon(0);
         controls.Character.EquipSlot2.performed += context => EquipWeapon(1);
+        controls.Character.EquipSlot3.performed += context => EquipWeapon(2);
+        controls.Character.EquipSlot4.performed += context => EquipWeapon(3);
+        controls.Character.EquipSlot5.performed += context => EquipWeapon(4);
 
         controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
 

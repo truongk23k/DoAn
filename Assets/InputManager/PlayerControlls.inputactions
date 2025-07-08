@@ -60,6 +60,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Equip Slot  - 3",
+                    "type": "Button",
+                    "id": "38a7d4eb-727a-41a8-a2af-a57494a69751",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip Slot  - 4",
+                    "type": "Button",
+                    "id": "1aa1b921-d3f3-45a0-9e62-aaba77ff0878",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip Slot  - 5",
+                    "type": "Button",
+                    "id": "1b251360-6fa1-47c9-8b1e-84bda3f4150d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Drop Current Weapon",
                     "type": "Button",
                     "id": "cbec3cb2-596e-489b-a849-30bd326c8309",
@@ -186,6 +213,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Equip Slot  - 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f23bf340-c199-4c70-abab-9a2583695ba3",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip Slot  - 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac72797b-3790-483d-87e6-d17bcad69696",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip Slot  - 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89372248-b41e-476e-97ea-53f437afd701",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip Slot  - 5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
