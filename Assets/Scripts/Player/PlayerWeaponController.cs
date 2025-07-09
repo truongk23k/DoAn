@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    public Weapon_Data dataWeaponStart;
+
     private Player player;
 
     [SerializeField] private Weapon currentWeapon;
@@ -22,6 +24,7 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private int maxSlots = 2;
     [SerializeField] private List<Weapon> weaponSlots;
 
+
     private void Start()
     {
         player = GetComponent<Player>();
@@ -38,7 +41,11 @@ public class PlayerWeaponController : MonoBehaviour
     }
 
     #region Slot management - Pickup/Equip/Drop/Ready
-    private void EquipStartingWeapon() => EquipWeapon(0);
+    private void EquipStartingWeapon()
+    {
+        PickupWeapon(dataWeaponStart);
+        EquipWeapon(0);
+    }
 
     private void EquipWeapon(int i)
     {
@@ -62,7 +69,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void SetIsEquip(bool isEquip) => isEquip_NoShoot = isEquip;
 
-    public void PickupWeapon(Weapon newWeapon)
+    public void PickupWeapon(Weapon_Data newWeaponData)
     {
         if (weaponSlots.Count >= maxSlots)
         {
@@ -70,7 +77,7 @@ public class PlayerWeaponController : MonoBehaviour
             return;
         }
 
-        weaponSlots.Add(newWeapon);
+        weaponSlots.Add(new Weapon(newWeaponData));
         player.weaponVisuals.SwitchOnBackupWeaponModel();
     }
 

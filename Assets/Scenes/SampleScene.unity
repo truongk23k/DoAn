@@ -4435,29 +4435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa915646c518ee94ebe67cb59017f2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon:
-    weaponType: 2
-    shotType: 0
-    bulletsPerShoot: 0
-    defaultFireRate: 1
-    fireRate: 1
-    bulletInMagazine: 15
-    magaxineCapacity: 15
-    totalReserveAmmo: 200
-    reloadSpeed: 1.25
-    equipmentSpeed: 1.98
-    gunDistance: 2
-    cameraDistance: 3
-    baseSpread: 2
-    maximumSpread: 3
-    currentSpread: 0
-    spreadIncreaseRate: 0.15
-    spreadCooldown: 0
-    burstAvalible: 0
-    burstActive: 0
-    burstBulletsPerShoot: 0
-    burstFireRate: 0
-    burstFireDelay: 0
+  weaponData: {fileID: 11400000, guid: 2ff16e5a26a59a24bbd6cb08fde1818b, type: 2}
 --- !u!4 &1334194214
 Transform:
   m_ObjectHideFlags: 0
@@ -5693,29 +5671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa915646c518ee94ebe67cb59017f2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon:
-    weaponType: 3
-    shotType: 0
-    bulletsPerShoot: 5
-    defaultFireRate: 1
-    fireRate: 1
-    bulletInMagazine: 15
-    magaxineCapacity: 15
-    totalReserveAmmo: 2000
-    reloadSpeed: 1
-    equipmentSpeed: 1
-    gunDistance: 3.5
-    cameraDistance: 3.5
-    baseSpread: 5
-    maximumSpread: 10
-    currentSpread: 5
-    spreadIncreaseRate: 0.15
-    spreadCooldown: 0
-    burstAvalible: 0
-    burstActive: 0
-    burstBulletsPerShoot: 0
-    burstFireRate: 0
-    burstFireDelay: 0
+  weaponData: {fileID: 11400000, guid: 8cf7cdc7acd591a42a68cf301dafd1b0, type: 2}
 --- !u!4 &1744460979
 Transform:
   m_ObjectHideFlags: 0
@@ -5872,8 +5828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9298ea8db1367224f8c8449e39980cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1.5
-  runSpeed: 2
+  walkSpeed: 2
+  runSpeed: 3
   turnSpeed: 10
   gravityScale: 9.81
 --- !u!143 &1778173097
@@ -5943,100 +5899,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ec95ff83d832a4684068541eab86d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataWeaponStart: {fileID: 11400000, guid: c69f120e20f7de848b0cfcb888477f89, type: 2}
   currentWeapon:
     weaponType: 0
     shotType: 0
-    bulletsPerShoot: 1
-    defaultFireRate: 1
     fireRate: 1
-    bulletInMagazine: 0
-    magaxineCapacity: 0
-    totalReserveAmmo: 0
-    reloadSpeed: 1
-    equipmentSpeed: 1
-    gunDistance: 2
-    cameraDistance: 4
-    baseSpread: 2
-    maximumSpread: 3
-    currentSpread: 0
-    spreadIncreaseRate: 0.15
-    spreadCooldown: 0
     burstAvalible: 0
     burstActive: 0
-    burstBulletsPerShoot: 0
-    burstFireRate: 0
-    burstFireDelay: 0
+    bulletInMagazine: 0
+    magazineCapacity: 0
+    totalReserveAmmo: 0
   bulletPrefab: {fileID: 3024902520240881030, guid: 6d4915b23ad95bf4c90a9bb92bc3aa83, type: 3}
   bulletSpeed: 75
   weaponHolder: {fileID: 762229060}
   maxSlots: 3
-  weaponSlots:
-  - weaponType: 0
-    shotType: 0
-    bulletsPerShoot: 0
-    defaultFireRate: 1
-    fireRate: 3
-    bulletInMagazine: 15
-    magaxineCapacity: 15
-    totalReserveAmmo: 200
-    reloadSpeed: 2
-    equipmentSpeed: 2.01
-    gunDistance: 4
-    cameraDistance: 3
-    baseSpread: 2
-    maximumSpread: 3
-    currentSpread: 0
-    spreadIncreaseRate: 0.15
-    spreadCooldown: 0
-    burstAvalible: 0
-    burstActive: 0
-    burstBulletsPerShoot: 0
-    burstFireRate: 0
-    burstFireDelay: 0
-  - weaponType: 2
-    shotType: 1
-    bulletsPerShoot: 1
-    defaultFireRate: 8
-    fireRate: 8
-    bulletInMagazine: 30
-    magaxineCapacity: 30
-    totalReserveAmmo: 342
-    reloadSpeed: 1.38
-    equipmentSpeed: 1.37
-    gunDistance: 6
-    cameraDistance: 7
-    baseSpread: 1
-    maximumSpread: 3
-    currentSpread: 0
-    spreadIncreaseRate: 0.15
-    spreadCooldown: 0.2
-    burstAvalible: 1
-    burstActive: 0
-    burstBulletsPerShoot: 3
-    burstFireRate: 1.5
-    burstFireDelay: 0.1
-  - weaponType: 1
-    shotType: 1
-    bulletsPerShoot: 1
-    defaultFireRate: 8
-    fireRate: 8
-    bulletInMagazine: 30
-    magaxineCapacity: 30
-    totalReserveAmmo: 342
-    reloadSpeed: 1.38
-    equipmentSpeed: 1.37
-    gunDistance: 6
-    cameraDistance: 7
-    baseSpread: 1
-    maximumSpread: 3
-    currentSpread: 0
-    spreadIncreaseRate: 0.15
-    spreadCooldown: 0.2
-    burstAvalible: 1
-    burstActive: 0
-    burstBulletsPerShoot: 3
-    burstFireRate: 1.5
-    burstFireDelay: 0.1
+  weaponSlots: []
 --- !u!114 &1778173104
 MonoBehaviour:
   m_ObjectHideFlags: 0
