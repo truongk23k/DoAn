@@ -71,13 +71,25 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void PickupWeapon(Weapon_Data newWeaponData)
     {
-        if (weaponSlots.Count >= maxSlots)
+        Weapon newWeapon = new Weapon(newWeaponData);
+
+        if (WeaponInSlots(newWeapon.weaponType) != null)
         {
-            Debug.Log("No slots avalible");
+            WeaponInSlots(newWeapon.weaponType).totalReserveAmmo += newWeapon.bulletInMagazine;
             return;
         }
 
-        weaponSlots.Add(new Weapon(newWeaponData));
+        if (weaponSlots.Count >= maxSlots)
+        {
+            int weaponIndex = weaponSlots.IndexOf(currentWeapon);
+
+            player.weaponVisuals.SwitchOffWeaponModels();
+            weaponSlots[weaponIndex] = newWeapon;
+            EquipWeapon(weaponIndex);
+            return;
+        }
+
+        weaponSlots.Add(newWeapon);
         player.weaponVisuals.SwitchOnBackupWeaponModel();
     }
 
@@ -181,8 +193,8 @@ public class PlayerWeaponController : MonoBehaviour
 
     public Weapon WeaponInSlots(WeaponType weaponType)
     {
-        foreach(Weapon weapon in weaponSlots)
-            if(weapon.weaponType == weaponType)
+        foreach (Weapon weapon in weaponSlots)
+            if (weapon.weaponType == weaponType)
                 return weapon;
 
         return null;
