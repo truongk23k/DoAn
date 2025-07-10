@@ -33,6 +33,9 @@ public class Weapon_Data : ScriptableObject
 
     [Header("Weapon generics")]
     public WeaponType weaponType;
+    public EquipType equipAnimationType;
+    public HangType hangType;
+    public HoldType holdType;
     [Range(1, 3)]
     public float reloadSpeed = 1;
     [Range(1, 3)]

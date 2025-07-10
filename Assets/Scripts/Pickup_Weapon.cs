@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pickup_Weapon : Interactable
@@ -17,17 +15,19 @@ public class Pickup_Weapon : Interactable
     [ContextMenu("Update Item Model")]
     public void UpdateGameObject()
     {
-        gameObject.name = "Pickup_Weapon - " + weaponData.weaponType.ToString();
+        models = GetComponentsInChildren<BackupWeaponModel>(true);
+
+        gameObject.name = "Pickup_Weapon - " + weaponData.weaponName.ToString() + " - " + weaponData.weaponType.ToString();
         UpdateItemModel();
     }
 
     public void UpdateItemModel()
     {
-        foreach(BackupWeaponModel model in models)
+        foreach (BackupWeaponModel model in models)
         {
             model.gameObject.SetActive(false);
 
-            if(model.weaponType == weaponData.weaponType)
+            if (model.weaponData_Backup.weaponName == weaponData.weaponName)
             {
                 model.gameObject.SetActive(true);
                 UpdateMeshAndMaterial(model.GetComponent<MeshRenderer>());

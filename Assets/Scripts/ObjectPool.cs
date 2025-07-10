@@ -31,7 +31,7 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetObject(GameObject prefab)
     {
-        if(!poolDictionary.ContainsKey(prefab))
+        if (!poolDictionary.ContainsKey(prefab))
             InitialPool(prefab, 10);
 
         if (poolDictionary[prefab].Count == 0)

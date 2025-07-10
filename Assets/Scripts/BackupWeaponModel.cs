@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public enum HangType
 {
@@ -11,10 +8,20 @@ public enum HangType
 }
 public class BackupWeaponModel : MonoBehaviour
 {
-    public WeaponType weaponType;
-    [SerializeField] private HangType hangType;
+    public Weapon_Data weaponData_Backup;
+
+    private void Start()
+    {
+        UpdateGameObject();
+    }
+
+    [ContextMenu("Update Backup GameObject")]
+    public void UpdateGameObject()
+    {
+        gameObject.name = "Backup_Weapon - " + weaponData_Backup.weaponName + " - " + weaponData_Backup.weaponType.ToString();
+    }
 
     public void Activate(bool activate) => gameObject.SetActive(activate);
 
-    public bool HangTypeIs(HangType hangType) => this.hangType == hangType; 
+    public bool HangTypeIs(HangType hangType) => weaponData_Backup.hangType == hangType;
 }

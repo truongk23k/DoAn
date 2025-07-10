@@ -22,7 +22,7 @@ public class PlayerAnimationEvent : MonoBehaviour
 
     public void WeaponEquipIsOver()
     {
-        weaponController.SetIsEquip(false); 
+        weaponController.SetIsEquip(false);
         weaponController.SetWeaponReady(true);
     }
 

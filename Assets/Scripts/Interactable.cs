@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
 
     private void Start()
     {
-        if(mesh == null)
+        if (mesh == null)
             mesh = GetComponentInChildren<MeshRenderer>();
 
         defaultMaterial = mesh.material;
@@ -38,9 +38,9 @@ public class Interactable : MonoBehaviour
 
     public void HighlightActive(bool active)
     {
-        if(active)
+        if (active)
             mesh.material = highlightMaterial;
-        else 
+        else
             mesh.material = defaultMaterial;
     }
 

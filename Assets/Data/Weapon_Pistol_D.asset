@@ -29,6 +29,9 @@ MonoBehaviour:
   spreadIncreaseRate: 0.15
   spreadCooldown: 0.6
   weaponType: 0
+  equipAnimationType: 0
+  hangType: 2
+  holdType: 1
   reloadSpeed: 1
   equipmentSpeed: 1
   gunDistance: 6

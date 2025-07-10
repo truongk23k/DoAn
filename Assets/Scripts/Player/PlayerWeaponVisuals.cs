@@ -49,7 +49,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
     public void PlayWeaponEquipAnimation()
     {
-        EquipType equipType = CurrentWeaponModel().equipAnimationType;
+        EquipType equipType = CurrentWeaponModel().weaponData_Model.equipAnimationType;
 
         float equipmentSpeed = player.weapon.CurrentWeapon().equipmentSpeed;
 
@@ -68,7 +68,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
         SwitchOffBackupWeaponModels();
         SwitchOnBackupWeaponModel();
 
-        SwitchAnimationLayer(((int)CurrentWeaponModel().holdType));
+        SwitchAnimationLayer(((int)CurrentWeaponModel().weaponData_Model.holdType));
         CurrentWeaponModel().gameObject.SetActive(true);
 
         AttachLeftHand();
@@ -101,10 +101,10 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         foreach(BackupWeaponModel backupModel in backupWeaponModels)
         {
-            if (backupModel.weaponType == player.weapon.CurrentWeapon().weaponType)
+            if (backupModel.weaponData_Backup.weaponName == player.weapon.CurrentWeapon().weaponName)
                 continue;
-
-            if (player.weapon.WeaponInSlots(backupModel.weaponType) != null)
+            //show 1st weapon with 3 typeHang in slots??? i want show all weapon
+            if (player.weapon.WeaponNameInSlots(backupModel.weaponData_Backup.weaponName) != null)
             {
                 if(backupModel.HangTypeIs(HangType.LowBackHang))
                     lowBackHangWeapon = backupModel;
@@ -134,10 +134,10 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
     public WeaponModel CurrentWeaponModel()
     {
-        WeaponType weaponType = player.weapon.CurrentWeapon().weaponType;
+        string weaponName = player.weapon.CurrentWeapon().weaponName;
 
         foreach (var weapon in weaponModels)
-            if (weapon.weaponType == weaponType)
+            if (weapon.weaponData_Model.weaponName == weaponName)
                 return weapon;
 
         return null;

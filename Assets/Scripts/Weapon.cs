@@ -18,6 +18,7 @@ public enum ShootType
 [System.Serializable] // visible in inspector
 public class Weapon
 {
+    public string weaponName;
     public WeaponType weaponType;
 
     #region Regular mode variables
@@ -68,6 +69,7 @@ public class Weapon
         magazineCapacity = weaponData.magazineCapacity;
         totalReserveAmmo = weaponData.totalReserveAmmo;
 
+        weaponName = weaponData.weaponName;
         weaponType = weaponData.weaponType;
         fireRate = weaponData.fireRate;
         shotType = weaponData.shootType;

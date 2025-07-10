@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSpeed;
     private float speed;
     private Vector3 movementDirection;
-    public Vector2 moveInput {  get; private set; }
+    public Vector2 moveInput { get; private set; }
     [SerializeField] private float gravityScale = 9.81f;
     private float verticalVelocity;
 

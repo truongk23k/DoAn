@@ -21,7 +21,7 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private Transform weaponHolder;
 
     [Header("Inventory")]
-    [SerializeField] private int maxSlots = 2;
+    //[SerializeField] private int maxSlots = 2; current not use because player can equip other weapon with other weaponType
     [SerializeField] private List<Weapon> weaponSlots;
 
 
@@ -73,15 +73,18 @@ public class PlayerWeaponController : MonoBehaviour
     {
         Weapon newWeapon = new Weapon(newWeaponData);
 
-        if (WeaponInSlots(newWeapon.weaponType) != null)
+        //if inventory have this weapon => pickup only ammo
+        Weapon weaponCheckName = WeaponNameInSlots(newWeapon.weaponName);
+        if (weaponCheckName != null)
         {
-            WeaponInSlots(newWeapon.weaponType).totalReserveAmmo += newWeapon.bulletInMagazine;
+            weaponCheckName.totalReserveAmmo += newWeapon.totalReserveAmmo;
             return;
         }
-
-        if (weaponSlots.Count >= maxSlots)
+        //if inventory have this type weapon => swap weapon
+        Weapon weaponCheckType = WeaponTypeInSlots(newWeapon.weaponType);
+        if (weaponCheckType != null)
         {
-            int weaponIndex = weaponSlots.IndexOf(currentWeapon);
+            int weaponIndex = weaponSlots.IndexOf(weaponCheckType);
 
             player.weaponVisuals.SwitchOffWeaponModels();
             weaponSlots[weaponIndex] = newWeapon;
@@ -191,7 +194,16 @@ public class PlayerWeaponController : MonoBehaviour
 
     private bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
 
-    public Weapon WeaponInSlots(WeaponType weaponType)
+    public Weapon WeaponNameInSlots(string weaponName)
+    {
+        foreach (Weapon weapon in weaponSlots)
+            if (weapon.weaponName == weaponName)
+                return weapon;
+
+        return null;
+    }
+
+    public Weapon WeaponTypeInSlots(WeaponType weaponType)
     {
         foreach (Weapon weapon in weaponSlots)
             if (weapon.weaponType == weaponType)
@@ -201,7 +213,6 @@ public class PlayerWeaponController : MonoBehaviour
     }
 
     public Weapon CurrentWeapon() => currentWeapon;
-
 
     public Transform GunPoint() => player.weaponVisuals.CurrentWeaponModel().gunPoint;
 
