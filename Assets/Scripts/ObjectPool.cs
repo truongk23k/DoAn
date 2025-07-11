@@ -15,6 +15,9 @@ public class ObjectPool : MonoBehaviour
 
     private Dictionary<GameObject, Queue<GameObject>> poolDictionary = new Dictionary<GameObject, Queue<GameObject>>();
 
+    [Header("To Initialize")]
+    [SerializeField] GameObject weaponPickup;
+
     private void Awake()
     {
         if (instance == null)
@@ -27,6 +30,7 @@ public class ObjectPool : MonoBehaviour
     {
         InitialPool(bulletPrefab, bulletSize);
         InitialPool(bulletFxPrefab, bulletFxSize);
+        InitialPool(weaponPickup, 10);
     }
 
     public GameObject GetObject(GameObject prefab)

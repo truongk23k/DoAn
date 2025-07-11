@@ -104,7 +104,7 @@ public class PlayerWeaponVisuals : MonoBehaviour
             if (backupModel.weaponData_Backup.weaponName == player.weapon.CurrentWeapon().weaponName)
                 continue;
             //show 1st weapon with 3 typeHang in slots??? i want show all weapon
-            if (player.weapon.WeaponNameInSlots(backupModel.weaponData_Backup.weaponName) != null)
+            if (player.weapon.WeaponByNameInSlots(backupModel.weaponData_Backup.weaponName) != null)
             {
                 if(backupModel.HangTypeIs(HangType.LowBackHang))
                     lowBackHangWeapon = backupModel;

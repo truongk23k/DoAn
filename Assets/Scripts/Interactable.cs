@@ -32,7 +32,7 @@ public class Interactable : MonoBehaviour
         if (playerInteraction == null)
             return;
 
-        playerInteraction.interactables.Add(this);
+        playerInteraction.GetInteractable().Add(this);
         playerInteraction.UpdateClosestInteractable();
     }
 
@@ -51,7 +51,7 @@ public class Interactable : MonoBehaviour
         if (playerInteraction == null)
             return;
 
-        playerInteraction.interactables.Remove(this);
+        playerInteraction.GetInteractable().Remove(this);
         playerInteraction.UpdateClosestInteractable();
     }
 }

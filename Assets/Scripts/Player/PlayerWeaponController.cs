@@ -21,9 +21,10 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private Transform weaponHolder;
 
     [Header("Inventory")]
-    //[SerializeField] private int maxSlots = 2; current not use because player can equip other weapon with other weaponType
+    [SerializeField] private int maxSlots = 2;
     [SerializeField] private List<Weapon> weaponSlots;
 
+    [SerializeField] private GameObject weaponPickupPrefab;
 
     private void Start()
     {
@@ -43,7 +44,7 @@ public class PlayerWeaponController : MonoBehaviour
     #region Slot management - Pickup/Equip/Drop/Ready
     private void EquipStartingWeapon()
     {
-        PickupWeapon(dataWeaponStart);
+        PickupWeapon(new Weapon(dataWeaponStart));
         EquipWeapon(0);
     }
 
@@ -69,21 +70,21 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void SetIsEquip(bool isEquip) => isEquip_NoShoot = isEquip;
 
-    public void PickupWeapon(Weapon_Data newWeaponData)
+    public void PickupWeapon(Weapon newWeapon)
     {
-        Weapon newWeapon = new Weapon(newWeaponData);
-
         //if inventory have this weapon => pickup only ammo
-        Weapon weaponCheckName = WeaponNameInSlots(newWeapon.weaponName);
+        Weapon weaponCheckName = WeaponByNameInSlots(newWeapon.weaponName);
         if (weaponCheckName != null)
         {
             weaponCheckName.totalReserveAmmo += newWeapon.totalReserveAmmo;
             return;
         }
         //if inventory have this type weapon => swap weapon
-        Weapon weaponCheckType = WeaponTypeInSlots(newWeapon.weaponType);
+        Weapon weaponCheckType = WeaponByTypeInSlots(newWeapon.weaponType);
         if (weaponCheckType != null)
         {
+            CreateWeaponOnGround(weaponCheckName);
+
             int weaponIndex = weaponSlots.IndexOf(weaponCheckType);
 
             player.weaponVisuals.SwitchOffWeaponModels();
@@ -91,19 +92,39 @@ public class PlayerWeaponController : MonoBehaviour
             EquipWeapon(weaponIndex);
             return;
         }
+        //if inventory full => swap current weapon
+        if (weaponSlots.Count >= maxSlots)
+        {
+            CreateWeaponOnGround(currentWeapon);
+
+            int currentWeaponIndex = weaponSlots.IndexOf(currentWeapon);
+
+            player.weaponVisuals.SwitchOffWeaponModels();
+            weaponSlots[currentWeaponIndex] = newWeapon;
+            EquipWeapon(currentWeaponIndex);
+            return;
+        }
 
         weaponSlots.Add(newWeapon);
         player.weaponVisuals.SwitchOnBackupWeaponModel();
     }
 
-    private void DropWeapon()
+    private void DropCurrentWeapon()
     {
         if (HasOnlyOneWeapon())
             return;
 
+        CreateWeaponOnGround(currentWeapon);
+
         weaponSlots.Remove(currentWeapon);
 
         EquipWeapon(0);
+    }
+
+    private void CreateWeaponOnGround(Weapon weapon)
+    {
+        GameObject droppedWeapon = ObjectPool.instance.GetObject(weaponPickupPrefab);
+        droppedWeapon.GetComponent<Pickup_Weapon>().SetupPickupWeapon(weapon, transform);
     }
 
     public void SetWeaponReady(bool ready) => weaponReady = ready;
@@ -194,7 +215,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     private bool HasOnlyOneWeapon() => weaponSlots.Count <= 1;
 
-    public Weapon WeaponNameInSlots(string weaponName)
+    public Weapon WeaponByNameInSlots(string weaponName)
     {
         foreach (Weapon weapon in weaponSlots)
             if (weapon.weaponName == weaponName)
@@ -203,7 +224,7 @@ public class PlayerWeaponController : MonoBehaviour
         return null;
     }
 
-    public Weapon WeaponTypeInSlots(WeaponType weaponType)
+    public Weapon WeaponByTypeInSlots(WeaponType weaponType)
     {
         foreach (Weapon weapon in weaponSlots)
             if (weapon.weaponType == weaponType)
@@ -230,7 +251,7 @@ public class PlayerWeaponController : MonoBehaviour
         controls.Character.EquipSlot4.performed += context => EquipWeapon(3);
         controls.Character.EquipSlot5.performed += context => EquipWeapon(4);
 
-        controls.Character.DropCurrentWeapon.performed += context => DropWeapon();
+        controls.Character.DropCurrentWeapon.performed += context => DropCurrentWeapon();
 
         controls.Character.Reload.performed += context =>
         {
