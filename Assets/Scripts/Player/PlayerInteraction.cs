@@ -16,9 +16,8 @@ public class PlayerInteraction : MonoBehaviour
     private void InteractWithClosest()
     {
         closestInteractable?.Interaction();
-        interactables.Remove(closestInteractable);
+       
 
-        UpdateClosestInteractable();
     }
 
     public void UpdateClosestInteractable()
@@ -44,4 +43,11 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     public List<Interactable> GetInteractable() => interactables;
+
+    public void RemoveClosestInteractable()
+    {
+        interactables.Remove(closestInteractable); //remove because if i interact with weapon and no remove, but i hide gameobj, List still have closestInteractable
+
+        UpdateClosestInteractable();
+    } 
 }

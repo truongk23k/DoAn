@@ -10,6 +10,8 @@ public class Pickup_Weapon : Interactable
 
     [SerializeField] private BackupWeaponModel[] models;
 
+    private PlayerInteraction playerInteraction;
+
     private void Start()
     {
         if (!oldWeapon)
@@ -56,6 +58,8 @@ public class Pickup_Weapon : Interactable
     {
         weaponController.PickupWeapon(weapon);
 
+        playerInteraction.RemoveClosestInteractable();
+
         ObjectPool.instance.ReturnObject(gameObject);
     }
 
@@ -66,5 +70,7 @@ public class Pickup_Weapon : Interactable
         if (weaponController == null)
             weaponController = other.GetComponent<PlayerWeaponController>();
 
+        if(playerInteraction == null)
+            playerInteraction = other.GetComponent<PlayerInteraction>();
     }
 }
