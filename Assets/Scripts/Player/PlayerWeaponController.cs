@@ -83,7 +83,7 @@ public class PlayerWeaponController : MonoBehaviour
         Weapon weaponCheckType = WeaponByTypeInSlots(newWeapon.weaponType);
         if (weaponCheckType != null)
         {
-            CreateWeaponOnGround(weaponCheckName);
+            CreateWeaponOnGround(weaponCheckType);
 
             int weaponIndex = weaponSlots.IndexOf(weaponCheckType);
 

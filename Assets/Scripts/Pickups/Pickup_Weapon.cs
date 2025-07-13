@@ -3,21 +3,19 @@ using UnityEngine;
 public class Pickup_Weapon : Interactable
 {
     [SerializeField] private Weapon_Data weaponData;
-    private PlayerWeaponController weaponController;
 
     private Weapon weapon;
     private bool oldWeapon;
 
     [SerializeField] private BackupWeaponModel[] models;
 
-    private PlayerInteraction playerInteraction;
 
     private void Start()
     {
         if (!oldWeapon)
             weapon = new Weapon(weaponData);
 
-        UpdateGameObject();
+        SetupGameObject();
     }
 
     public void SetupPickupWeapon(Weapon weapon, Transform transform)
@@ -28,19 +26,19 @@ public class Pickup_Weapon : Interactable
         weaponData = weapon.weaponData;
         this.transform.position = transform.position + new Vector3(0, 0.75f, 0);
 
-        UpdateGameObject();
+        SetupGameObject();
     }
 
     [ContextMenu("Update Item Model")]
-    public void UpdateGameObject()
+    private void SetupGameObject()
     {
         models = GetComponentsInChildren<BackupWeaponModel>(true);
 
         gameObject.name = "Pickup_Weapon - " + weaponData.weaponName.ToString() + " - " + weaponData.weaponType.ToString();
-        UpdateItemModel();
+        SetupWeaponModel();
     }
 
-    public void UpdateItemModel()
+    public void SetupWeaponModel()
     {
         foreach (BackupWeaponModel model in models)
         {
@@ -63,14 +61,4 @@ public class Pickup_Weapon : Interactable
         ObjectPool.instance.ReturnObject(gameObject);
     }
 
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-
-        if (weaponController == null)
-            weaponController = other.GetComponent<PlayerWeaponController>();
-
-        if(playerInteraction == null)
-            playerInteraction = other.GetComponent<PlayerInteraction>();
-    }
 }

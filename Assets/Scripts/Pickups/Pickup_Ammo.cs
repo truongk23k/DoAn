@@ -18,9 +18,6 @@ public class Pickup_Ammo : Interactable
 
     [SerializeField] GameObject[] boxModel;
 
-    private PlayerWeaponController weaponController;
-    private PlayerInteraction playerInteraction;
-
     private void Start()
     {
         SetupBoxModel();
@@ -62,17 +59,6 @@ public class Pickup_Ammo : Interactable
             playerInteraction.RemoveClosestInteractable();
             ObjectPool.instance.ReturnObject(gameObject);
         }
-    }
-
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-
-        if (weaponController == null)
-            weaponController = other.GetComponent<PlayerWeaponController>();
-
-        if (playerInteraction == null)
-            playerInteraction = other.GetComponent<PlayerInteraction>();
     }
 
     private void SetupBulletAmount(AmmoData ammoData)
