@@ -27,9 +27,18 @@ public class ChaseState_Melee : EnemyState
     {
         base.Update();
 
-        if(Vector3.Distance(enemy.transform.position, Player.instance.transform.position) > enemy.maxDistanceChase)
+        //attack
+        if (enemy.PlayerInAttackRange())
+        {
+            stateMachine.ChangeState(enemy.attackState);
+            return;
+        }
+
+        //out chase
+        if (enemy.PlayerOutMaxChaseRange())
         {
             stateMachine.ChangeState(enemy.moveState);
+            return;
         }
 
         //chase
@@ -43,7 +52,7 @@ public class ChaseState_Melee : EnemyState
 
     private bool CanUpdateDestination()
     {
-        if(Time.time > lastTimeUpdateDestination + 0.25f)
+        if (Time.time > lastTimeUpdateDestination + 0.25f)
         {
             lastTimeUpdateDestination = Time.time;
             return true;

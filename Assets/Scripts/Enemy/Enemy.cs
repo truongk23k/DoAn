@@ -5,8 +5,13 @@ public class Enemy : MonoBehaviour
 {
     public float turnSpeed;
 
+    [Header("Attack data")]
+    public float attackRange;
+    public float attackMoveSpeed;
+    private bool manualMovement;
+
     [Header("Chase info")]
-    public float maxDistanceChase;
+    public float maxChaseRange;
 
     [Header("Recovery")]
     public float aggresionRange;
@@ -46,15 +51,26 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public bool PlayerOutMaxChaseRange() => Vector3.Distance(transform.position, Player.instance.transform.position) > maxChaseRange;
+
     public bool PlayerInAggresionRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < aggresionRange;
+
+    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackRange;
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, aggresionRange);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, maxDistanceChase);
+        Gizmos.DrawWireSphere(transform.position, maxChaseRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    public void ActivateManualMovement(bool manualMovement) => this.manualMovement = manualMovement;
+
+    public bool ManualMovementActive() => manualMovement;
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 
