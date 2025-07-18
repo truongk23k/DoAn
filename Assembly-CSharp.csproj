@@ -72,12 +72,15 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\MoveState_Melee.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
+    <Compile Include="Assets\Scripts\Enemy\RecoveryState_Melee.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAnimationEvents.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeaponController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\Scripts\Object Pool\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Pickups\Pickup_Weapon.cs" />
+    <Compile Include="Assets\Scripts\Enemy\ChaseState_Melee.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponModel.cs" />
     <Compile Include="Assets\Scripts\Object Pool\PooledObject.cs" />

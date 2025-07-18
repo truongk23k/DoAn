@@ -1,23 +1,29 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
 
 public class Enemy : MonoBehaviour
 {
     public float turnSpeed;
 
+    [Header("Chase info")]
+    public float maxDistanceChase;
+
+    [Header("Recovery")]
+    public float aggresionRange;
+
     [Header("Idle data")]
     public float idleTimer;
 
     [Header("Move data")]
-    public float moveSpeed;
+    public float walkSpeed;
+    public float chaseSpeed;
 
     [SerializeField] private Transform[] patrolPoints;
     private int currentPatrolIndex;
 
-    public Animator anim {  get; private set; }
+    public Animator anim { get; private set; }
 
-    public NavMeshAgent agent {  get; private set; }
+    public NavMeshAgent agent { get; private set; }
 
     public EnemyStateMachine stateMachine { get; private set; }
 
@@ -40,12 +46,24 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public bool PlayerInAggresionRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < aggresionRange;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, aggresionRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, maxDistanceChase);
+    }
+
+    public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
+
     public Vector3 GetPatrolDestination()
     {
         Vector3 destination = patrolPoints[currentPatrolIndex].transform.position;
         currentPatrolIndex++;
 
-        if(currentPatrolIndex >= patrolPoints.Length) 
+        if (currentPatrolIndex >= patrolPoints.Length)
             currentPatrolIndex = 0;
 
         return destination;
@@ -61,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     public Quaternion FaceTarget(Vector3 target)
     {
-        Quaternion targetRotation =  Quaternion.LookRotation(target - transform.position);  
+        Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
 
         Vector3 currentEulerAngles = transform.rotation.eulerAngles;
 
