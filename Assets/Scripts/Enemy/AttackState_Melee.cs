@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
     private Vector3 attackTarget;
-    private float attckMoveSpeed;
+    private float attackMoveSpeed;
 
     private const float MAX_ATTACK_DISTANCE = 50;
 
@@ -17,11 +18,12 @@ public class AttackState_Melee : EnemyState
     {
         base.Enter();
 
-        attckMoveSpeed = enemy.attackData.moveSpeed;
+        enemy.ActiveWeapon(true);
+
+        attackMoveSpeed = enemy.attackData.moveSpeed;
         enemy.anim.SetFloat("AttackAnimationSpeed", enemy.attackData.animationSpeed);
         enemy.anim.SetFloat("AttackIndex", enemy.attackData.attackIndex);
 
-        enemy.ActiveWeapon(true);
 
         enemy.agent.isStopped = true;
         enemy.agent.velocity = Vector3.zero;
@@ -33,10 +35,15 @@ public class AttackState_Melee : EnemyState
     {
         base.Exit();
 
-        enemy.anim.SetFloat("RecoveryIndex", 0);
+        SetupNextAttack();
+    }
 
-        if(enemy.PlayerInAttackRange())
-            enemy.anim.SetFloat("RecoveryIndex", 1);
+    private void SetupNextAttack()
+    {
+        int recoveryIndex = PlayerClose() ? 1 : 0;
+        enemy.anim.SetFloat("RecoveryIndex", recoveryIndex);
+
+        enemy.attackData = UpdateAttackData();
     }
 
     public override void Update()
@@ -50,7 +57,7 @@ public class AttackState_Melee : EnemyState
         }
 
         if (enemy.ManualMovementActive())
-            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, attackTarget, attckMoveSpeed * Time.deltaTime);
+            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, attackTarget, attackMoveSpeed * Time.deltaTime);
 
         //
         if (triggerCalled)
@@ -58,5 +65,19 @@ public class AttackState_Melee : EnemyState
                 stateMachine.ChangeState(enemy.recoveryState);
             else
                 stateMachine.ChangeState(enemy.chaseState);
+    }
+
+    private bool PlayerClose() => Vector3.Distance(enemy.transform.position, Player.instance.transform.position) <= 1;
+
+    private AttackData UpdateAttackData()
+    {
+        List<AttackData> validAttacks = new List<AttackData>(enemy.attackList);
+
+        if (PlayerClose())
+            validAttacks.RemoveAll(parameter => parameter.attackType == AttackType_Melee.Charge);
+
+        int random = Random.Range(0, validAttacks.Count);
+
+        return validAttacks[random];
     }
 }
