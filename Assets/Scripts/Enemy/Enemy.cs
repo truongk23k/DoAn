@@ -3,12 +3,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public float turnSpeed;
-
-    [Header("Attack data")]
-    public float attackRange;
-    public float attackMoveSpeed;
     private bool manualMovement;
+    private bool manualRotation;
 
     [Header("Chase info")]
     public float maxChaseRange;
@@ -22,6 +18,7 @@ public class Enemy : MonoBehaviour
     [Header("Move data")]
     public float walkSpeed;
     public float chaseSpeed;
+    public float turnSpeed;
 
     [SerializeField] private Transform[] patrolPoints;
     private int currentPatrolIndex;
@@ -55,22 +52,24 @@ public class Enemy : MonoBehaviour
 
     public bool PlayerInAggresionRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < aggresionRange;
 
-    public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackRange;
+ 
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, aggresionRange);
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, maxChaseRange);
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     public void ActivateManualMovement(bool manualMovement) => this.manualMovement = manualMovement;
 
     public bool ManualMovementActive() => manualMovement;
+
+    public void ActivateManualRotate(bool manualRotate) => this.manualRotation = manualRotate;
+
+    public bool ManualRotateActive() => manualRotation;
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 

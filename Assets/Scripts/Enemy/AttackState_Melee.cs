@@ -4,6 +4,7 @@ public class AttackState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
     private Vector3 attackTarget;
+    private float attckMoveSpeed;
 
     private const float MAX_ATTACK_DISTANCE = 50;
 
@@ -16,6 +17,10 @@ public class AttackState_Melee : EnemyState
     {
         base.Enter();
 
+        attckMoveSpeed = enemy.attackData.moveSpeed;
+        enemy.anim.SetFloat("AttackAnimationSpeed", enemy.attackData.animationSpeed);
+        enemy.anim.SetFloat("AttackIndex", enemy.attackData.attackIndex);
+
         enemy.ActiveWeapon(true);
 
         enemy.agent.isStopped = true;
@@ -27,17 +32,31 @@ public class AttackState_Melee : EnemyState
     public override void Exit()
     {
         base.Exit();
+
+        enemy.anim.SetFloat("RecoveryIndex", 0);
+
+        if(enemy.PlayerInAttackRange())
+            enemy.anim.SetFloat("RecoveryIndex", 1);
     }
 
     public override void Update()
     {
         base.Update();
 
+        if (enemy.ManualRotateActive())
+        {
+            enemy.transform.rotation = enemy.FaceTarget(Player.instance.transform.position);
+            attackTarget = enemy.transform.position + enemy.transform.forward * MAX_ATTACK_DISTANCE;
+        }
+
         if (enemy.ManualMovementActive())
-            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, attackTarget, enemy.attackMoveSpeed * Time.deltaTime);
+            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, attackTarget, attckMoveSpeed * Time.deltaTime);
 
         //
         if (triggerCalled)
-            stateMachine.ChangeState(Random.Range(0, 100) > 30 ? enemy.chaseState : enemy.recoveryState);
+            if (enemy.PlayerInAttackRange())
+                stateMachine.ChangeState(enemy.recoveryState);
+            else
+                stateMachine.ChangeState(enemy.chaseState);
     }
 }

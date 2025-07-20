@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAnimationEvents : MonoBehaviour
@@ -16,4 +14,9 @@ public class EnemyAnimationEvents : MonoBehaviour
     public void StartManualMovement() => enemy.ActivateManualMovement(true);
 
     public void StopManualMovement() => enemy.ActivateManualMovement(false);
+
+    public void StartManualRotation() => enemy.ActivateManualRotate(true);
+
+    public void StopManualRotation() => enemy.ActivateManualRotate(false);
+
 }

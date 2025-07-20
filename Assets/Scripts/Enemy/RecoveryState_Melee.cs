@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class RecoveryState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
@@ -30,6 +26,9 @@ public class RecoveryState_Melee : EnemyState
         enemy.transform.rotation = enemy.FaceTarget(Player.instance.transform.position);
 
         if (triggerCalled)
-            stateMachine.ChangeState(enemy.chaseState);
+            if (enemy.PlayerInAttackRange())
+                stateMachine.ChangeState(enemy.attackState);
+            else
+                stateMachine.ChangeState(enemy.chaseState);
     }
 }
