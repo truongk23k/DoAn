@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Pickups\Pickup_Weapon.cs" />
     <Compile Include="Assets\Scripts\Enemy\ChaseState_Melee.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\EnemyShield.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponModel.cs" />
     <Compile Include="Assets\Scripts\Object Pool\PooledObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAim.cs" />

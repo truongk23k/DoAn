@@ -19,6 +19,13 @@ public enum AttackType_Melee
     Charge
 }
 
+public enum EnemyMelee_Type
+{
+    Regular,
+    Shield,
+    Dodge
+}
+
 public class Enemy_Melee : Enemy
 {
     public IdleState_Melee idleState { get; private set; }
@@ -27,6 +34,13 @@ public class Enemy_Melee : Enemy
     public ChaseState_Melee chaseState { get; private set; }
     public AttackState_Melee attackState { get; private set; }
     public DeadState_Melee deadState { get; private set; }
+
+    [Header("Enemy settings")]
+    public EnemyMelee_Type meleeType;
+    public Transform shieldTransform;
+    public float dodgeCooldown;
+    private float lastTimeDodge;
+    private Enemy_Ragdoll ragdoll; // use to disable colli when dodge
 
     [Header("Attack data")]
     public AttackData attackData;
@@ -38,6 +52,8 @@ public class Enemy_Melee : Enemy
     protected override void Awake()
     {
         base.Awake();
+
+        ragdoll = GetComponent<Enemy_Ragdoll>();
 
         idleState = new IdleState_Melee(this, stateMachine, "Idle");
         moveState = new MoveState_Melee(this, stateMachine, "Move");
@@ -52,6 +68,8 @@ public class Enemy_Melee : Enemy
         base.Start();
 
         stateMachine.Initialize(idleState);
+
+        InitializeSpeciality();
     }
 
     protected override void Update()
@@ -59,6 +77,15 @@ public class Enemy_Melee : Enemy
         base.Update();
 
         stateMachine.currentState.Update();
+    }
+
+    private void InitializeSpeciality()
+    {
+        if (meleeType == EnemyMelee_Type.Shield)
+        {
+            anim.SetFloat("ChaseIndex", 1);
+            shieldTransform.gameObject.SetActive(true);
+        }
     }
 
     public override void GetHit()
@@ -76,6 +103,24 @@ public class Enemy_Melee : Enemy
     }
 
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackData.attackRange;
+
+    public void ActiveDodgeRoll()
+    {
+        if (meleeType != EnemyMelee_Type.Dodge)
+            return;
+
+        if (Vector3.Distance(transform.position, Player.instance.transform.position) < 2f)
+            return;
+
+        if (Time.time > dodgeCooldown + lastTimeDodge)
+        {
+            lastTimeDodge = Time.time;
+            anim.SetTrigger("Dodge");
+            ragdoll.CollidersActive(false);
+        }
+    }
+
+    public void StopDodge() => ragdoll.CollidersActive(true);
 
     protected override void OnDrawGizmos()
     {
