@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] protected int healthPoints = 20;
+
     private bool manualMovement;
     private bool manualRotation;
 
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void GetHit()
     {
-        Debug.Log(gameObject.name + " got hit.");
+        healthPoints--;
     }
 
     public virtual void HitImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
@@ -70,7 +72,7 @@ public class Enemy : MonoBehaviour
 
     public bool PlayerInAggresionRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < aggresionRange;
 
- 
+
 
     protected virtual void OnDrawGizmos()
     {

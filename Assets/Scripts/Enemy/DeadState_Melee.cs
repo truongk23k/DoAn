@@ -18,7 +18,8 @@ public class DeadState_Melee : EnemyState
         interactionDisabled = false;
 
         enemy.anim.enabled = false;
-        enemy.agent.isStopped = true;
+       /* enemy.agent.isStopped = true;*/
+        enemy.agent.enabled = false;
 
         ragdoll.RagdollActive(true);
 
