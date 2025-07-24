@@ -21,5 +21,5 @@ public class EnemyAnimationEvents : MonoBehaviour
 
     public void StopDodge() => (enemy as Enemy_Melee).StopDodge();
 
-    public void AbilityEvent() => (enemy as Enemy_Melee).TriggerAbility();
+    public void AbilityEvent() => enemy.AbilityTrigger();
 }

@@ -93,6 +93,11 @@ public class Enemy : MonoBehaviour
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 
+    public virtual void AbilityTrigger()
+    {
+        stateMachine.currentState.AbilityTrigger();
+    }
+
     public Vector3 GetPatrolDestination()
     {
         Vector3 destination = patrolPoints[currentPatrolIndex].transform.position;
