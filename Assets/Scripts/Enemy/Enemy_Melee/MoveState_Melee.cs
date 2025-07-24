@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MoveState_Melee : EnemyState
 {
@@ -33,17 +31,10 @@ public class MoveState_Melee : EnemyState
     {
         base.Update();
 
-        //recover
-        if (enemy.PlayerInAggresionRange())
-        {
-            stateMachine.ChangeState(enemy.recoveryState);
-            return;
-        }
-
         //move around  points
-        enemy.transform.rotation = enemy.FaceTarget(GetNextPathPoint());
+        enemy.FaceTarget(GetNextPathPoint());
 
-        if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f) 
+        if (enemy.agent.remainingDistance <= enemy.agent.stoppingDistance + 0.05f)
             stateMachine.ChangeState(enemy.idleState);
     }
 

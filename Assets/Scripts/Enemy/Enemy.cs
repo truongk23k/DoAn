@@ -24,7 +24,10 @@ public class Enemy : MonoBehaviour
     public float turnSpeed;
 
     [SerializeField] private Transform[] patrolPoints;
+    private Vector3[] patrolPointsPosition;
     private int currentPatrolIndex;
+
+    public bool inBattleMode { get; private set; }
 
     public Animator anim { get; private set; }
 
@@ -51,38 +54,67 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public virtual void EnterBattleMode()
+    {
+        inBattleMode = true;
+    }
+
+    protected bool ShouldEnterBattleMode()
+    {
+        bool inAggresionRange = Vector3.Distance(transform.position, Player.instance.transform.position) < aggresionRange;
+
+        if (inAggresionRange && !inBattleMode)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public virtual void GetHit()
     {
+        EnterBattleMode();
+
         healthPoints--;
     }
 
-    public virtual void HitImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
+    public virtual void DeathImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
     {
-        StartCoroutine(HitImpactCoroutine(force, hitPoint, rb));
+        StartCoroutine(DeathImpactCoroutine(force, hitPoint, rb));
     }
 
-    private IEnumerator HitImpactCoroutine(Vector3 force, Vector3 hitPoint, Rigidbody rb)
+    private IEnumerator DeathImpactCoroutine(Vector3 force, Vector3 hitPoint, Rigidbody rb)
     {
         yield return new WaitForSeconds(0.01f);
 
+        Debug.Log("deadim");
         rb.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
     }
 
-    public bool PlayerOutMaxChaseRange() => Vector3.Distance(transform.position, Player.instance.transform.position) > maxChaseRange;
-
-    public bool PlayerInAggresionRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < aggresionRange;
-
-
-
-    protected virtual void OnDrawGizmos()
+    public bool PlayerOutMaxChaseRange()
     {
-        Gizmos.DrawWireSphere(transform.position, aggresionRange);
+        if (Vector3.Distance(transform.position, Player.instance.transform.position) > maxChaseRange)
+        {
+            inBattleMode = false;
+            return true;
+        }
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, maxChaseRange);
-
+        return false;
     }
 
+    public void FaceTarget(Vector3 target)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
+
+        Vector3 currentEulerAngles = transform.rotation.eulerAngles;
+
+        float yRotation = Mathf.LerpAngle(currentEulerAngles.y, targetRotation.eulerAngles.y, turnSpeed * Time.deltaTime);
+
+        transform.rotation = Quaternion.Euler(currentEulerAngles.x, yRotation, currentEulerAngles.z);
+    }
+
+
+    #region Animation events
     public void ActivateManualMovement(bool manualMovement) => this.manualMovement = manualMovement;
 
     public bool ManualMovementActive() => manualMovement;
@@ -97,10 +129,12 @@ public class Enemy : MonoBehaviour
     {
         stateMachine.currentState.AbilityTrigger();
     }
+    #endregion
 
+    #region Patrol logic
     public Vector3 GetPatrolDestination()
     {
-        Vector3 destination = patrolPoints[currentPatrolIndex].transform.position;
+        Vector3 destination = patrolPointsPosition[currentPatrolIndex];
         currentPatrolIndex++;
 
         if (currentPatrolIndex >= patrolPoints.Length)
@@ -111,20 +145,22 @@ public class Enemy : MonoBehaviour
 
     private void InitializePatrolPoints()
     {
-        foreach (Transform t in patrolPoints)
+        patrolPointsPosition = new Vector3[patrolPoints.Length];
+
+        for (int i = 0; i < patrolPoints.Length; i++)
         {
-            t.parent = null;
+            patrolPointsPosition[i] = patrolPoints[i].position;
+            patrolPoints[i].gameObject.SetActive(false);
         }
     }
+    #endregion
 
-    public Quaternion FaceTarget(Vector3 target)
+    protected virtual void OnDrawGizmos()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
+        Gizmos.DrawWireSphere(transform.position, aggresionRange);
 
-        Vector3 currentEulerAngles = transform.rotation.eulerAngles;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, maxChaseRange);
 
-        float yRotation = Mathf.LerpAngle(currentEulerAngles.y, targetRotation.eulerAngles.y, turnSpeed * Time.deltaTime);
-
-        return Quaternion.Euler(currentEulerAngles.x, yRotation, currentEulerAngles.z);
     }
 }

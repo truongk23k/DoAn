@@ -19,7 +19,10 @@ public class EnemyAnimationEvents : MonoBehaviour
 
     public void StopManualRotation() => enemy.ActivateManualRotate(false);
 
+    public void StartDodge() => (enemy as Enemy_Melee).StartDodge();
     public void StopDodge() => (enemy as Enemy_Melee).StopDodge();
 
     public void AbilityEvent() => enemy.AbilityTrigger();
+
+    public void AssignLastTimeDodge() => (enemy as Enemy_Melee).AssignLastTimeDodge();
 }

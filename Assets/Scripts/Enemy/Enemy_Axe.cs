@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemyAxe : MonoBehaviour
+public class Enemy_Axe : MonoBehaviour
 {
     [SerializeField] private GameObject impactFx;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform axeVisual;
-    public float flySpeed;
-    public float rotationSpeed;
+    private float flySpeed;
+    private float rotationSpeed;
 
-    public Vector3 direction;
-    public float timer = 1f;
+    private Vector3 direction;
+    private float timer = 1f;
 
     private bool canChangeDir;
 
@@ -47,7 +47,7 @@ public class EnemyAxe : MonoBehaviour
 
         timer -= Time.deltaTime;
 
-        if (timer > 0 && Vector3.Distance(transform.position, Player.instance.transform.position) > 1 && canChangeDir)
+        if (timer > 0 && Vector3.Distance(transform.position, Player.instance.transform.position) > 1.5f && canChangeDir)
         {
             direction = Player.instance.transform.position + Vector3.up - transform.position;
         }

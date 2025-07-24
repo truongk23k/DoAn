@@ -24,11 +24,12 @@ public enum EnemyMelee_Type
     Regular,//auto if haven't special types
     Shield,
     Dodge,
-    AxeThrow // this types can't Dodge because Dodge only play when ChaseAnim
+    AxeThrow 
 }
 
 public class Enemy_Melee : Enemy
 {
+    #region States
     public IdleState_Melee idleState { get; private set; }
     public MoveState_Melee moveState { get; private set; }
     public RecoveryState_Melee recoveryState { get; private set; }
@@ -36,12 +37,13 @@ public class Enemy_Melee : Enemy
     public AttackState_Melee attackState { get; private set; }
     public DeadState_Melee deadState { get; private set; }
     public AbilityState_Melee abilityState { get; private set; }
+    #endregion
 
     [Header("Enemy settings")]
     public List<EnemyMelee_Type> meleeTypes = new List<EnemyMelee_Type>();
     public Transform shieldTransform;
     public float dodgeCooldown;
-    private float lastTimeDodge;
+    private float lastTimeDodge = -10;
     private Enemy_Ragdoll ragdoll; // use to disable colli when dodge
 
     [Header("Axe throw ability")]
@@ -88,6 +90,20 @@ public class Enemy_Melee : Enemy
         base.Update();
 
         stateMachine.currentState.Update();
+
+        if (ShouldEnterBattleMode()) {
+            EnterBattleMode();
+        }
+    }
+
+    public override void EnterBattleMode()
+    {
+        if (inBattleMode)
+            return;
+
+        base.EnterBattleMode();
+
+        stateMachine.ChangeState(recoveryState);
     }
 
     public override void AbilityTrigger()
@@ -133,18 +149,19 @@ public class Enemy_Melee : Enemy
 
         if (Time.time > dodgeCooldown + lastTimeDodge)
         {
-            lastTimeDodge = Time.time;
             anim.SetTrigger("Dodge");
-            ragdoll.CollidersActive(false);
+            
         }
     }
+
+    public void AssignLastTimeDodge() => lastTimeDodge = Time.time;
 
     public bool CanThrowAxe()
     {
         if (!meleeTypes.Contains(EnemyMelee_Type.AxeThrow))
             return false;
 
-        if(Time.time > lastTimeAxeThrow + axeThrowCooldown)
+        if (Time.time > lastTimeAxeThrow + axeThrowCooldown)
         {
             lastTimeAxeThrow = Time.time;
             return true;
@@ -153,6 +170,7 @@ public class Enemy_Melee : Enemy
         return false;
     }
 
+    public void StartDodge() => ragdoll.CollidersActive(false);
     public void StopDodge() => ragdoll.CollidersActive(true);
 
     protected override void OnDrawGizmos()

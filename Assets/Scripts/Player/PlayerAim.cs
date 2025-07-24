@@ -106,13 +106,20 @@ public class PlayerAim : MonoBehaviour
 
     public Transform Target()
     {
-        Transform target = null;
+        RaycastHit hit = GetMouseHitInfor();
 
-        if (GetMouseHitInfor().transform.GetComponent<Target>() != null)
-            target = GetMouseHitInfor().transform;
+        if (hit.transform != null)
+        {
+            Target targetComponent = hit.transform.GetComponent<Target>();
+            if (targetComponent != null)
+            {
+                return hit.transform;
+            }
+        }
 
-        return target;
+        return null;
     }
+
 
     public Transform Aim() => aim;
 

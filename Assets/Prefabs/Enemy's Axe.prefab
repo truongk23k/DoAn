@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 2194260099053754766}
   - component: {fileID: 2633490511494680027}
   - component: {fileID: 6624392629057701605}
-  - component: {fileID: 7473383148454542616}
+  - component: {fileID: 6105453576338805902}
   m_Layer: 0
   m_Name: Enemy's Axe
   m_TagString: Untagged
@@ -371,7 +371,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7473383148454542616
+--- !u!114 &6105453576338805902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,13 +380,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5578750314841729409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a5b8b45a3383c469cac8471fba3af4, type: 3}
+  m_Script: {fileID: 11500000, guid: ce79004f4fa8bfa47bcc516acc4d86cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   impactFx: {fileID: 1180017215954271981, guid: 10c506e34b2f6f34080d2d956985952d, type: 3}
   rb: {fileID: 6624392629057701605}
   axeVisual: {fileID: 9025812717037612885}
-  flySpeed: 0
+  flySpeed: 6
   rotationSpeed: 0
   direction: {x: 0, y: 0, z: 0}
   timer: 1

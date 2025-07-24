@@ -81,22 +81,24 @@ public class Bullet : MonoBehaviour
         CreateImpactFx(collision);
         ReturnBulletToPool();
 
-        Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
-        EnemyShield shield = collision.gameObject.GetComponent<EnemyShield>();
+        Enemy_Shield shield = collision.gameObject.GetComponent<Enemy_Shield>();
 
         if(shield != null)
         {
+            Enemy e = collision.gameObject.GetComponentInParent<Enemy>();
+            e.EnterBattleMode();
             shield.ReduceDurability();
             return;
         }
 
+        Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
         if (enemy != null)
         {
             Vector3 force = rb.velocity.normalized * impactForce;
             Rigidbody hitRb = collision.collider.attachedRigidbody;
 
             enemy.GetHit();
-            enemy.HitImpact(force, collision.contacts[0].point, hitRb);
+            enemy.DeathImpact(force, collision.contacts[0].point, hitRb);
         }
     }
 

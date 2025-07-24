@@ -52,7 +52,7 @@ public class AttackState_Melee : EnemyState
 
         if (enemy.ManualRotateActive())
         {
-            enemy.transform.rotation = enemy.FaceTarget(Player.instance.transform.position);
+            enemy.FaceTarget(Player.instance.transform.position);
             attackTarget = enemy.transform.position + enemy.transform.forward * MAX_ATTACK_DISTANCE;
         }
 
