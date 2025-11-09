@@ -1,9 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private List<Interactable> interactables = new List<Interactable>();
+    public List<Interactable> interactables = new List<Interactable>();
     private Interactable closestInteractable;
 
     private void Start()
@@ -17,7 +17,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         closestInteractable?.Interaction();
        
-
     }
 
     public void UpdateClosestInteractable()
@@ -26,6 +25,9 @@ public class PlayerInteraction : MonoBehaviour
 
         closestInteractable = null;
         float closestDistance = float.MaxValue;
+
+        // Lọc ra các interactable còn tồn tại và active
+        interactables.RemoveAll(i => i == null || !i.gameObject.activeInHierarchy);
 
         foreach (Interactable interactable in interactables)
         {
@@ -36,7 +38,6 @@ public class PlayerInteraction : MonoBehaviour
                 closestInteractable = interactable;
                 closestDistance = distance;
             }
-
         }
 
         closestInteractable?.HighlightActive(true);

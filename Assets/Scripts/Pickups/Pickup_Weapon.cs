@@ -24,7 +24,7 @@ public class Pickup_Weapon : Interactable
 
         this.weapon = weapon; // save data drop weapon
         weaponData = weapon.weaponData;
-        this.transform.position = transform.position + new Vector3(0, 0.75f, 0);
+        this.transform.position = transform.position + new Vector3(0, 0f, 0);
 
         SetupGameObject();
     }
