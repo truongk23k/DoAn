@@ -1,3 +1,7 @@
+
+
+using UnityEngine;
+
 public class RecoveryState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
@@ -10,7 +14,7 @@ public class RecoveryState_Melee : EnemyState
     public override void Enter()
     {
         base.Enter();
-
+        Debug.Log("Enter Recovery State");
         enemy.agent.isStopped = true;
     }
 
@@ -28,9 +32,16 @@ public class RecoveryState_Melee : EnemyState
         if (triggerCalled)
         {
             if (enemy.CanThrowAxe())
+            {
                 stateMachine.ChangeState(enemy.abilityState);
-            else if (enemy.PlayerInAttackRange())
+                return;
+            }
+
+            if (enemy.PlayerInAttackRange())
+            {
                 stateMachine.ChangeState(enemy.attackState);
+                Debug.Log("Enter Attack State");
+            }
             else
                 stateMachine.ChangeState(enemy.chaseState);
 

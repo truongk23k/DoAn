@@ -92,6 +92,7 @@ public class Enemy_Melee : Enemy
         stateMachine.currentState.Update();
 
         if (ShouldEnterBattleMode()) {
+            Debug.Log("Enter Battle Mode from Melee Enemy");
             EnterBattleMode();
         }
     }
