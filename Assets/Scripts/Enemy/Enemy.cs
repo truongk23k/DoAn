@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour
         stateMachine = new EnemyStateMachine();
 
         agent = GetComponent<NavMeshAgent>();
+        // Tắt auto traverse để tự xử lý nhảy
+        agent.autoTraverseOffMeshLink = false;
 
         anim = GetComponentInChildren<Animator>();
     }
@@ -51,7 +53,36 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
+        // Xử lý Off-Mesh Link
+        if (agent.isOnOffMeshLink && !agent.isStopped)
+        {
+            HandleOffMeshLink();
+        }
 
+        stateMachine.currentState.Update();
+
+        if (ShouldEnterBattleMode())
+        {
+            EnterBattleMode();
+        }
+    }
+
+    private void HandleOffMeshLink()
+    {
+        // Lấy thông tin Off-Mesh Link
+        OffMeshLinkData data = agent.currentOffMeshLinkData;
+        Vector3 startPos = agent.transform.position;
+        Vector3 endPos = data.endPos;
+
+        // Di chuyển mượt từ startPos đến endPos
+        float speed = agent.speed;
+        agent.transform.position = Vector3.MoveTowards(startPos, endPos, speed * Time.deltaTime);
+
+        // Khi đến đích, hoàn thành Off-Mesh Link
+        if (Vector3.Distance(agent.transform.position, endPos) < 0.1f)
+        {
+            agent.CompleteOffMeshLink();
+        }
     }
 
     public virtual void EnterBattleMode()
