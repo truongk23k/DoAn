@@ -3728,6 +3728,7 @@ GameObject:
   - component: {fileID: 822542897}
   - component: {fileID: 822542899}
   - component: {fileID: 822542900}
+  - component: {fileID: 822542901}
   m_Layer: 11
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -3842,6 +3843,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollparent: {fileID: 822542898}
+--- !u!114 &822542901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822542896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8404fbcf7ca569419075eca9edd7d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorTextures:
+  - {fileID: 2800000, guid: faeed8fbd18c5504b99e9ee0d2f6f3f8, type: 3}
+  - {fileID: 2800000, guid: 2ce9eab8644a7f24e916a2cead65c949, type: 3}
+  - {fileID: 2800000, guid: 0aab8d6fb1a3ba94b977d734742f03bb, type: 3}
+  - {fileID: 2800000, guid: 04e2d474f4033594db6fd8a3301c6225, type: 3}
+  skinnedMeshRenderer: {fileID: 5562564702025655144}
 --- !u!1 &831235181
 GameObject:
   m_ObjectHideFlags: 0
@@ -6949,7 +6968,7 @@ Transform:
   m_GameObject: {fileID: 1502863218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2314816, y: 0.025000237, z: 0.44416222}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

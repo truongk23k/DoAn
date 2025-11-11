@@ -29,6 +29,8 @@ public enum EnemyMelee_Type
 
 public class Enemy_Melee : Enemy
 {
+    private Enemy_Visuals visuals;
+
     #region States
     public IdleState_Melee idleState { get; private set; }
     public MoveState_Melee moveState { get; private set; }
@@ -65,6 +67,8 @@ public class Enemy_Melee : Enemy
     {
         base.Awake();
 
+        visuals = GetComponent<Enemy_Visuals>();
+
         ragdoll = GetComponent<Enemy_Ragdoll>();
 
         idleState = new IdleState_Melee(this, stateMachine, "Idle");
@@ -83,6 +87,7 @@ public class Enemy_Melee : Enemy
         stateMachine.Initialize(idleState);
 
         InitializeSpeciality();
+        visuals.SetupLook();
     }
 
     protected override void Update()
