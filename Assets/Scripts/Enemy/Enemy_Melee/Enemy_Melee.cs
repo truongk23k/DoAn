@@ -24,7 +24,7 @@ public enum EnemyMelee_Type
     Regular,//auto if haven't special types
     Shield,
     Dodge,
-    AxeThrow 
+    AxeThrow
 }
 
 public class Enemy_Melee : Enemy
@@ -60,9 +60,6 @@ public class Enemy_Melee : Enemy
     public AttackData attackData;
     public List<AttackData> attackList;
 
-    [SerializeField] private Transform hiddenWeapon;
-    [SerializeField] private Transform pulledWeapon;
-
     protected override void Awake()
     {
         base.Awake();
@@ -96,7 +93,8 @@ public class Enemy_Melee : Enemy
 
         stateMachine.currentState.Update();
 
-        if (ShouldEnterBattleMode()) {
+        if (ShouldEnterBattleMode())
+        {
             Debug.Log("Enter Battle Mode from Melee Enemy");
             EnterBattleMode();
         }
@@ -122,10 +120,16 @@ public class Enemy_Melee : Enemy
 
     private void InitializeSpeciality()
     {
+        if (meleeTypes.Contains(EnemyMelee_Type.AxeThrow))
+        {
+            visuals.SetupWeaponType(Enemy_MeleeWeaponType.Throw);
+        }
+
         if (meleeTypes.Contains(EnemyMelee_Type.Shield))
         {
             anim.SetFloat("ChaseIndex", 1);
             shieldTransform.gameObject.SetActive(true);
+            visuals.SetupWeaponType(Enemy_MeleeWeaponType.OneHand);
         }
     }
 
@@ -139,8 +143,10 @@ public class Enemy_Melee : Enemy
 
     public void ActiveWeapon(bool active)
     {
-        hiddenWeapon.gameObject.SetActive(!active);
-        pulledWeapon.gameObject.SetActive(active);
+        /* hiddenWeapon.gameObject.SetActive(!active);
+         pulledWeapon.gameObject.SetActive(active);*/
+        visuals.hiddenWeaponModel.SetActive(!active);
+        visuals.currentWeaponModel.SetActive(active);
     }
 
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackData.attackRange;
@@ -156,7 +162,7 @@ public class Enemy_Melee : Enemy
         if (Time.time > dodgeCooldown + lastTimeDodge)
         {
             anim.SetTrigger("Dodge");
-            
+
         }
     }
 
