@@ -7,7 +7,6 @@ public enum Enemy_MeleeWeaponType
     Throw
 }
 
-
 public class Enemy_Visuals : MonoBehaviour
 {
     [Header("Weapon model")]
@@ -17,16 +16,56 @@ public class Enemy_Visuals : MonoBehaviour
     public GameObject currentWeaponModel { get; private set; }
     public GameObject hiddenWeaponModel { get; private set; }
 
+    [Header("Corruption visuals")]
+    [SerializeField] private GameObject[] corruptionCrystals;
+    [SerializeField] private int corruptionAmount;
+
     [Header("Color")]
     [SerializeField] private Texture[] colorTextures;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
-    private void Start()
+    private void Awake()
     {
         weaponModels = GetComponentsInChildren<Enemy_WeaponModel>(true);
+
+        CollectCorruptionCrystals();
+        
+    }
+
+    private void Start()
+    {
+    }
+
+    public void SetupLook()
+    {
+        SetupRandomColor();
+        SetupRandomWeapon();
+        SetupRandomCorruption();
     }
 
     public void SetupWeaponType(Enemy_MeleeWeaponType type) => weaponType = type;
+
+    private void SetupRandomCorruption()
+    {
+        List<int> availableIndexs = new List<int>();
+
+        for (int i = 0; i < corruptionCrystals.Length; i++)
+        {
+            availableIndexs.Add(i);
+            corruptionCrystals[i].SetActive(false);
+        }
+
+        for (int i = 0; i < corruptionAmount; i++)
+        {
+            if (availableIndexs.Count == 0)
+                break;
+            int randomIndex = Random.Range(0, availableIndexs.Count);
+            int objectIndex = availableIndexs[randomIndex];
+
+            corruptionCrystals[objectIndex].SetActive(true);
+            availableIndexs.RemoveAt(randomIndex);
+        }
+    }
 
     private void SetupRandomWeapon()
     {
@@ -53,12 +92,6 @@ public class Enemy_Visuals : MonoBehaviour
         hiddenWeaponModel.SetActive(true);
     }
 
-    public void SetupLook()
-    {
-        SetupRandomColor();
-        SetupRandomWeapon();
-    }
-
     private void SetupRandomColor()
     {
         int randomIndex = Random.Range(0, colorTextures.Length);
@@ -68,5 +101,16 @@ public class Enemy_Visuals : MonoBehaviour
         newMat.mainTexture = colorTextures[randomIndex];
 
         skinnedMeshRenderer.material = newMat;
+    }
+
+    private void CollectCorruptionCrystals()
+    {
+        Enemy_CorruptionCrystal[] crystalComponents = GetComponentsInChildren<Enemy_CorruptionCrystal>(true);
+        corruptionCrystals = new GameObject[crystalComponents.Length];
+
+        for (int i = 0; i < crystalComponents.Length; i++)
+        {
+            corruptionCrystals[i] = crystalComponents[i].gameObject;
+        }
     }
 }
