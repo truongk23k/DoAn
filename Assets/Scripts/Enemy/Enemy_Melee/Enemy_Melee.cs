@@ -29,7 +29,7 @@ public enum EnemyMelee_Type
 
 public class Enemy_Melee : Enemy
 {
-    private Enemy_Visuals visuals;
+    public Enemy_Visuals visuals { get; private set; }
 
     #region States
     public IdleState_Melee idleState { get; private set; }
@@ -120,6 +120,12 @@ public class Enemy_Melee : Enemy
 
     private void InitializeSpeciality()
     {
+        //setup first because override AC
+        if (meleeTypes.Contains(EnemyMelee_Type.Dodge))
+        {
+            visuals.SetupWeaponType(Enemy_MeleeWeaponType.Unarmed);
+        }
+
         if (meleeTypes.Contains(EnemyMelee_Type.AxeThrow))
         {
             visuals.SetupWeaponType(Enemy_MeleeWeaponType.Throw);
@@ -131,6 +137,7 @@ public class Enemy_Melee : Enemy
             shieldTransform.gameObject.SetActive(true);
             visuals.SetupWeaponType(Enemy_MeleeWeaponType.OneHand);
         }
+
     }
 
     public override void GetHit()

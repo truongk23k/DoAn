@@ -4,7 +4,8 @@ using UnityEngine;
 public enum Enemy_MeleeWeaponType
 {
     OneHand,
-    Throw
+    Throw,
+    Unarmed
 }
 
 public class Enemy_Visuals : MonoBehaviour
@@ -34,6 +35,15 @@ public class Enemy_Visuals : MonoBehaviour
 
     private void Start()
     {
+    }
+
+    public void EnableWeaponTrail(bool enable)
+    {
+        if (currentWeaponModel != null)
+        {
+            Enemy_WeaponModel currentWeaponScript = currentWeaponModel.GetComponent<Enemy_WeaponModel>();
+            currentWeaponScript.EnableTrailEffect(enable);
+        }
     }
 
     public void SetupLook()
@@ -90,6 +100,18 @@ public class Enemy_Visuals : MonoBehaviour
         //hidden weapon
         hiddenWeaponModel = filteredWeaponModels[randomIndex].weaponHidden;
         hiddenWeaponModel.SetActive(true);
+
+        OverrideAnimatorControllerIfCan();
+    }
+
+    private void OverrideAnimatorControllerIfCan()
+    {
+        AnimatorOverrideController overrideController = currentWeaponModel.GetComponent<Enemy_WeaponModel>().overrideController;
+        if (overrideController != null)
+        {
+            Animator animator = GetComponentInChildren<Animator>();
+            animator.runtimeAnimatorController = overrideController;
+        }
     }
 
     private void SetupRandomColor()
