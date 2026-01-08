@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Enemy_MeleeAttackData
+public class AttackDataEnemy_Melee
 {
     public string attackName;
     public AttackType_Melee attackType;
@@ -57,8 +57,8 @@ public class Enemy_Melee : Enemy
     public Transform axeStartPoint;
 
     [Header("Attack data")]
-    public Enemy_MeleeAttackData attackData;
-    public List<Enemy_MeleeAttackData> attackList;
+    public AttackDataEnemy_Melee attackData;
+    public List<AttackDataEnemy_Melee> attackList;
 
     protected override void Awake()
     {
@@ -83,7 +83,7 @@ public class Enemy_Melee : Enemy
 
         stateMachine.Initialize(idleState);
 
-        InitializeSpeciality();
+        InitializePerk();
         visuals.SetupLook();
         UpdateAttackData();
     }
@@ -125,12 +125,12 @@ public class Enemy_Melee : Enemy
 
         if(currentWeapon.weaponData != null)
         {
-            attackList = new List<Enemy_MeleeAttackData>(currentWeapon.weaponData.attackData);
+            attackList = new List<AttackDataEnemy_Melee>(currentWeapon.weaponData.attackData);
             turnSpeed = currentWeapon.weaponData.turnSpeed;
         }
     }
 
-    private void InitializeSpeciality()
+    private void InitializePerk()
     {
         //setup first because override AC
         if (meleeTypes.Contains(EnemyMelee_Type.Dodge))
