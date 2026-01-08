@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     public float aggresionRange;
 
     [Header("Idle data")]
-    public float idleTimer;
+    public float idleTime;
 
     [Header("Move data")]
     public float walkSpeed;

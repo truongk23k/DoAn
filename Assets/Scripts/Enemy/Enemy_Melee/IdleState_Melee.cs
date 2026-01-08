@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class IdleState_Melee : EnemyState
 {
     private Enemy_Melee enemy;
@@ -12,7 +10,7 @@ public class IdleState_Melee : EnemyState
     {
         base.Enter();
 
-        stateTimer = enemyBase.idleTimer;
+        stateTimer = enemyBase.idleTime;
     }
 
     public override void Exit()
