@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_CorruptionCrystal.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAnimationEvents.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Data\Enemy_MeleeWeaponData.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\RecoveryState_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\AttackState_Melee.cs" />

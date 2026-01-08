@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class AttackData
+public class Enemy_MeleeAttackData
 {
     public string attackName;
     public AttackType_Melee attackType;
@@ -57,8 +57,8 @@ public class Enemy_Melee : Enemy
     public Transform axeStartPoint;
 
     [Header("Attack data")]
-    public AttackData attackData;
-    public List<AttackData> attackList;
+    public Enemy_MeleeAttackData attackData;
+    public List<Enemy_MeleeAttackData> attackList;
 
     protected override void Awake()
     {
@@ -85,6 +85,7 @@ public class Enemy_Melee : Enemy
 
         InitializeSpeciality();
         visuals.SetupLook();
+        UpdateAttackData();
     }
 
     protected override void Update()
@@ -116,6 +117,17 @@ public class Enemy_Melee : Enemy
 
         walkSpeed *= 0.6f;
         ActiveWeapon(false);
+    }
+
+    public void UpdateAttackData()
+    {
+        Enemy_WeaponModel currentWeapon = visuals.currentWeaponModel.GetComponent<Enemy_WeaponModel>();
+
+        if(currentWeapon.weaponData != null)
+        {
+            attackList = new List<Enemy_MeleeAttackData>(currentWeapon.weaponData.attackData);
+            turnSpeed = currentWeapon.weaponData.turnSpeed;
+        }
     }
 
     private void InitializeSpeciality()

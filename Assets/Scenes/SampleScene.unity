@@ -3204,6 +3204,7 @@ MonoBehaviour:
   weaponType: 2
   weaponHidden: {fileID: 613149996}
   overrideController: {fileID: 22100000, guid: edb6231eb31e0ec47b84c9919d61e153, type: 2}
+  weaponData: {fileID: 11400000, guid: ecd0933303e4dc741a04f6f130c44afb, type: 2}
   trailEffects:
   - {fileID: 581834108}
   - {fileID: 818459189}
@@ -16508,6 +16509,7 @@ MonoBehaviour:
   weaponType: 0
   weaponHidden: {fileID: 1141117712}
   overrideController: {fileID: 0}
+  weaponData: {fileID: 0}
   trailEffects:
   - {fileID: 46808266}
 --- !u!1 &4650120041404654220
@@ -19239,6 +19241,7 @@ MonoBehaviour:
   weaponType: 0
   weaponHidden: {fileID: 50658094}
   overrideController: {fileID: 0}
+  weaponData: {fileID: 0}
   trailEffects:
   - {fileID: 2011588884}
 --- !u!1 &7150471128738015554
@@ -19687,6 +19690,7 @@ MonoBehaviour:
   weaponType: 0
   weaponHidden: {fileID: 974505437}
   overrideController: {fileID: 0}
+  weaponData: {fileID: 0}
   trailEffects:
   - {fileID: 2014811577}
 --- !u!1 &7449420203977245254
@@ -19840,6 +19844,7 @@ MonoBehaviour:
   weaponType: 1
   weaponHidden: {fileID: 1261336648}
   overrideController: {fileID: 0}
+  weaponData: {fileID: 0}
   trailEffects:
   - {fileID: 459863017}
 --- !u!1 &7697167737182244541
@@ -21591,6 +21596,7 @@ MonoBehaviour:
   weaponType: 0
   weaponHidden: {fileID: 1022803545}
   overrideController: {fileID: 0}
+  weaponData: {fileID: 0}
   trailEffects:
   - {fileID: 1654617236}
 --- !u!4 &9140626867577680846

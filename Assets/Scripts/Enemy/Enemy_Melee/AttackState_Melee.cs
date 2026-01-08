@@ -18,6 +18,9 @@ public class AttackState_Melee : EnemyState
     {
         base.Enter();
 
+        //test while playing
+        enemy.UpdateAttackData();
+
         enemy.ActiveWeapon(true);
         enemy.visuals.EnableWeaponTrail(true);
 
@@ -75,9 +78,9 @@ public class AttackState_Melee : EnemyState
 
     private bool PlayerClose() => Vector3.Distance(enemy.transform.position, Player.instance.transform.position) <= 1;
 
-    private AttackData UpdateAttackData()
+    private Enemy_MeleeAttackData UpdateAttackData()
     {
-        List<AttackData> validAttacks = new List<AttackData>(enemy.attackList);
+        List<Enemy_MeleeAttackData> validAttacks = new List<Enemy_MeleeAttackData>(enemy.attackList);
 
         if (PlayerClose())
             validAttacks.RemoveAll(parameter => parameter.attackType == AttackType_Melee.Charge);
