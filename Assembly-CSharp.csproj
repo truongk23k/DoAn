@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Pickups\Pickup_Weapon.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Shield.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Bullet.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\MoveState_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\ChaseState_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\MoveState_Range.cs" />

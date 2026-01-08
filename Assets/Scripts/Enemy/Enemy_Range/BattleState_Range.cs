@@ -5,6 +5,7 @@ using UnityEngine;
 public class BattleState_Range : EnemyState
 {
     private Enemy_Range enemy;
+    private float lastTimeShoot = -10;
 
     public BattleState_Range(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
     {
@@ -26,5 +27,11 @@ public class BattleState_Range : EnemyState
         base.Update();
 
         enemy.FaceTarget(Player.instance.transform.position);
+
+        if(Time.time >= lastTimeShoot + 1 / enemy.fireRate)
+        {
+            enemy.FireSingleBullet();
+            lastTimeShoot = Time.time;
+        }
     }
 }
