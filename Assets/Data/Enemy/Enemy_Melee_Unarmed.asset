@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: Enemy_Melee_Unarmed
   m_EditorClassIdentifier: 
   attackData:
-  - attackName: Flying kick
-    attackType: 1
-    attackRange: 2
-    moveSpeed: 5
-    attackIndex: 0
-    animationSpeed: 0
   - attackName: Boxing attack
     attackType: 0
     attackRange: 1
     moveSpeed: 0.1
     attackIndex: 1
-    animationSpeed: 1.4
+    animationSpeed: 1.434
+  - attackName: fly kick
+    attackType: 1
+    attackRange: 2
+    moveSpeed: 4
+    attackIndex: 0
+    animationSpeed: 1.263
+  turnSpeed: 10

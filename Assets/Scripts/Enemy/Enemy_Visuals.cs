@@ -8,12 +8,17 @@ public enum Enemy_MeleeWeaponType
     Unarmed
 }
 
+public enum  Enemy_RangeWeaponType
+{
+    Pistol,
+    Revolver,
+    Shotgun,
+    AutoRifle,
+    Rifle
+}
+
 public class Enemy_Visuals : MonoBehaviour
 {
-    [Header("Weapon model")]
-    [SerializeField] private Enemy_WeaponModel[] weaponModels;
-    [SerializeField] private Enemy_MeleeWeaponType weaponType;
-
     public GameObject currentWeaponModel { get; private set; }
     public GameObject hiddenWeaponModel { get; private set; }
 
@@ -25,13 +30,6 @@ public class Enemy_Visuals : MonoBehaviour
     [SerializeField] private Texture[] colorTextures;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
-    private void Awake()
-    {
-        weaponModels = GetComponentsInChildren<Enemy_WeaponModel>(true);
-
-        CollectCorruptionCrystals();
-        
-    }
 
     private void Start()
     {
@@ -53,11 +51,10 @@ public class Enemy_Visuals : MonoBehaviour
         SetupRandomCorruption();
     }
 
-    public void SetupWeaponType(Enemy_MeleeWeaponType type) => weaponType = type;
-
     private void SetupRandomCorruption()
     {
         List<int> availableIndexs = new List<int>();
+        corruptionCrystals = (GameObject[])CollectCorruptionCrystals();
 
         for (int i = 0; i < corruptionCrystals.Length; i++)
         {
@@ -79,10 +76,39 @@ public class Enemy_Visuals : MonoBehaviour
 
     private void SetupRandomWeapon()
     {
+        bool thisEnemyIsMelee = GetComponent<Enemy_Melee>() != null;
+        bool thisEnemyRange = GetComponent<Enemy_Range>() != null;
+
+        if (thisEnemyRange)
+            FindRangeWeaponModel();
+
+        if (thisEnemyIsMelee)
+            FindMeleeWeaponModel();
+
+        OverrideAnimatorControllerIfCan();
+    }
+
+    private void FindRangeWeaponModel()
+    {
+        Enemy_RangeWeaponModel[] weaponModels = GetComponentsInChildren<Enemy_RangeWeaponModel>(true);
+        Enemy_RangeWeaponType weaponType = GetComponent<Enemy_Range>().weaponType;
+
         foreach (var weaponModel in weaponModels)
         {
-            weaponModel.gameObject.SetActive(false);
+            if (weaponModel.weaponType == weaponType)
+            {
+                currentWeaponModel = weaponModel.gameObject;
+                currentWeaponModel.SetActive(true);
+                break;
+            }
         }
+
+    }
+
+    private void FindMeleeWeaponModel()
+    {
+        Enemy_WeaponModel[] weaponModels = GetComponentsInChildren<Enemy_WeaponModel>(true);
+        Enemy_MeleeWeaponType weaponType = GetComponent<Enemy_Melee>().weaponType;
 
         List<Enemy_WeaponModel> filteredWeaponModels = new List<Enemy_WeaponModel>();
 
@@ -100,13 +126,11 @@ public class Enemy_Visuals : MonoBehaviour
         //hidden weapon
         hiddenWeaponModel = filteredWeaponModels[randomIndex].weaponHidden;
         hiddenWeaponModel.SetActive(true);
-
-        OverrideAnimatorControllerIfCan();
     }
 
     private void OverrideAnimatorControllerIfCan()
     {
-        AnimatorOverrideController overrideController = currentWeaponModel.GetComponent<Enemy_WeaponModel>().overrideController;
+        AnimatorOverrideController overrideController = currentWeaponModel.GetComponent<Enemy_WeaponModel>()?.overrideController;
         if (overrideController != null)
         {
             Animator animator = GetComponentInChildren<Animator>();
@@ -125,14 +149,16 @@ public class Enemy_Visuals : MonoBehaviour
         skinnedMeshRenderer.material = newMat;
     }
 
-    private void CollectCorruptionCrystals()
+    private Object[] CollectCorruptionCrystals()
     {
         Enemy_CorruptionCrystal[] crystalComponents = GetComponentsInChildren<Enemy_CorruptionCrystal>(true);
-        corruptionCrystals = new GameObject[crystalComponents.Length];
+        GameObject[] corruptionCrystals = new GameObject[crystalComponents.Length];
 
         for (int i = 0; i < crystalComponents.Length; i++)
         {
             corruptionCrystals[i] = crystalComponents[i].gameObject;
         }
+
+        return corruptionCrystals;
     }
 }

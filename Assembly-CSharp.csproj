@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_PatrolPoint.cs" />
     <Compile Include="Assets\Scripts\Object Pool\PooledObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAim.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_RangeWeaponModel.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\IdleState_Melee.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -29,7 +29,6 @@ public enum EnemyMelee_Type
 
 public class Enemy_Melee : Enemy
 {
-    public Enemy_Visuals visuals { get; private set; }
 
     #region States
     public IdleState_Melee idleState { get; private set; }
@@ -43,6 +42,8 @@ public class Enemy_Melee : Enemy
 
     [Header("Enemy settings")]
     public List<EnemyMelee_Type> meleeTypes = new List<EnemyMelee_Type>();
+    public Enemy_MeleeWeaponType weaponType;
+
     public Transform shieldTransform;
     public float dodgeCooldown;
     private float lastTimeDodge = -10;
@@ -63,8 +64,6 @@ public class Enemy_Melee : Enemy
     protected override void Awake()
     {
         base.Awake();
-
-        visuals = GetComponent<Enemy_Visuals>();
 
         ragdoll = GetComponent<Enemy_Ragdoll>();
 
@@ -117,10 +116,20 @@ public class Enemy_Melee : Enemy
     {
         Enemy_WeaponModel currentWeapon = visuals.currentWeaponModel.GetComponent<Enemy_WeaponModel>();
 
-        if(currentWeapon.weaponData != null)
+        if (currentWeapon != null && currentWeapon.weaponData != null && currentWeapon.weaponData.attackData != null && currentWeapon.weaponData.attackData.Count > 0)
         {
             attackList = new List<AttackDataEnemy_Melee>(currentWeapon.weaponData.attackData);
             turnSpeed = currentWeapon.weaponData.turnSpeed;
+
+            // Gán attackData mặc định nếu chưa có
+            if (attackData == null && attackList.Count > 0)
+            {
+                attackData = attackList[0];
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Cannot update attack data for {gameObject.name}. Weapon data is missing or invalid.");
         }
     }
 
@@ -129,19 +138,19 @@ public class Enemy_Melee : Enemy
         //setup first because override AC
         if (meleeTypes.Contains(EnemyMelee_Type.Dodge))
         {
-            visuals.SetupWeaponType(Enemy_MeleeWeaponType.Unarmed);
+            weaponType = Enemy_MeleeWeaponType.Unarmed;
         }
 
         if (meleeTypes.Contains(EnemyMelee_Type.AxeThrow))
         {
-            visuals.SetupWeaponType(Enemy_MeleeWeaponType.Throw);
+            weaponType = Enemy_MeleeWeaponType.Throw;
         }
 
         if (meleeTypes.Contains(EnemyMelee_Type.Shield))
         {
             anim.SetFloat("ChaseIndex", 1);
             shieldTransform.gameObject.SetActive(true);
-            visuals.SetupWeaponType(Enemy_MeleeWeaponType.OneHand);
+            weaponType = Enemy_MeleeWeaponType.OneHand;
         }
 
     }
@@ -158,8 +167,8 @@ public class Enemy_Melee : Enemy
     {
         /* hiddenWeapon.gameObject.SetActive(!active);
          pulledWeapon.gameObject.SetActive(active);*/
-        visuals.hiddenWeaponModel.SetActive(!active);
-        visuals.currentWeaponModel.SetActive(active);
+        visuals.hiddenWeaponModel?.SetActive(!active);
+        visuals.currentWeaponModel?.SetActive(active);
     }
 
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackData.attackRange;

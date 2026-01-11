@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState_Melee : EnemyState
@@ -19,7 +19,7 @@ public class AttackState_Melee : EnemyState
         base.Enter();
 
         //test while playing
-        enemy.UpdateAttackData();
+        //enemy.UpdateAttackData();
 
         enemy.ActiveWeapon(true);
         enemy.visuals.EnableWeaponTrail(true);
@@ -84,6 +84,13 @@ public class AttackState_Melee : EnemyState
 
         if (PlayerClose())
             validAttacks.RemoveAll(parameter => parameter.attackType == AttackType_Melee.Charge);
+
+        // Kiểm tra nếu list rỗng thì giữ nguyên attackData hiện tại
+        if (validAttacks.Count == 0)
+        {
+            Debug.LogWarning($"No valid attacks found for {enemy.gameObject.name}. Keeping current attack data.");
+            return enemy.attackData;
+        }
 
         int random = Random.Range(0, validAttacks.Count);
 
