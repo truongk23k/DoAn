@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public enum Enemy_MeleeWeaponType
 {
@@ -29,6 +30,11 @@ public class Enemy_Visuals : MonoBehaviour
     [Header("Color")]
     [SerializeField] private Texture[] colorTextures;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
+
+    [Header("Rig ref")]
+    [SerializeField] private Transform leftHandIK;
+    [SerializeField] private Transform leftElbowIK;
+    [SerializeField] private Rig rig;
 
 
     private void Start()
@@ -101,6 +107,7 @@ public class Enemy_Visuals : MonoBehaviour
                 currentWeaponModel.SetActive(true);
 
                 SwitchAnimationLayer((int)weaponModel.weaponHoldType);
+                SetupLeftHandIK(weaponModel.leftHandTarget, weaponModel.leftElbowTarget);
                 break;
             }
         }
@@ -174,5 +181,19 @@ public class Enemy_Visuals : MonoBehaviour
         }
 
         anim.SetLayerWeight(layerIndex, 1);
+    }
+
+    public void EnableIK(bool enable)
+    {
+        rig.weight = enable ? 1f : 0f;
+    }
+
+    private void SetupLeftHandIK(Transform leftHandTarget, Transform leftElbowTarget)
+    {
+        leftHandIK.localPosition = leftHandTarget.localPosition;
+        leftHandIK.localRotation = leftHandTarget.localRotation;
+
+        leftElbowIK.localPosition = leftElbowTarget.localPosition;
+        leftElbowIK.localRotation = leftElbowTarget.localRotation;
     }
 }
