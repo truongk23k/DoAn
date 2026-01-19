@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\BattleState_Range.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\Enemy_Range.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Data\Enemy_RangeWeaponData.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_CorruptionCrystal.cs" />
     <Compile Include="Assets\Scripts\Enemy\Data\Enemy_MeleeWeaponData.cs" />

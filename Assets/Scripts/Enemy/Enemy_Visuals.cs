@@ -196,4 +196,5 @@ public class Enemy_Visuals : MonoBehaviour
         leftElbowIK.localPosition = leftElbowTarget.localPosition;
         leftElbowIK.localRotation = leftElbowTarget.localRotation;
     }
+
 }
