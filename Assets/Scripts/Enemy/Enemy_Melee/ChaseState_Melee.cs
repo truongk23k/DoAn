@@ -14,7 +14,7 @@ public class ChaseState_Melee : EnemyState
     {
         base.Enter();
         Debug.Log("Enter Chase State");
-        enemy.agent.speed = enemy.chaseSpeed;
+        enemy.agent.speed = enemy.runSpeed;
         enemy.agent.isStopped = false;
     }
 

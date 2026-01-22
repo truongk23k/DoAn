@@ -34,7 +34,8 @@ public class Enemy_Visuals : MonoBehaviour
     [Header("Rig ref")]
     [SerializeField] private Transform leftHandIK;
     [SerializeField] private Transform leftElbowIK;
-    [SerializeField] private Rig rig;
+    [SerializeField] private TwoBoneIKConstraint leftHandIKConstraint;
+    [SerializeField] private MultiAimConstraint weaponAimConstraint;
 
 
     private void Start()
@@ -183,9 +184,10 @@ public class Enemy_Visuals : MonoBehaviour
         anim.SetLayerWeight(layerIndex, 1);
     }
 
-    public void EnableIK(bool enable)
+    public void EnableIK(bool enableLeftHand, bool enableAim)
     {
-        rig.weight = enable ? 1f : 0f;
+        leftHandIKConstraint.weight = enableLeftHand ? 1f : 0f;
+        weaponAimConstraint.weight = enableAim ? 1f : 0f;
     }
 
     private void SetupLeftHandIK(Transform leftHandTarget, Transform leftElbowTarget)

@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Enemy_Range : Enemy
 {
+    [Header("Cover systems")]
+    public bool canUseCover = true;
+    public CoverPoint lastCover;
+    public List<Cover> allCovers = new List<Cover>();
+
     [Header("Weapon details")]
     public Enemy_RangeWeaponType weaponType;
     public Enemy_RangeWeaponData weaponData;
@@ -17,6 +22,7 @@ public class Enemy_Range : Enemy
     public IdleState_Range idleState { get; private set; }
     public MoveState_Range moveState { get; private set; }
     public BattleState_Range battleState { get; private set; }
+    public RunToCoverState_Range runToCoverState { get; private set; }
 
     protected override void Awake()
     {
@@ -25,6 +31,7 @@ public class Enemy_Range : Enemy
         idleState = new IdleState_Range(this, stateMachine, "Idle");
         moveState = new MoveState_Range(this, stateMachine, "Move");
         battleState = new BattleState_Range(this, stateMachine, "Battle");
+        runToCoverState = new RunToCoverState_Range(this, stateMachine, "Run");
     }
 
     override protected void Start()
@@ -35,6 +42,8 @@ public class Enemy_Range : Enemy
         visuals.SetupLook();
 
         SetupWeapon();
+
+        allCovers = CollectNearByCovers();
     }
 
     protected override void Update()
@@ -42,6 +51,52 @@ public class Enemy_Range : Enemy
         base.Update();
 
     }
+
+    #region Cover System
+    public Transform AttemptToFindCover()
+    {
+        List<CoverPoint> collectedCoverPoints = new List<CoverPoint>();
+
+        foreach (Cover cover in allCovers)
+        {
+            collectedCoverPoints.AddRange(cover.GetCoverPoints());
+        }
+
+        CoverPoint closetCoverPoint = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (CoverPoint coverPoint in collectedCoverPoints)
+        {
+            float currentDistance = Vector3.Distance(transform.position, coverPoint.transform.position);
+            if (currentDistance < closestDistance)
+            {
+                closestDistance = currentDistance;
+                closetCoverPoint = coverPoint;
+            }
+        }
+
+        if (closetCoverPoint != null)
+            lastCover = closetCoverPoint;
+
+        return lastCover.transform;
+    }
+
+    private List<Cover> CollectNearByCovers()
+    {
+        float coverRadiusCheck = 30f;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, coverRadiusCheck);
+        List<Cover> collectedCovers = new List<Cover>();
+
+        foreach (Collider collider in hitColliders)
+        {
+            Cover cover = collider.GetComponent<Cover>();
+            if (cover != null && !collectedCovers.Contains(cover))
+                collectedCovers.Add(cover);
+        }
+
+        return collectedCovers;
+    }
+    #endregion
 
     public void FireSingleBullet()
     {
@@ -65,7 +120,10 @@ public class Enemy_Range : Enemy
 
         base.EnterBattleMode();
 
-        stateMachine.ChangeState(battleState);
+        if (canUseCover)
+            stateMachine.ChangeState(runToCoverState);
+        else
+            stateMachine.ChangeState(battleState);
     }
 
     private void SetupWeapon()
@@ -75,13 +133,13 @@ public class Enemy_Range : Enemy
 
         List<Enemy_RangeWeaponData> filteredData = new List<Enemy_RangeWeaponData>();
 
-        foreach(Enemy_RangeWeaponData weaponData in avalibleWeaponData)
+        foreach (Enemy_RangeWeaponData weaponData in avalibleWeaponData)
         {
             if (weaponData.weaponType == weaponType)
                 filteredData.Add(weaponData);
         }
 
-        if(filteredData.Count == 0)
+        if (filteredData.Count == 0)
             return;
 
         int randomIndex = Random.Range(0, filteredData.Count);

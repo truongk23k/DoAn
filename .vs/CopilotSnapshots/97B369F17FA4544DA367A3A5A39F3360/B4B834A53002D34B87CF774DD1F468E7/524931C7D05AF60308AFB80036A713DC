@@ -1,0 +1,68 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RunToCoverState_Range : EnemyState
+{
+    private Enemy_Range enemy;
+    private Vector3 destination;
+
+    public RunToCoverState_Range(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    {
+        enemy = enemyBase as Enemy_Range;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        Debug.Log($"{enemy.gameObject.name} entering RunToCoverState");
+
+        enemy.visuals.EnableIK(false);
+
+        // Kiểm tra lastCover có null không
+        if (enemy.lastCover == null)
+        {
+            Debug.LogWarning($"{enemy.gameObject.name} has no cover assigned! Switching to BattleState.");
+            stateMachine.ChangeState(enemy.battleState);
+            return;
+        }
+
+        destination = enemy.lastCover.position;
+
+        // Đảm bảo agent được enable và không bị stopped
+        enemy.agent.enabled = true;
+        enemy.agent.isStopped = false;
+
+        // Set destination sau khi đảm bảo agent sẵn sàng
+        if (!enemy.agent.SetDestination(destination))
+        {
+            Debug.LogWarning($"{enemy.gameObject.name} cannot reach cover destination!");
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        // Kiểm tra agent có đang active không
+        if (!enemy.agent.enabled || !enemy.agent.isOnNavMesh)
+        {
+            Debug.LogError($"{enemy.gameObject.name} agent is not on NavMesh!");
+            return;
+        }
+
+        enemy.FaceTarget(GetNextPathPoint());
+
+        if (Vector3.Distance(enemy.transform.position, destination) < 0.5f)
+        {
+            Debug.Log($"{enemy.gameObject.name} reached cover, switching to BattleState");
+            stateMachine.ChangeState(enemy.battleState);
+        }
+    }
+}

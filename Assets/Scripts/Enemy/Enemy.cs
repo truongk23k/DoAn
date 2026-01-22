@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour
     public float idleTime;
 
     [Header("Move data")]
-    public float walkSpeed;
-    public float chaseSpeed;
+    public float walkSpeed = 1.5f;
+    public float runSpeed = 3f;
     public float turnSpeed;
 
     [SerializeField] private Transform[] patrolPoints;
