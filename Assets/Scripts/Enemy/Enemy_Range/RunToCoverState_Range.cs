@@ -13,13 +13,14 @@ public class RunToCoverState_Range : EnemyState
     public override void Enter()
     {
         base.Enter();
+        destination = enemy.currentCover.transform.position;
 
         enemy.visuals.EnableIK(true, false);
+
         enemy.agent.isStopped = false;
         enemy.agent.speed = enemy.runSpeed;
-
-        destination = enemy.AttemptToFindCover().position;
         enemy.agent.SetDestination(destination);
+
     }
 
     public override void Exit()
@@ -33,7 +34,7 @@ public class RunToCoverState_Range : EnemyState
 
         enemy.FaceTarget(GetNextPathPoint());
 
-        if (Vector3.Distance(enemy.transform.position, destination) < 0.5f)
+        if (Vector3.Distance(enemy.transform.position, destination) < 1f)
             stateMachine.ChangeState(enemy.battleState);
 
     }

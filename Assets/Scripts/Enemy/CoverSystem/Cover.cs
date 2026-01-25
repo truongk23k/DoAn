@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -66,6 +64,75 @@ public class Cover : MonoBehaviour
         Debug.Log($"Cleared all cover points for {gameObject.name}");
     }
 
-    public List<CoverPoint> GetCoverPoints()=> coverPoints;
+    public List<CoverPoint> GetValidCoverPoints(Transform enemy)
+    {
+        List<CoverPoint> validCoverPoints = new List<CoverPoint>();
 
+        foreach (CoverPoint cp in coverPoints)
+        {
+            if (cp != null && IsValidCoverPoint(cp, enemy))
+            {
+                validCoverPoints.Add(cp);
+            }
+        }
+
+        return validCoverPoints;
+    }
+
+    private bool IsValidCoverPoint(CoverPoint coverPoint, Transform enemy)
+    {
+        if(coverPoint.occupied)
+            return false;
+
+        if (!IsFutherestFromPlayer(coverPoint))
+            return false;
+
+        if (IsCoverCloseToPlayer(coverPoint))
+            return false;
+
+        if (IsCoverBehindPlayer(coverPoint, enemy))
+            return false;
+
+        if (IsCoverCloseToLastCover(coverPoint, enemy))
+            return false;
+
+        return true;
+    }
+
+    private bool IsFutherestFromPlayer(CoverPoint coverPoint)
+    {
+        CoverPoint futherestPoint = null;
+        float futherestDistance = 0;
+
+        foreach (CoverPoint point in coverPoints)
+        {
+            float distanceToPlayer = Vector3.Distance(point.transform.position, Player.instance.transform.position);
+            if (distanceToPlayer > futherestDistance)
+            {
+                futherestDistance = distanceToPlayer;
+                futherestPoint = point;
+            }
+        }
+
+        return futherestPoint == coverPoint;
+    }
+
+    private bool IsCoverBehindPlayer(CoverPoint coverPoint, Transform enemyTransform)
+    {
+        float distanceToPlayer = Vector3.Distance(coverPoint.transform.position, Player.instance.transform.position);
+        float distanceToEnemy = Vector3.Distance(coverPoint.transform.position, enemyTransform.position);
+        return distanceToPlayer < distanceToEnemy;
+    }
+
+    private bool IsCoverCloseToPlayer(CoverPoint coverPoint)
+    {
+        float distanceToPlayer = Vector3.Distance(coverPoint.transform.position, Player.instance.transform.position);
+        return distanceToPlayer < 2f;
+    }
+
+    private bool IsCoverCloseToLastCover(CoverPoint coverPoint, Transform enemy)
+    {
+        CoverPoint lastCover = enemy.GetComponent<Enemy_Range>().lastCover;
+        return lastCover != null && Vector3.Distance(coverPoint.transform.position, lastCover.transform.position) < 3f;
+    }
 }

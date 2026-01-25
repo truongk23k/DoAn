@@ -5,8 +5,8 @@ public class Enemy_Range : Enemy
 {
     [Header("Cover systems")]
     public bool canUseCover = true;
-    public CoverPoint lastCover;
-    public List<Cover> allCovers = new List<Cover>();
+    public CoverPoint currentCover { get; private set; }
+    public CoverPoint lastCover { get; private set;}
 
     [Header("Weapon details")]
     public Enemy_RangeWeaponType weaponType;
@@ -19,10 +19,12 @@ public class Enemy_Range : Enemy
 
     [SerializeField] List<Enemy_RangeWeaponData> avalibleWeaponData;
 
+    #region States
     public IdleState_Range idleState { get; private set; }
     public MoveState_Range moveState { get; private set; }
     public BattleState_Range battleState { get; private set; }
     public RunToCoverState_Range runToCoverState { get; private set; }
+    #endregion
 
     protected override void Awake()
     {
@@ -42,8 +44,6 @@ public class Enemy_Range : Enemy
         visuals.SetupLook();
 
         SetupWeapon();
-
-        allCovers = CollectNearByCovers();
     }
 
     protected override void Update()
@@ -53,13 +53,27 @@ public class Enemy_Range : Enemy
     }
 
     #region Cover System
-    public Transform AttemptToFindCover()
+    public bool CanGetCover()
+    {
+        if(canUseCover == false)
+            return false;
+
+        currentCover = AttemptToFindCover()?.GetComponent<CoverPoint>();
+
+        if (currentCover != null && lastCover != currentCover)
+            return true;
+
+        Debug.Log("No cover found");
+        return false;
+    }
+
+    private Transform AttemptToFindCover()
     {
         List<CoverPoint> collectedCoverPoints = new List<CoverPoint>();
 
-        foreach (Cover cover in allCovers)
+        foreach (Cover cover in CollectNearByCovers())
         {
-            collectedCoverPoints.AddRange(cover.GetCoverPoints());
+            collectedCoverPoints.AddRange(cover.GetValidCoverPoints(transform));
         }
 
         CoverPoint closetCoverPoint = null;
@@ -76,9 +90,17 @@ public class Enemy_Range : Enemy
         }
 
         if (closetCoverPoint != null)
-            lastCover = closetCoverPoint;
+        {
+            lastCover?.SetOccupied(false);
+            lastCover = currentCover;
 
-        return lastCover.transform;
+            currentCover = closetCoverPoint;
+            currentCover.SetOccupied(true);
+
+            return currentCover.transform;
+        }
+
+        return null;
     }
 
     private List<Cover> CollectNearByCovers()
@@ -120,7 +142,7 @@ public class Enemy_Range : Enemy
 
         base.EnterBattleMode();
 
-        if (canUseCover)
+        if (CanGetCover())
             stateMachine.ChangeState(runToCoverState);
         else
             stateMachine.ChangeState(battleState);
