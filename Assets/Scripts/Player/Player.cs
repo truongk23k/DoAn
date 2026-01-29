@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance; 
+    public static Player instance;
+
+    public Transform playerBody;
 
     public PlayerControlls controls { get; private set; }
     public PlayerAim aim { get; private set; }
