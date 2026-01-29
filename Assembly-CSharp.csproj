@@ -110,6 +110,7 @@
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\IdleState_Range.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Range\AdvancePlayer_Range.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Ragdoll.cs" />
   </ItemGroup>
   <ItemGroup>
