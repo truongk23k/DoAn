@@ -22433,9 +22433,11 @@ MonoBehaviour:
   - {fileID: 6323126314165838253}
   - {fileID: 3731721443799588337}
   - {fileID: 8879822912953505578}
-  coverPerk: 1
+  coverPerk: 2
   advanceSpeed: 3
   advanceStoppingDistance: 4
+  advanceTime: 2.5
+  minCoverTime: 4
   safeDistance: 2
   weaponType: 3
   weaponData: {fileID: 0}
