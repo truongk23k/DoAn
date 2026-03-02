@@ -133,7 +133,7 @@ public class Enemy_Melee : Enemy
         }
     }
 
-    private void InitializePerk()
+    protected override void InitializePerk()
     {
         //setup first because override AC
         if (meleeTypes.Contains(EnemyMelee_Type.Dodge))

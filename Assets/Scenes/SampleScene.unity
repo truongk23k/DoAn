@@ -22424,7 +22424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 20
   maxChaseRange: 0
-  aggresionRange: 6
+  aggresionRange: 5
   idleTime: 1.5
   walkSpeed: 1.5
   runSpeed: 3
@@ -22434,11 +22434,13 @@ MonoBehaviour:
   - {fileID: 3731721443799588337}
   - {fileID: 8879822912953505578}
   coverPerk: 2
-  advanceSpeed: 3
-  advanceStoppingDistance: 4
-  advanceTime: 2.5
+  unstoppablePerk: 0
+  advanceSpeed: 1
+  advanceStoppingDistance: 3
+  advanceDuration: 2.5
   minCoverTime: 4
   safeDistance: 2
+  attackDelay: 1
   weaponType: 3
   weaponData: {fileID: 0}
   gunPoint: {fileID: 918014585}

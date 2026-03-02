@@ -8,15 +8,23 @@ public enum CoverPerk
     CanTakeCover,
     CanTakeAndChangeCover
 }
+
+public enum  UnstoppablePerk
+{
+    Unvaliable,
+    Unstoppable
+}
+
 public class Enemy_Range : Enemy
 {
     [Header("Enemy perks")]
     public CoverPerk coverPerk;
+    public UnstoppablePerk unstoppablePerk;
 
     [Header("Advance perk")]
     public float advanceSpeed;
     public float advanceStoppingDistance;
-    public float advanceTime = 2.5f;
+    public float advanceDuration = 2.5f;
 
     [Header("Cover systems")]
     public float minCoverTime;
@@ -25,6 +33,7 @@ public class Enemy_Range : Enemy
     public CoverPoint lastCover { get; private set;}
 
     [Header("Weapon details")]
+    public float attackDelay;
     public Enemy_RangeWeaponType weaponType;
     public Enemy_RangeWeaponData weaponData;
 
@@ -47,7 +56,7 @@ public class Enemy_Range : Enemy
     public MoveState_Range moveState { get; private set; }
     public BattleState_Range battleState { get; private set; }
     public RunToCoverState_Range runToCoverState { get; private set; }
-    public AdvancePlayer_Range advancePlayerState { get; private set; }
+    public AdvancePlayerState_Range advancePlayerState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -58,7 +67,7 @@ public class Enemy_Range : Enemy
         moveState = new MoveState_Range(this, stateMachine, "Move");
         battleState = new BattleState_Range(this, stateMachine, "Battle");
         runToCoverState = new RunToCoverState_Range(this, stateMachine, "Run");
-        advancePlayerState = new AdvancePlayer_Range(this, stateMachine, "Advance");
+        advancePlayerState = new AdvancePlayerState_Range(this, stateMachine, "Advance");
     }
 
     override protected void Start()
@@ -67,6 +76,8 @@ public class Enemy_Range : Enemy
 
         playerBody = Player.instance.playerBody;
         aim.parent = null;
+
+        InitializePerk();
 
         stateMachine.Initialize(idleState);
         visuals.SetupLook();
@@ -78,6 +89,15 @@ public class Enemy_Range : Enemy
     {
         base.Update();
 
+    }
+
+    protected override void InitializePerk()
+    {
+        if(IsUnstoppable())
+        {
+            advanceSpeed = 1;
+            anim.SetFloat("AdvanceAnimIndex", 1f); //1 is a slow walk animation
+        }
     }
 
     #region Cover System
@@ -232,4 +252,5 @@ public class Enemy_Range : Enemy
     }
     #endregion
 
+    public bool IsUnstoppable() => unstoppablePerk == UnstoppablePerk.Unstoppable;
 }

@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Weapon\Weapon_Data.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Axe.cs" />
     <Compile Include="Assets\Scripts\LeftHandTargetTransform.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Range\AdvancePlayerState_Range.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationEvent.cs" />
     <Compile Include="Assets\InputManager\PlayerControlls.cs" />
@@ -110,7 +111,6 @@
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\IdleState_Range.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Enemy_Range\AdvancePlayer_Range.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Ragdoll.cs" />
   </ItemGroup>
   <ItemGroup>

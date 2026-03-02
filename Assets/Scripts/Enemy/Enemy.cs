@@ -89,6 +89,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    protected virtual void InitializePerk()
+    {
+        
+    }
+
     public virtual void EnterBattleMode()
     {
         inBattleMode = true;
