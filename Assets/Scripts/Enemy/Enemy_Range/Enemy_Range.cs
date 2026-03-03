@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public enum CoverPerk
 {
@@ -9,10 +8,16 @@ public enum CoverPerk
     CanTakeAndChangeCover
 }
 
-public enum  UnstoppablePerk
+public enum UnstoppablePerk
 {
     Unvaliable,
     Unstoppable
+}
+
+public enum GernadePerk
+{
+    Unvaliable,
+    CanThrowGrenade
 }
 
 public class Enemy_Range : Enemy
@@ -20,6 +25,11 @@ public class Enemy_Range : Enemy
     [Header("Enemy perks")]
     public CoverPerk coverPerk;
     public UnstoppablePerk unstoppablePerk;
+    public GernadePerk gernadePerk;
+
+    [Header("Gernade perk")]
+    public float grenadeCooldown;
+    private float lastTimeGrenadeThrown = -10;
 
     [Header("Advance perk")]
     public float advanceSpeed;
@@ -30,7 +40,7 @@ public class Enemy_Range : Enemy
     public float minCoverTime;
     public float safeDistance;
     public CoverPoint currentCover { get; private set; }
-    public CoverPoint lastCover { get; private set;}
+    public CoverPoint lastCover { get; private set; }
 
     [Header("Weapon details")]
     public float attackDelay;
@@ -57,6 +67,7 @@ public class Enemy_Range : Enemy
     public BattleState_Range battleState { get; private set; }
     public RunToCoverState_Range runToCoverState { get; private set; }
     public AdvancePlayerState_Range advancePlayerState { get; private set; }
+    public ThrowGrenadeState_Range throwGrenadeState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -68,6 +79,7 @@ public class Enemy_Range : Enemy
         battleState = new BattleState_Range(this, stateMachine, "Battle");
         runToCoverState = new RunToCoverState_Range(this, stateMachine, "Run");
         advancePlayerState = new AdvancePlayerState_Range(this, stateMachine, "Advance");
+        throwGrenadeState = new ThrowGrenadeState_Range(this, stateMachine, "ThrowGrenade");
     }
 
     override protected void Start()
@@ -91,19 +103,52 @@ public class Enemy_Range : Enemy
 
     }
 
+    public bool CanThrowGrenade()
+    {
+        if (gernadePerk == GernadePerk.Unvaliable)
+            return false;
+
+        if(Vector3.Distance(transform.position, Player.instance.transform.position) < safeDistance)
+            return false;
+
+        if (Time.time > grenadeCooldown + lastTimeGrenadeThrown)
+            return true;
+
+        return false;
+    }
+
+    public void ThrowGrenade()
+    {
+        lastTimeGrenadeThrown = Time.time;
+        Debug.Log("Grenade Thrown");
+    }
+
     protected override void InitializePerk()
     {
-        if(IsUnstoppable())
+        if (IsUnstoppable())
         {
             advanceSpeed = 1;
             anim.SetFloat("AdvanceAnimIndex", 1f); //1 is a slow walk animation
         }
     }
 
+    public override void EnterBattleMode()
+    {
+        if (inBattleMode)
+            return;
+
+        base.EnterBattleMode();
+
+        if (CanGetCover())
+            stateMachine.ChangeState(runToCoverState);
+        else
+            stateMachine.ChangeState(battleState);
+    }
+
     #region Cover System
     public bool CanGetCover()
     {
-        if(coverPerk == CoverPerk.Unvalible)
+        if (coverPerk == CoverPerk.Unvalible)
             return false;
 
         currentCover = AttemptToFindCover()?.GetComponent<CoverPoint>();
@@ -181,20 +226,7 @@ public class Enemy_Range : Enemy
         Enemy_Bullet bulletScript = newBullet.GetComponent<Enemy_Bullet>();
         Vector3 bulletDirectionWithSpread = weaponData.ApplyWeaponSpread(bulletsDirection);
         bulletScript.BulletSetup(bulletDirectionWithSpread, weaponData.bulletSpeed);
-    }
-
-    public override void EnterBattleMode()
-    {
-        if (inBattleMode)
-            return;
-
-        base.EnterBattleMode();
-
-        if (CanGetCover())
-            stateMachine.ChangeState(runToCoverState);
-        else
-            stateMachine.ChangeState(battleState);
-    }
+    } 
 
     private void SetupWeapon()
     {
