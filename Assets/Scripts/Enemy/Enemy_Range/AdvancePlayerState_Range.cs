@@ -43,6 +43,7 @@ public class AdvancePlayerState_Range : EnemyState
     {
         base.Exit();
         lastTimeAdvanced = Time.time;
+
     }
 
     private bool CanEnterBattleState()

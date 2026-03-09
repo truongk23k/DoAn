@@ -109,7 +109,7 @@ public class Enemy_Melee : Enemy
         base.AbilityTrigger();
 
         walkSpeed *= 0.6f;
-        ActiveWeapon(false);
+        visuals.ActiveWeapon(false);
     }
 
     public void UpdateAttackData()
@@ -163,13 +163,7 @@ public class Enemy_Melee : Enemy
             stateMachine.ChangeState(deadState);
     }
 
-    public void ActiveWeapon(bool active)
-    {
-        /* hiddenWeapon.gameObject.SetActive(!active);
-         pulledWeapon.gameObject.SetActive(active);*/
-        visuals.hiddenWeaponModel?.SetActive(!active);
-        visuals.currentWeaponModel?.SetActive(active);
-    }
+    
 
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackData.attackRange;
 

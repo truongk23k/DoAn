@@ -25,4 +25,12 @@ public class Enemy_AnimationEvents : MonoBehaviour
     public void AbilityEvent() => enemy.AbilityTrigger();
 
     public void AssignLastTimeDodge() => (enemy as Enemy_Melee).AssignLastTimeDodge();
+
+    public void EnableIK() => enemy.visuals.EnableIK(true, true, 1f);
+
+    public void EnableWeaponModel()
+    {
+        enemy.visuals.ActiveWeapon(true);
+        enemy.visuals.EnableSecondaryWeaponModel(false);
+    }
 }

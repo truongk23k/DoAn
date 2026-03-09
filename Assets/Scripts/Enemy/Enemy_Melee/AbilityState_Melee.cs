@@ -18,7 +18,7 @@ public class AbilityState_Melee : EnemyState
     {
         base.Enter();
 
-        enemy.ActiveWeapon(true);
+        enemy.visuals.ActiveWeapon(true);
 
         moveSpeed = enemy.walkSpeed;
         movementDirection = enemy.transform.position + enemy.transform.forward * MAX_MOVEMENT_DISTANCE;

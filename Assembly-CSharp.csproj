@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Axe.cs" />
     <Compile Include="Assets\Scripts\LeftHandTargetTransform.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\AdvancePlayerState_Range.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_SeconderyRangeWeaponModel.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationEvent.cs" />
     <Compile Include="Assets\InputManager\PlayerControlls.cs" />
