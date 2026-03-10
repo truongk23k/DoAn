@@ -12323,6 +12323,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835497428}
   m_Mesh: {fileID: 1162534817177087769, guid: 1111cc7c6dec9244a8b0abfacf917284, type: 3}
+--- !u!1 &1837498886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1837498887}
+  m_Layer: 11
+  m_Name: grenadeStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1837498887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837498886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7721301311328291647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1842074879
 GameObject:
   m_ObjectHideFlags: 0
@@ -23450,7 +23481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 20
   maxChaseRange: 0
-  aggresionRange: 5
+  aggresionRange: 15
   idleTime: 1.5
   walkSpeed: 1.5
   runSpeed: 3
@@ -23462,7 +23493,12 @@ MonoBehaviour:
   coverPerk: 0
   unstoppablePerk: 0
   gernadePerk: 1
+  grenadePrefab: {fileID: 6951391754333374202, guid: 09934f9f513a7d841b4cf0a6971d531f, type: 3}
+  impactPower: 5
+  timeToTarget: 1.2
+  explosionTimer: 0.75
   grenadeCooldown: 2
+  grenadeStartPoint: {fileID: 1837498887}
   advanceSpeed: 3
   advanceStoppingDistance: 3
   advanceDuration: 2.5
@@ -24473,6 +24509,7 @@ Transform:
   - {fileID: 7915780552856366569}
   - {fileID: 1183526800033124419}
   - {fileID: 2400853895675649870}
+  - {fileID: 1837498887}
   m_Father: {fileID: 6508141503974192976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &7722604981973688528
