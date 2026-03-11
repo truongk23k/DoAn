@@ -73,6 +73,7 @@ public class Enemy_Range : Enemy
     public RunToCoverState_Range runToCoverState { get; private set; }
     public AdvancePlayerState_Range advancePlayerState { get; private set; }
     public ThrowGrenadeState_Range throwGrenadeState { get; private set; }
+    public DeadState_Range deadState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -85,6 +86,7 @@ public class Enemy_Range : Enemy
         runToCoverState = new RunToCoverState_Range(this, stateMachine, "Run");
         advancePlayerState = new AdvancePlayerState_Range(this, stateMachine, "Advance");
         throwGrenadeState = new ThrowGrenadeState_Range(this, stateMachine, "ThrowGrenade");
+        deadState = new DeadState_Range(this, stateMachine, "Idle"); // idle is a place holder, we using ragdoll
     }
 
     override protected void Start()
@@ -108,12 +110,22 @@ public class Enemy_Range : Enemy
 
     }
 
+    public override void GetHit()
+    {
+        base.GetHit();
+
+        if (healthPoints <= 0 && stateMachine.currentState != deadState)
+        {
+            stateMachine.ChangeState(deadState);
+        }
+    }
+
     public bool CanThrowGrenade()
     {
         if (gernadePerk == GernadePerk.Unvaliable)
             return false;
 
-        if(Vector3.Distance(transform.position, Player.instance.transform.position) < safeDistance)
+        if (Vector3.Distance(transform.position, Player.instance.transform.position) < safeDistance)
             return false;
 
         if (Time.time > grenadeCooldown + lastTimeGrenadeThrown)
@@ -125,11 +137,19 @@ public class Enemy_Range : Enemy
     public void ThrowGrenade()
     {
         lastTimeGrenadeThrown = Time.time;
-        
+
+        visuals.EnableGrenadeModel(false);
+
         GameObject newGrenade = ObjectPool.instance.GetObject(grenadePrefab);
         newGrenade.transform.position = grenadeStartPoint.position;
 
         Enemy_Grenade newGrenadeScript = newGrenade.GetComponent<Enemy_Grenade>();
+
+        if (stateMachine.currentState == deadState)
+        {
+            newGrenadeScript.SetupGrenade(transform.position, 1, explosionTimer, impactPower);
+            return;
+        }
         newGrenadeScript.SetupGrenade(Player.instance.transform.position, timeToTarget, explosionTimer, impactPower);
     }
 
@@ -236,7 +256,7 @@ public class Enemy_Range : Enemy
         Enemy_Bullet bulletScript = newBullet.GetComponent<Enemy_Bullet>();
         Vector3 bulletDirectionWithSpread = weaponData.ApplyWeaponSpread(bulletsDirection);
         bulletScript.BulletSetup(bulletDirectionWithSpread, weaponData.bulletSpeed);
-    } 
+    }
 
     private void SetupWeapon()
     {

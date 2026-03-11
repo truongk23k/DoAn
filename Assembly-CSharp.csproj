@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_WeaponModel.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\Scripts\Object Pool\ObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Range\DeadState_Range.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\DeadState_Melee.cs" />
     <Compile Include="Assets\Scripts\Pickups\Pickup_Weapon.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Shield.cs" />

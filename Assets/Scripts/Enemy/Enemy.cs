@@ -36,11 +36,13 @@ public class Enemy : MonoBehaviour
     public EnemyStateMachine stateMachine { get; private set; }
 
     public Enemy_Visuals visuals { get; private set; }
+    public Enemy_Ragdoll ragdoll { get; private set; }
 
     protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
 
+        ragdoll = GetComponent<Enemy_Ragdoll>();
         visuals = GetComponent<Enemy_Visuals>();
 
         agent = GetComponent<NavMeshAgent>();

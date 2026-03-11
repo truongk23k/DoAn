@@ -47,7 +47,6 @@ public class Enemy_Melee : Enemy
     public Transform shieldTransform;
     public float dodgeCooldown;
     private float lastTimeDodge = -10;
-    private Enemy_Ragdoll ragdoll; // use to disable colli when dodge
 
     [Header("Axe throw ability")]
     public GameObject axePrefab;
@@ -64,8 +63,6 @@ public class Enemy_Melee : Enemy
     protected override void Awake()
     {
         base.Awake();
-
-        ragdoll = GetComponent<Enemy_Ragdoll>();
 
         idleState = new IdleState_Melee(this, stateMachine, "Idle");
         moveState = new MoveState_Melee(this, stateMachine, "Move");
@@ -159,7 +156,7 @@ public class Enemy_Melee : Enemy
     {
         base.GetHit();
 
-        if (healthPoints <= 0)
+        if (healthPoints <= 0 && stateMachine.currentState != deadState)
             stateMachine.ChangeState(deadState);
     }
 

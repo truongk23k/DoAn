@@ -9,7 +9,7 @@ public enum Enemy_MeleeWeaponType
     Unarmed
 }
 
-public enum  Enemy_RangeWeaponType
+public enum Enemy_RangeWeaponType
 {
     Pistol,
     Revolver,
@@ -22,6 +22,7 @@ public class Enemy_Visuals : MonoBehaviour
 {
     public GameObject currentWeaponModel { get; private set; }
     public GameObject hiddenWeaponModel { get; private set; }
+    public GameObject grenadeModel;
 
     [Header("Corruption visuals")]
     [SerializeField] private GameObject[] corruptionCrystals;
@@ -51,6 +52,8 @@ public class Enemy_Visuals : MonoBehaviour
         leftHandIKConstraint.weight = AdjustIKWeight(leftHandIKConstraint.weight, leftHandTargetWeight);
         weaponAimConstraint.weight = AdjustIKWeight(weaponAimConstraint.weight, weaponAimTargetWeight);
     }
+
+    public void EnableGrenadeModel(bool active) => grenadeModel?.SetActive(active);
 
     public void ActiveWeapon(bool active)
     {
@@ -200,7 +203,7 @@ public class Enemy_Visuals : MonoBehaviour
         Enemy_SeconderyRangeWeaponModel[] weaponModels = GetComponentsInChildren<Enemy_SeconderyRangeWeaponModel>(true);
         Enemy_RangeWeaponType weaponType = GetComponentInParent<Enemy_Range>().weaponType;
 
-        foreach(var weaponModel in weaponModels)
+        foreach (var weaponModel in weaponModels)
         {
             if (weaponModel.weaponType == weaponType)
             {
