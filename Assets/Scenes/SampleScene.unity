@@ -11139,7 +11139,7 @@ Transform:
   m_GameObject: {fileID: 1778173095}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57, y: 0.59, z: -0.05}
+  m_LocalPosition: {x: 1.26, y: 0.59, z: 1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20524,7 +20524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4338817533389533431
 Transform:
   m_ObjectHideFlags: 0
@@ -23669,7 +23669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 2
   maxChaseRange: 0
-  aggresionRange: 10
+  aggresionRange: 5
   idleTime: 1.5
   walkSpeed: 1.5
   runSpeed: 3
@@ -23680,7 +23680,7 @@ MonoBehaviour:
   - {fileID: 8879822912953505578}
   coverPerk: 0
   unstoppablePerk: 0
-  gernadePerk: 1
+  gernadePerk: 0
   grenadePrefab: {fileID: 6951391754333374202, guid: 09934f9f513a7d841b4cf0a6971d531f, type: 3}
   impactPower: 5
   timeToTarget: 1.2
@@ -23693,7 +23693,7 @@ MonoBehaviour:
   minCoverTime: 4
   safeDistance: 2
   attackDelay: 1
-  weaponType: 0
+  weaponType: 3
   weaponData: {fileID: 0}
   gunPoint: {fileID: 918014585}
   weaponHolder: {fileID: 2400853895675649870}
