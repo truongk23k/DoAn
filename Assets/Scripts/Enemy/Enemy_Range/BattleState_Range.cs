@@ -105,7 +105,7 @@ public class BattleState_Range : EnemyState
         {
             coverCheckTimer = 0.5f; //check every 0.5 seconds
 
-            if (ReadyToChangeCover())
+            if (ReadyToChangeCover() && ReadyToLeaveCover())
             {
                 if (enemy.CanGetCover())
                     stateMachine.ChangeState(enemy.runToCoverState);
@@ -131,7 +131,7 @@ public class BattleState_Range : EnemyState
         Vector3 directionToPlayer = Player.instance.transform.position - enemy.transform.position;
         if (Physics.Raycast(enemy.transform.position, directionToPlayer, out RaycastHit hit))
         {
-            return hit.collider.gameObject.GetComponentInParent<Player>();
+            return hit.transform == Player.instance.transform;
         }
 
         return false;
