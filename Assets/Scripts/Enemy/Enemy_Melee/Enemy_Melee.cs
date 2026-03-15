@@ -181,6 +181,13 @@ public class Enemy_Melee : Enemy
 
     public void AssignLastTimeDodge() => lastTimeDodge = Time.time;
 
+    public void ThrowAxe() 
+    {
+        GameObject newAxe = ObjectPool.instance.GetObject(axePrefab, axeStartPoint);
+
+        newAxe.GetComponent<Enemy_Axe>().AxeSetup(transform.forward, axeFlySpeed, axeAimTimer);
+    }
+
     public bool CanThrowAxe()
     {
         if (!meleeTypes.Contains(EnemyMelee_Type.AxeThrow))

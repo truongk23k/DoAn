@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
         cd.enabled = true;
         meshRenderer.enabled = true;
 
+        trailRenderer.Clear();
         trailRenderer.time = 0.25f;
         startPosition = transform.position;
         this.flyDistance = flyDistance + 0.5f;
@@ -78,12 +79,12 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        CreateImpactFx(collision);
+        CreateImpactFx();
         ReturnBulletToPool();
 
         Enemy_Shield shield = collision.gameObject.GetComponent<Enemy_Shield>();
 
-        if(shield != null)
+        if (shield != null)
         {
             Enemy e = collision.gameObject.GetComponentInParent<Enemy>();
             e.EnterBattleMode();
@@ -104,18 +105,9 @@ public class Bullet : MonoBehaviour
 
     protected void ReturnBulletToPool() => ObjectPool.instance.ReturnObject(gameObject);
 
-    protected void CreateImpactFx(Collision collision)
+    protected void CreateImpactFx()
     {
-        if (collision.contacts.Length > 0)
-        {
-            ContactPoint contact = collision.contacts[0];
-
-            //Instantiate(bulletImpactFX, contact.point, Quaternion.LookRotation(contact.normal));
-            GameObject newBulletImpactFx = ObjectPool.instance.GetObject(bulletImpactFX);
-            newBulletImpactFx.transform.position = contact.point;
-            newBulletImpactFx.transform.rotation = Quaternion.LookRotation(contact.normal);
-
-            ObjectPool.instance.ReturnObject(newBulletImpactFx, 1);
-        }
+        GameObject newBulletImpactFx = ObjectPool.instance.GetObject(bulletImpactFX, transform);
+        ObjectPool.instance.ReturnObject(newBulletImpactFx, 1);
     }
 }
