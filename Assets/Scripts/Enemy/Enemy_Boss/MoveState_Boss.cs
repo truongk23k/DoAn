@@ -32,7 +32,9 @@ public class MoveState_Boss : EnemyState
         {
             enemy.agent.SetDestination(Player.instance.transform.position);
 
-            if (enemy.PlayerInAttackRange())
+            if (enemy.CanJumpAttack())
+                stateMachine.ChangeState(enemy.jumpAttackState);
+            else if (enemy.PlayerInAttackRange())
                 stateMachine.ChangeState(enemy.attackState);
         }
         else

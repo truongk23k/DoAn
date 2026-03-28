@@ -4877,6 +4877,12 @@ MonoBehaviour:
   - {fileID: 7212386545196335540}
   - {fileID: 3235062673123707759}
   attackRange: 1.5
+  jumpAttackCooldown: 5
+  travelTimeToTarget: 2
+  minJumpDistanceRequired: 5
+  whatToIgnore:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!195 &978875773
 NavMeshAgent:
   m_ObjectHideFlags: 0

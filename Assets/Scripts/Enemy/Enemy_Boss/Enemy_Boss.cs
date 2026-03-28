@@ -1,14 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Boss : Enemy
 {
     public float attackRange;
 
+    [Header("Jump attack")]
+    public float jumpAttackCooldown = 10;
+    private float lastTimeJumped;
+    public float travelTimeToTarget = 1f;
+    public float minJumpDistanceRequired;
+    [Space]
+    [SerializeField] private LayerMask whatToIgnore;
     public IdleState_Boss idleState { get; private set; }
     public MoveState_Boss moveState { get; private set; }
     public AttackState_Boss attackState { get; private set; }
+    public JumpAttackState_Boss jumpAttackState { get; private set; }
 
     protected override void Awake()
     {
@@ -17,6 +23,7 @@ public class Enemy_Boss : Enemy
         idleState = new IdleState_Boss(this, stateMachine, "Idle");
         moveState = new MoveState_Boss(this, stateMachine, "Move");
         attackState = new AttackState_Boss(this, stateMachine, "Attack");
+        jumpAttackState = new JumpAttackState_Boss(this, stateMachine, "JumpAttack");
     }
 
     override protected void Start()
@@ -32,7 +39,7 @@ public class Enemy_Boss : Enemy
 
         stateMachine.currentState.Update();
 
-        if(ShouldEnterBattleMode())
+        if (ShouldEnterBattleMode())
             EnterBattleMode();
     }
 
@@ -42,6 +49,36 @@ public class Enemy_Boss : Enemy
         stateMachine.ChangeState(moveState);
     }
 
+    public bool CanJumpAttack()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, Player.instance.transform.position);
+
+        if (distanceToPlayer < minJumpDistanceRequired)
+            return false;
+
+        if (Time.time >= lastTimeJumped + jumpAttackCooldown && IsPlayerInClearSight())
+        {
+            lastTimeJumped = Time.time;
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool IsPlayerInClearSight()
+    {
+        Vector3 myPos = transform.position + new Vector3(0, 1.5f, 0);
+        Vector3 directionToPlayer = (Player.instance.transform.position - myPos).normalized;
+
+        if (Physics.Raycast(myPos, directionToPlayer, out RaycastHit hit, 100, ~whatToIgnore))
+        {
+            if (hit.transform == Player.instance.transform || hit.transform.parent == Player.instance.transform)
+                return true;
+        }
+
+        return false;
+    }
+
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackRange;
 
     protected override void OnDrawGizmos()
@@ -49,5 +86,15 @@ public class Enemy_Boss : Enemy
         base.OnDrawGizmos();
 
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        if (Player.instance != null)
+        {
+            Gizmos.color = Color.yellow;
+            Vector3 myPos = transform.position + new Vector3(0, 1.5f, 0);
+            Gizmos.DrawLine(myPos, Player.instance.transform.position);
+        }
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, minJumpDistanceRequired);
     }
 }

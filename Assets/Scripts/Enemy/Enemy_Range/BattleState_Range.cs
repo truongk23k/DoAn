@@ -37,7 +37,7 @@ public class BattleState_Range : EnemyState
         if (enemy.IsSeeingPlayer())
             enemy.FaceTarget(enemy.aim.position);
 
-        if(enemy.CanThrowGrenade())
+        if (enemy.CanThrowGrenade())
             stateMachine.ChangeState(enemy.throwGrenadeState);
 
         if (MustAdvancePlayer())
@@ -45,7 +45,7 @@ public class BattleState_Range : EnemyState
 
         ChangeCoverIfShould();
 
-        if(stateTimer > 0)
+        if (stateTimer > 0)
             return;
 
         if (WeaponOutOfBullets())
@@ -76,7 +76,7 @@ public class BattleState_Range : EnemyState
         if (enemy.IsUnstoppable())
             return false;
 
-        return !enemy.IsPlayerInAggresionRange() && ReadyToLeaveCover();     
+        return !enemy.IsPlayerInAggresionRange() && ReadyToLeaveCover();
     }
 
     private bool UnstoppableWalkReady()
@@ -131,7 +131,8 @@ public class BattleState_Range : EnemyState
         Vector3 directionToPlayer = Player.instance.transform.position - enemy.transform.position;
         if (Physics.Raycast(enemy.transform.position, directionToPlayer, out RaycastHit hit))
         {
-            return hit.transform == Player.instance.transform;
+            if (hit.transform == Player.instance.transform || hit.transform.parent == Player.instance.transform)
+                return true;
         }
 
         return false;
