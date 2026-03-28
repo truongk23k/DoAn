@@ -3101,7 +3101,7 @@ MonoBehaviour:
   - {fileID: 5979805510135611588}
   - {fileID: 5114934154422572344}
   - {fileID: 1671404882258060585}
-  coverPerk: 2
+  coverPerk: 0
   unstoppablePerk: 0
   gernadePerk: 0
   grenadePrefab: {fileID: 6951391754333374202, guid: 09934f9f513a7d841b4cf0a6971d531f, type: 3}
@@ -3116,7 +3116,7 @@ MonoBehaviour:
   minCoverTime: 4
   safeDistance: 5
   attackDelay: 1
-  weaponType: 3
+  weaponType: 2
   weaponData: {fileID: 0}
   gunPoint: {fileID: 2333053167779137379}
   weaponHolder: {fileID: 3711077569242876542}
