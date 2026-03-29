@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_boss\\enemy_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_boss\\enemy_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\enemy\\enemy_boss\\jumpattackstate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_boss\\jumpattackstate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_boss\\enemy_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_boss\\enemy_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_range\\battlestate_range.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_boss\\movestate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_boss\\movestate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\enemy\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_range\\idlestate_range.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -214,17 +214,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "JumpAttackState_Boss.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\JumpAttackState_Boss.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Boss\\JumpAttackState_Boss.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\JumpAttackState_Boss.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\JumpAttackState_Boss.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-28T22:20:35.824Z",
               "EditorCaption": ""
@@ -243,7 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MoveState_Boss.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\MoveState_Boss.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Boss\\MoveState_Boss.cs",
@@ -251,8 +251,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\MoveState_Boss.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAACIAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T18:09:09.751Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T18:09:09.751Z"
             },
             {
               "$type": "Document",
@@ -268,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Enemy_Boss.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_Boss.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_Boss.cs",
@@ -425,7 +424,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Enemy_Bullet.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Bullet.cs",
@@ -433,12 +432,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Bullet.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T17:22:16.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-08T17:22:16.748Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BattleState_Range.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Range\\BattleState_Range.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Range\\BattleState_Range.cs",
@@ -446,8 +444,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Range\\BattleState_Range.cs",
               "ViewState": "AgIAAGkAAAAAAAAAAADwv4YAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T16:28:18.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-08T16:28:18.158Z"
             },
             {
               "$type": "Document",
@@ -703,16 +700,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAuwGMAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAQwJoAAABnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T09:04:46.542Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-15T09:04:46.542Z"
             },
             {
               "$type": "Document",

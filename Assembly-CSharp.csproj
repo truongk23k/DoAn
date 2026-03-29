@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Enemy\CoverSystem\CoverPoint.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_AnimationEvents.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_WeaponModel.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\AbilityState_Boss.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\IdleState_Boss.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeaponVisuals.cs" />
     <Compile Include="Assets\Scripts\Object Pool\ObjectPool.cs" />
