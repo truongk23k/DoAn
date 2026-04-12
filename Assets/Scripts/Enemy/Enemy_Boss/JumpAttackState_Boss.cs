@@ -41,4 +41,11 @@ public class JumpAttackState_Boss : EnemyState
         if (triggerCalled)
             stateMachine.ChangeState(enemy.moveState);
     }
+
+        public override void Exit()
+        {
+            base.Exit();
+    
+            enemy.SetJumpAttackOnCooldown();
+    }
 }

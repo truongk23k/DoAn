@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class Enemy_Boss : Enemy
 {
+    [Header("Boss details")]
+    public float actionCooldown = 10;
     public float attackRange;
 
     [Header("Ability")]
+    public ParticleSystem flamethrower;
+    public float abilityCooldown;
+    private float lastTimeUsedAbility;
     public float flamethrowDuration;
+    public bool flamethrowerActive { get; private set; }
 
     [Header("Jump attack")]
     public float jumpAttackCooldown = 10;
@@ -42,11 +48,6 @@ public class Enemy_Boss : Enemy
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            stateMachine.ChangeState(abilityState);
-        }
-
         stateMachine.currentState.Update();
 
         if (ShouldEnterBattleMode())
@@ -55,22 +56,43 @@ public class Enemy_Boss : Enemy
 
     public override void EnterBattleMode()
     {
-        /*base.EnterBattleMode();
-        stateMachine.ChangeState(moveState);*/
+        base.EnterBattleMode();
+        stateMachine.ChangeState(moveState);
     }
 
     public void ActivateFlamethrower(bool activate)
     {
-        if(!activate)
+        flamethrowerActive = activate;
+
+        if (!activate)
         {
+            flamethrower.Stop();
             anim.SetTrigger("StopFlamethrower");
             return;
         }
 
-        //activate particles
+        var mainModule = flamethrower.main;
+        mainModule.duration = flamethrowDuration + 0.5f; //flamethrower include anim startup time
+
+        var extraModule = flamethrower.transform.GetChild(0).GetComponent<ParticleSystem>().main;
+        extraModule.duration = flamethrowDuration + 0.5f;
+
+        flamethrower.Clear();
+        flamethrower.Play();
     }
 
-    public bool CanJumpAttack()
+    public bool CanDoAbility()
+    {
+        if (Time.time >= lastTimeUsedAbility + abilityCooldown/* && IsPlayerInClearSight()*/)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetAbilityOnCooldown() => lastTimeUsedAbility = Time.time;
+
+    public bool CanDoJumpAttack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, Player.instance.transform.position);
 
@@ -79,12 +101,13 @@ public class Enemy_Boss : Enemy
 
         if (Time.time >= lastTimeJumped + jumpAttackCooldown && IsPlayerInClearSight())
         {
-            lastTimeJumped = Time.time;
             return true;
         }
 
         return false;
     }
+
+    public void SetJumpAttackOnCooldown() => lastTimeJumped = Time.time;
 
     public bool IsPlayerInClearSight()
     {
