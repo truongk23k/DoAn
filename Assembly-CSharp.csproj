@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\Enemy_Range.cs" />
     <Compile Include="Assets\Scripts\Enemy\Data\Enemy_RangeWeaponData.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\Enemy_BossVisuals.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_CorruptionCrystal.cs" />
     <Compile Include="Assets\Scripts\Enemy\Data\Enemy_MeleeWeaponData.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
@@ -968,6 +969,14 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1014,6 +1023,10 @@
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
