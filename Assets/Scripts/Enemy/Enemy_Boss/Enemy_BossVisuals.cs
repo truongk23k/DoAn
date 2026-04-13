@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_BossVisuals : MonoBehaviour
 {
     private Enemy_Boss enemy;
+
+    [SerializeField] private ParticleSystem landingZoneFx;
+
+    [Header("Batteries")]
     [SerializeField] private GameObject[] batteries;
     [SerializeField] private float initialBatteryScaleY = 0.2f;
 
@@ -18,6 +20,9 @@ public class Enemy_BossVisuals : MonoBehaviour
         enemy = GetComponent<Enemy_Boss>();
         ResetBatteries();
 
+        landingZoneFx.transform.parent = null;
+        landingZoneFx.Stop();
+
     }
 
     private void Update()
@@ -25,11 +30,22 @@ public class Enemy_BossVisuals : MonoBehaviour
         UpdateBatteriesScale();
     }
 
+    public void PlaceLandingZone(Vector3 target)
+    {
+        landingZoneFx.transform.position = target;
+
+        landingZoneFx.Clear();
+
+        var mainModule = landingZoneFx.main;
+        mainModule.startLifetime = enemy.travelTimeToTarget;
+        landingZoneFx.Play();
+    }
+
     private void UpdateBatteriesScale()
     {
-        if(batteries.Length <= 0) return;
+        if (batteries.Length <= 0) return;
 
-        foreach(GameObject battery in batteries)
+        foreach (GameObject battery in batteries)
         {
             if (battery.activeSelf)
             {
@@ -48,7 +64,7 @@ public class Enemy_BossVisuals : MonoBehaviour
     public void ResetBatteries()
     {
         isRecharging = true;
-        
+
         rechargeSpeed = initialBatteryScaleY / enemy.abilityCooldown;
         dischargeSpeed = initialBatteryScaleY / ((enemy.flamethrowDuration) * 0.5f);
 
