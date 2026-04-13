@@ -5,6 +5,7 @@ public class Enemy_BossVisuals : MonoBehaviour
     private Enemy_Boss enemy;
 
     [SerializeField] private ParticleSystem landingZoneFx;
+    [SerializeField] private GameObject[] weaponTrails;
 
     [Header("Batteries")]
     [SerializeField] private GameObject[] batteries;
@@ -28,6 +29,16 @@ public class Enemy_BossVisuals : MonoBehaviour
     private void Update()
     {
         UpdateBatteriesScale();
+    }
+
+    public void EnableWeaponTrail(bool active)
+    {
+        if (weaponTrails.Length <= 0) return;
+
+        foreach (GameObject trail in weaponTrails)
+        {
+            trail.SetActive(active);
+        }
     }
 
     public void PlaceLandingZone(Vector3 target)

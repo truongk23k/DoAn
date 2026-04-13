@@ -21,6 +21,7 @@ public class JumpAttackState_Boss : EnemyState
         enemy.agent.velocity = Vector3.zero;
 
         enemy.bossVisuals.PlaceLandingZone(lastPlayerPos);
+        enemy.bossVisuals.EnableWeaponTrail(true);
 
         float distanceToPlayer = Vector3.Distance(enemy.transform.position, lastPlayerPos);
         jumpAttackMovementSpeed = distanceToPlayer / enemy.travelTimeToTarget;
@@ -44,10 +45,11 @@ public class JumpAttackState_Boss : EnemyState
             stateMachine.ChangeState(enemy.moveState);
     }
 
-        public override void Exit()
-        {
-            base.Exit();
-    
-            enemy.SetJumpAttackOnCooldown();
+    public override void Exit()
+    {
+        base.Exit();
+
+        enemy.SetJumpAttackOnCooldown();
+        enemy.bossVisuals.EnableWeaponTrail(false);
     }
 }
