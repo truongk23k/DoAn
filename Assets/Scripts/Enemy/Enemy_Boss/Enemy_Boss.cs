@@ -1,8 +1,15 @@
 using UnityEngine;
 
+public enum BossWeaponType
+{
+    First,
+    Hummer
+}
+
 public class Enemy_Boss : Enemy
 {
     [Header("Boss details")]
+    public BossWeaponType bossWeaponType;
     public float actionCooldown = 10;
     public float attackRange;
 
@@ -21,6 +28,7 @@ public class Enemy_Boss : Enemy
     [Space]
     public float impactRadius = 2.5f;
     public float impactPower = 5f;
+    public Transform impactPoint;
     [SerializeField] private float upforceMultiplier = 10f;
     [Space]
     [SerializeField] private LayerMask whatToIgnore;
@@ -115,7 +123,9 @@ public class Enemy_Boss : Enemy
 
     public void JumpImpact()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius);
+        Transform impactPoint = this.impactPoint != null ? this.impactPoint : transform;
+
+        Collider[] colliders = Physics.OverlapSphere(impactPoint.position, impactRadius);
 
         foreach (Collider hit in colliders)
         {
@@ -123,7 +133,7 @@ public class Enemy_Boss : Enemy
 
             if (rb != null)
             {
-                rb.AddExplosionForce(impactPower, transform.position, impactRadius, upforceMultiplier, ForceMode.Impulse);
+                rb.AddExplosionForce(impactPower, impactPoint.position, impactRadius, upforceMultiplier, ForceMode.Impulse);
             }
         }
     }
