@@ -5101,6 +5101,9 @@ MonoBehaviour:
   jumpAttackCooldown: 6
   travelTimeToTarget: 1.8
   minJumpDistanceRequired: 5
+  impactRadius: 2.5
+  impactPower: 7
+  upforceMultiplier: 5
   whatToIgnore:
     serializedVersion: 2
     m_Bits: 2048
@@ -25901,7 +25904,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.0001
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2

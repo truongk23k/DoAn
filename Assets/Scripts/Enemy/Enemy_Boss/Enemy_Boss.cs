@@ -19,6 +19,10 @@ public class Enemy_Boss : Enemy
     public float travelTimeToTarget = 1f;
     public float minJumpDistanceRequired;
     [Space]
+    public float impactRadius = 2.5f;
+    public float impactPower = 5f;
+    [SerializeField] private float upforceMultiplier = 10f;
+    [Space]
     [SerializeField] private LayerMask whatToIgnore;
     public IdleState_Boss idleState { get; private set; }
     public MoveState_Boss moveState { get; private set; }
@@ -96,6 +100,22 @@ public class Enemy_Boss : Enemy
 
     public void SetAbilityOnCooldown() => lastTimeUsedAbility = Time.time;
 
+    public void JumpImpact()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius);
+
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                rb.AddExplosionForce(impactPower, transform.position, impactRadius, upforceMultiplier, ForceMode.Impulse);
+            }
+        }
+    }
+
+
     public bool CanDoJumpAttack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, Player.instance.transform.position);
@@ -144,5 +164,8 @@ public class Enemy_Boss : Enemy
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, minJumpDistanceRequired);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, impactRadius);
     }
 }
