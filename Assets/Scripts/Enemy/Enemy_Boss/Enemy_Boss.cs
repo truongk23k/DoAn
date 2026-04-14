@@ -29,6 +29,7 @@ public class Enemy_Boss : Enemy
     public AttackState_Boss attackState { get; private set; }
     public JumpAttackState_Boss jumpAttackState { get; private set; }
     public AbilityState_Boss abilityState { get; private set; }
+    public DeadState_Boss deadState { get; private set; }
 
     public Enemy_BossVisuals bossVisuals { get; private set; }
 
@@ -43,6 +44,7 @@ public class Enemy_Boss : Enemy
         attackState = new AttackState_Boss(this, stateMachine, "Attack");
         jumpAttackState = new JumpAttackState_Boss(this, stateMachine, "JumpAttack");
         abilityState = new AbilityState_Boss(this, stateMachine, "Ability");
+        deadState = new DeadState_Boss(this, stateMachine, "Idle"); // Idle anim is just a place holder, use ragdoll
     }
 
     override protected void Start()
@@ -62,8 +64,19 @@ public class Enemy_Boss : Enemy
             EnterBattleMode();
     }
 
+    public override void GetHit()
+    {
+        base.GetHit();
+
+        if (healthPoints <= 0 && stateMachine.currentState != deadState)
+            stateMachine.ChangeState(deadState);
+    }
+
     public override void EnterBattleMode()
     {
+        if (inBattleMode)
+            return;
+
         base.EnterBattleMode();
         stateMachine.ChangeState(moveState);
     }
