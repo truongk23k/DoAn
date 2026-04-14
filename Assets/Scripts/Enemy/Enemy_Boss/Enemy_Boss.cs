@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum BossWeaponType
 {
-    First,
+    Flamethrower,
     Hummer
 }
 
@@ -14,11 +14,17 @@ public class Enemy_Boss : Enemy
     public float attackRange;
 
     [Header("Ability")]
-    public ParticleSystem flamethrower;
+    public float minAbilityDistance;
     public float abilityCooldown;
     private float lastTimeUsedAbility;
+
+    [Header("Flamethrower ")]
+    public ParticleSystem flamethrower;
     public float flamethrowDuration;
     public bool flamethrowerActive { get; private set; }
+
+    [Header("Hummer")]
+    public GameObject activationPrefab;
 
     [Header("Jump attack")]
     public float jumpAttackCooldown = 10;
@@ -110,9 +116,21 @@ public class Enemy_Boss : Enemy
         flamethrower.Play();
     }
 
+    public void ActivateHummer()
+    {
+        GameObject newActivation = ObjectPool.instance.GetObject(activationPrefab, impactPoint);
+
+        ObjectPool.instance.ReturnObject(newActivation, 1f);
+    }
+
     public bool CanDoAbility()
     {
-        if (Time.time >= lastTimeUsedAbility + abilityCooldown/* && IsPlayerInClearSight()*/)
+        bool playerWithinDistance = Vector3.Distance(transform.position, Player.instance.transform.position) < minAbilityDistance;
+
+        if(!playerWithinDistance)
+            return false;
+
+        if (Time.time >= lastTimeUsedAbility + abilityCooldown && playerWithinDistance)
         {
             return true;
         }
@@ -188,7 +206,11 @@ public class Enemy_Boss : Enemy
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, minJumpDistanceRequired);
 
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, minAbilityDistance);
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, impactRadius);
+
     }
 }

@@ -51,10 +51,10 @@ public class MoveState_Boss : EnemyState
 
             enemy.agent.SetDestination(Player.instance.transform.position);
 
-            if(actionTimer < 0)
+            if (actionTimer < 0)
             {
                 PerformRandomAction();
-            }     
+            }
             else if (enemy.PlayerInAttackRange())
                 stateMachine.ChangeState(enemy.attackState);
         }
@@ -76,17 +76,16 @@ public class MoveState_Boss : EnemyState
     {
         actionTimer = enemy.actionCooldown;
 
-        if (enemy.CanDoJumpAttack())
-            stateMachine.ChangeState(enemy.jumpAttackState);
-        /*if (Random.Range(0, 2) == 0)
+        if (Random.Range(0, 2) == 0)
         {
-            if(enemy.CanDoAbility())
+            if (enemy.CanDoAbility())
                 stateMachine.ChangeState(enemy.abilityState);
         }
-        else        {
-            if(enemy.CanDoJumpAttack())
+        else
+        {
+            if (enemy.CanDoJumpAttack())
                 stateMachine.ChangeState(enemy.jumpAttackState);
-        }*/
+        }
     }
 
     private bool ShouldSpeedUp()
