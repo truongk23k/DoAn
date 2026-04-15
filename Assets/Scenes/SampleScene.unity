@@ -16443,63 +16443,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00072751194, y: 0.22979861, z: -0.031882167}
     m_Extent: {x: 0.20716012, y: 0.2163704, z: 0.20549107}
   m_DirtyAABB: 0
---- !u!1001 &7880988376248685977
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 179986628492089577, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2307417475917185369, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
-      propertyPath: m_Name
-      value: Enemy_Boss_Hummer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
 --- !u!1 &7894553744918523594
 GameObject:
   m_ObjectHideFlags: 0
@@ -17114,4 +17057,3 @@ SceneRoots:
   - {fileID: 1776649286}
   - {fileID: 1113050036}
   - {fileID: 1400377605}
-  - {fileID: 7880988376248685977}

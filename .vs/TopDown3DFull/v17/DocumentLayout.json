@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_boss\\movestate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\enemy\\enemy_boss\\movestate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_boss\\movestate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\enemy\\enemy_boss\\enemy_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_boss\\enemy_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_boss\\enemy_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -51,7 +51,7 @@
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_range\\deadstate_range.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\enemy\\enemy_boss\\deadstate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_boss\\deadstate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_boss\\deadstate_boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -238,8 +238,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\DeadState_Boss.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAqwBIAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T16:13:29.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-14T16:13:29.58Z"
             },
             {
               "$type": "Document",
@@ -251,8 +250,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_BossVisuals.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T16:04:38.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-12T16:04:38.032Z"
             },
             {
               "$type": "Document",
@@ -264,8 +262,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\AbilityState_Boss.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAqwD4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T15:47:51.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-29T15:47:51.409Z"
             },
             {
               "$type": "Document",
@@ -277,8 +274,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\JumpAttackState_Boss.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T22:20:35.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T22:20:35.824Z"
             },
             {
               "$type": "Document",
@@ -290,8 +286,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\AttackState_Boss.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAowDEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T20:37:17.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T20:37:17.883Z"
             },
             {
               "$type": "Document",
@@ -301,7 +296,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Boss\\MoveState_Boss.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\MoveState_Boss.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\MoveState_Boss.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAIwE8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAqwFcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-22T18:09:09.751Z",
               "EditorCaption": ""
@@ -326,7 +321,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_Boss.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_Boss.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_Boss.cs",
-              "ViewState": "AgIAALsAAAAAAAAAAAAAANAAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAALAAAAAAAAAAAAAwwNAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-22T18:01:31.121Z",
               "EditorCaption": ""
@@ -341,8 +336,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Range\\DeadState_Range.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAQwBIAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T17:30:43.551Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T17:30:43.551Z"
             },
             {
               "$type": "Document",
@@ -378,8 +372,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Range\\ThrowGrenadeState_Range.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T18:31:04.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T18:31:04.297Z"
             },
             {
               "$type": "Document",
@@ -487,8 +480,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Bullet.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T17:22:16.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-08T17:22:16.748Z"
             },
             {
               "$type": "Document",
@@ -644,8 +636,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Melee\\DeadState_Melee.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAowB8AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T13:33:38.095Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T13:33:38.095Z"
             },
             {
               "$type": "Document",
@@ -657,8 +648,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Bullet.cs",
               "ViewState": "AgIAAEQAAAAAAAAAAAAIwGUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T12:53:44.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T12:53:44.243Z"
             },
             {
               "$type": "Document",
@@ -670,8 +660,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Melee\\Enemy_Melee.cs",
               "ViewState": "AgIAAIEAAAAAAAAAAAAgwJ4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T12:53:16.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T12:53:16.903Z"
             },
             {
               "$type": "Document",
@@ -767,8 +756,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAAAGUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T09:04:46.542Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-15T09:04:46.542Z"
             },
             {
               "$type": "Document",
