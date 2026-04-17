@@ -15,7 +15,8 @@ public class Enemy_HitBox : HitBox
     override public void TakeDamage()
     {
         base.TakeDamage();
-        enemy.healthPoints--;
+
+        enemy.GetHit();
          
     }
 

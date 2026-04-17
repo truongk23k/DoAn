@@ -95,14 +95,18 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        ApplyBulletImpactToEnemy(collision);
+    }
+
+    private void ApplyBulletImpactToEnemy(Collision collision)
+    {
         Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
         if (enemy != null)
         {
             Vector3 force = rb.velocity.normalized * impactForce;
             Rigidbody hitRb = collision.collider.attachedRigidbody;
 
-            enemy.GetHit();
-            enemy.DeathImpact(force, collision.contacts[0].point, hitRb);
+            enemy.BulletImpact(force, collision.contacts[0].point, hitRb);
         }
     }
 
