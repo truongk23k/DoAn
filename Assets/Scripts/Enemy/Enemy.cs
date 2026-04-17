@@ -5,7 +5,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] protected int healthPoints = 20;
+    public int healthPoints = 20;
 
     private bool manualMovement;
     private bool manualRotation;
@@ -115,8 +115,6 @@ public class Enemy : MonoBehaviour
     public virtual void GetHit()
     {
         EnterBattleMode();
-
-        healthPoints--;
     }
 
     public virtual void DeathImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
