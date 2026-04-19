@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
 
     private bool bulletDisabled;
 
+    private LayerMask allyLayerMask;
+
     //default bullet speed
     public float REFERENCE_BULLET_SPEED = 20f;
     private Vector3 bulletDirection;
@@ -29,9 +31,10 @@ public class Bullet : MonoBehaviour
         trailRenderer = GetComponent<TrailRenderer>();
     }
 
-    public void BulletSetup(Vector3 bulletDirection, float bulletSpeed, float flyDistance = 100, float impactForce = 100)
+    public void BulletSetup(LayerMask allyLayerMask, Vector3 bulletDirection, float bulletSpeed, float flyDistance = 100, float impactForce = 100)
     {
         this.impactForce = impactForce;
+        this.allyLayerMask = allyLayerMask;
 
         bulletDisabled = false;
         cd.enabled = true;
@@ -79,6 +82,15 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
+        if (!FriendlyFire())
+        {
+            if ((allyLayerMask.value & (1 << collision.gameObject.layer)) > 0)
+            {
+                ReturnBulletToPool(10);
+                return;
+            }
+        }
+
         CreateImpactFx();
         ReturnBulletToPool();
 
@@ -110,11 +122,13 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    protected void ReturnBulletToPool() => ObjectPool.instance.ReturnObject(gameObject);
+    protected void ReturnBulletToPool(float delay = 0) => ObjectPool.instance.ReturnObject(gameObject, delay);
 
     protected void CreateImpactFx()
     {
         GameObject newBulletImpactFx = ObjectPool.instance.GetObject(bulletImpactFX, transform);
         ObjectPool.instance.ReturnObject(newBulletImpactFx, 1);
     }
+
+    private bool FriendlyFire() => GameManager.instance.friendlyFire;
 }

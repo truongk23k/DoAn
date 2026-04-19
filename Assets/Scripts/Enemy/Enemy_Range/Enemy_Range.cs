@@ -249,9 +249,9 @@ public class Enemy_Range : Enemy
         GameObject newBullet = ObjectPool.instance.GetObject(bulletPrefab, gunPoint);
         newBullet.transform.rotation = Quaternion.LookRotation(gunPoint.forward);
 
-        Enemy_Bullet bulletScript = newBullet.GetComponent<Enemy_Bullet>();
+        Bullet bulletScript = newBullet.GetComponent<Bullet>();
         Vector3 bulletDirectionWithSpread = weaponData.ApplyWeaponSpread(bulletsDirection);
-        bulletScript.BulletSetup(bulletDirectionWithSpread, weaponData.bulletSpeed);
+        bulletScript.BulletSetup(whatIsAlly, bulletDirectionWithSpread, weaponData.bulletSpeed);
     }
 
     private void SetupWeapon()

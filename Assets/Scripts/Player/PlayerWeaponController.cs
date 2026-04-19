@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    [SerializeField] private LayerMask whatIsAlly;
+    [Space]
     public Weapon_Data dataWeaponStart;
 
     private Player player;
@@ -190,7 +192,7 @@ public class PlayerWeaponController : MonoBehaviour
         Vector3 bulletsDirection = currentWeapon.ApplySpread(BulletDirection());
 
         Bullet bulletScript = newBullet.GetComponent<Bullet>();
-        bulletScript.BulletSetup(bulletsDirection, bulletSpeed, currentWeapon.gunDistance, bulletImpactForce);
+        bulletScript.BulletSetup(whatIsAlly, bulletsDirection, bulletSpeed, currentWeapon.gunDistance, bulletImpactForce);
 
     }
 
