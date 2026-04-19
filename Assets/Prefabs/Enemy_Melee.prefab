@@ -1627,6 +1627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7a752fb56b2954d8b19d444b6b7c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsAlly:
+    serializedVersion: 2
+    m_Bits: 0
   healthPoints: 20
   maxChaseRange: 8
   aggresionRange: 3
@@ -1698,10 +1701,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2661816752226033765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6c0ae29ed5bf843b747903e8c2469b, type: 3}
+  m_Script: {fileID: 11500000, guid: 103061a4114030046b4fd66a0554e0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollparent: {fileID: 1425721878259973064}
+  ragdollparent: {fileID: 1327713635305114230}
 --- !u!114 &5224118674521805939
 MonoBehaviour:
   m_ObjectHideFlags: 0

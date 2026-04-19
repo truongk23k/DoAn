@@ -41,14 +41,14 @@ public class Enemy : MonoBehaviour
 
     public Enemy_Health health { get; private set; }
 
-    public Enemy_Ragdoll ragdoll { get; private set; }
+    public Ragdoll ragdoll { get; private set; }
 
     protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
 
         health = GetComponent<Enemy_Health>();
-        ragdoll = GetComponent<Enemy_Ragdoll>();
+        ragdoll = GetComponent<Ragdoll>();
         visuals = GetComponent<Enemy_Visuals>();
 
         agent = GetComponent<NavMeshAgent>();
