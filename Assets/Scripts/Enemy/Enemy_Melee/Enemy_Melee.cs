@@ -59,6 +59,10 @@ public class Enemy_Melee : Enemy
     [Header("Attack data")]
     public AttackDataEnemy_Melee attackData;
     public List<AttackDataEnemy_Melee> attackList;
+    private Enemy_WeaponModel currentWeapon;
+    private bool isAttackReady;
+    [Space]
+    [SerializeField] private GameObject meleeAttackFx;
 
     protected override void Awake()
     {
@@ -88,8 +92,35 @@ public class Enemy_Melee : Enemy
     {
         base.Update();
 
-
+        AttackCheck();
     }
+
+    public void AttackCheck()
+    {
+        if (!isAttackReady)
+            return;
+
+        foreach (Transform attackPoint in currentWeapon.damagePoints)
+        {
+            Collider[] detectedHits = Physics.OverlapSphere(attackPoint.position, currentWeapon.attackRadius, whatIsPlayer);
+
+            for (int i = 0; i < detectedHits.Length; i++)
+            {
+                IDamagable damagable = detectedHits[i].GetComponent<IDamagable>();
+                
+                if(damagable != null)
+                {
+                    damagable.TakeDamage();
+                    isAttackReady = false;
+                    GameObject newAttackFx = ObjectPool.instance.GetObject(meleeAttackFx, attackPoint);
+                    ObjectPool.instance.ReturnObject(newAttackFx, 1f);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void EnableAttackCheck(bool enable) => isAttackReady = enable;
 
     public override void EnterBattleMode()
     {
@@ -111,7 +142,7 @@ public class Enemy_Melee : Enemy
 
     public void UpdateAttackData()
     {
-        Enemy_WeaponModel currentWeapon = visuals.currentWeaponModel.GetComponent<Enemy_WeaponModel>();
+        currentWeapon = visuals.currentWeaponModel.GetComponent<Enemy_WeaponModel>();
 
         if (currentWeapon != null && currentWeapon.weaponData != null && currentWeapon.weaponData.attackData != null && currentWeapon.weaponData.attackData.Count > 0)
         {
@@ -152,15 +183,13 @@ public class Enemy_Melee : Enemy
 
     }
 
-    public override void GetHit()
+    public override void Die()
     {
-        base.GetHit();
+        base.Die();
 
-        if (healthPoints <= 0 && stateMachine.currentState != deadState)
+        if (stateMachine.currentState != deadState)
             stateMachine.ChangeState(deadState);
     }
-
-    
 
     public bool PlayerInAttackRange() => Vector3.Distance(transform.position, Player.instance.transform.position) < attackData.attackRange;
 
@@ -181,7 +210,7 @@ public class Enemy_Melee : Enemy
 
     public void AssignLastTimeDodge() => lastTimeDodge = Time.time;
 
-    public void ThrowAxe() 
+    public void ThrowAxe()
     {
         GameObject newAxe = ObjectPool.instance.GetObject(axePrefab, axeStartPoint);
 

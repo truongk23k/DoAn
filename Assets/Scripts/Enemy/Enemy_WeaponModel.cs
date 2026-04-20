@@ -11,16 +11,34 @@ public class Enemy_WeaponModel : MonoBehaviour
 
     [SerializeField] private GameObject[] trailEffects;
 
-    /*private void Awake()
+    [Header("Damage atributes")]
+    public Transform[] damagePoints;
+    public float attackRadius;
+
+    [ContextMenu("Assign damage point transforms")]
+    private void GetDamagePoints()
     {
-        EnableTrailEffect(false);
-    }*/
+        damagePoints = new Transform[trailEffects.Length];
+
+        for(int i = 0; i < trailEffects.Length; i++)
+        {
+            damagePoints[i] = trailEffects[i].transform;
+        }
+    }
 
     public void EnableTrailEffect(bool enable)
     {
         foreach(var trail in trailEffects)
         {
             trail.SetActive(enable);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        foreach(Transform point in damagePoints)
+        {
+            Gizmos.DrawWireSphere(point.position, attackRadius);
         }
     }
 }

@@ -41,7 +41,10 @@ public class PlayerAim : MonoBehaviour
     private void Update()
     {
         if (player.health.isDead)
+        {
+            aimLaser.enabled = false;
             return;
+        }
 
         if (Input.GetKeyDown(KeyCode.P))
             isAimingPrecisely = !isAimingPrecisely;

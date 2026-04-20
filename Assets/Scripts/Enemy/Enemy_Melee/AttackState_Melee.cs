@@ -76,7 +76,7 @@ public class AttackState_Melee : EnemyState
                 stateMachine.ChangeState(enemy.chaseState);
     }
 
-    private bool PlayerClose() => Vector3.Distance(enemy.transform.position, Player.instance.transform.position) <= 1;
+    private bool PlayerClose() => Vector3.Distance(enemy.transform.position, Player.instance.transform.position) <= 2;
 
     private AttackDataEnemy_Melee UpdateAttackData()
     {

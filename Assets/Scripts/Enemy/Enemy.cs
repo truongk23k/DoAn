@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public LayerMask whatIsAlly;
+    public LayerMask whatIsPlayer;
+    [Space]
     public int healthPoints = 20;
 
     private bool manualMovement;
