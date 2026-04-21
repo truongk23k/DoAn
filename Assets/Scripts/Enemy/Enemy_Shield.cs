@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_Shield : MonoBehaviour
+public class Enemy_Shield : MonoBehaviour, IDamagable
 {
     [SerializeField] private int durability;
 
@@ -9,6 +9,7 @@ public class Enemy_Shield : MonoBehaviour
     private void Awake()
     {
         enemy = GetComponentInParent<Enemy_Melee>();
+        durability = enemy.shieldDurability;
 
     }
 
@@ -18,8 +19,13 @@ public class Enemy_Shield : MonoBehaviour
 
         if (durability <= 0)
         {
-            gameObject.SetActive(false);
             enemy.anim.SetFloat("ChaseIndex", 0); // chase without shield
+            gameObject.SetActive(false);
         }
+    }
+
+    public void TakeDamage()
+    {
+        ReduceDurability();
     }
 }

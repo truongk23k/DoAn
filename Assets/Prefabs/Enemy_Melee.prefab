@@ -1638,7 +1638,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   healthPoints: 20
-  maxChaseRange: 8
+  maxChaseRange: 12.2
   aggresionRange: 3
   idleTime: 0
   walkSpeed: 1.5
@@ -1648,19 +1648,20 @@ MonoBehaviour:
   - {fileID: 4676560928989702665}
   - {fileID: 2661493665586779733}
   - {fileID: 7790468034490440846}
-  meleeTypes: 02000000
+  meleeTypes: 00000000
   weaponType: 0
+  shieldDurability: 20
   shieldTransform: {fileID: 2050241288764734821}
   dodgeCooldown: 5
   axePrefab: {fileID: 5578750314841729409, guid: 4b2922f96f70e6d4680678d35a869d0c, type: 3}
   axeFlySpeed: 6
   axeAimTimer: 1
-  axeThrowCooldown: 0
+  axeThrowCooldown: 10
   axeStartPoint: {fileID: 7558067889697220045}
   attackData:
     attackName: 
     attackType: 0
-    attackRange: 0.6
+    attackRange: 0.8
     moveSpeed: 0.1
     attackIndex: 1
     animationSpeed: 1.4
@@ -1673,10 +1674,11 @@ MonoBehaviour:
     animationSpeed: 1
   - attackName: Sword slash
     attackType: 0
-    attackRange: 0.6
+    attackRange: 0.8
     moveSpeed: 0.1
     attackIndex: 1
     animationSpeed: 1.5
+  meleeAttackFx: {fileID: 8695453366832261935, guid: 18cfecabbf783f94380bc0f5500ebc25, type: 3}
 --- !u!195 &3973570238047151683
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2513,7 +2515,6 @@ GameObject:
   - component: {fileID: 1388693090925470746}
   - component: {fileID: 8462618535732497411}
   - component: {fileID: 1516347270806148416}
-  - component: {fileID: 8003865669339062366}
   - component: {fileID: 5660823042540562068}
   m_Layer: 11
   m_Name: Shield
@@ -2635,18 +2636,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8003865669339062366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649517372145269175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43dbffcc4281da342bf91d833b748e0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5660823042540562068
 MonoBehaviour:
   m_ObjectHideFlags: 0
