@@ -54,22 +54,24 @@ public class Enemy_Axe : MonoBehaviour
         else
             canChangeDir = false;
 
-        rb.velocity = direction.normalized * flySpeed;
 
         transform.forward = rb.velocity;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
-        Bullet bullet = other.GetComponent<Bullet>();
-        Player player = other.GetComponent<Player>();
+        rb.velocity = direction.normalized * flySpeed;
+        
+    }
 
-        if (bullet != null || player != null)
-        {
-            GameObject newFx = ObjectPool.instance.GetObject(impactFx, transform);
+    private void OnCollisionEnter(Collision collision)
+    {
+        IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
+        damagable?.TakeDamage();
 
-            ObjectPool.instance.ReturnObject(gameObject);
-            ObjectPool.instance.ReturnObject(newFx, 1f);
-        }
+        GameObject newFx = ObjectPool.instance.GetObject(impactFx, transform);
+
+        ObjectPool.instance.ReturnObject(gameObject);
+        ObjectPool.instance.ReturnObject(newFx, 1f);
     }
 }

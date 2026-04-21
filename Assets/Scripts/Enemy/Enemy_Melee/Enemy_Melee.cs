@@ -222,6 +222,9 @@ public class Enemy_Melee : Enemy
         if (!meleeTypes.Contains(EnemyMelee_Type.AxeThrow))
             return false;
 
+        if(Vector3.Distance(transform.position, Player.instance.transform.position) < 3f)
+            return false;
+
         if (Time.time > lastTimeAxeThrow + axeThrowCooldown)
         {
             lastTimeAxeThrow = Time.time;

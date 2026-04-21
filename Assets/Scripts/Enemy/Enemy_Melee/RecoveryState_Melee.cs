@@ -34,10 +34,8 @@ public class RecoveryState_Melee : EnemyState
             if (enemy.CanThrowAxe())
             {
                 stateMachine.ChangeState(enemy.abilityState);
-                return;
             }
-
-            if (enemy.PlayerInAttackRange())
+            else if (enemy.PlayerInAttackRange())
             {
                 stateMachine.ChangeState(enemy.attackState);
                 Debug.Log("Enter Attack State");

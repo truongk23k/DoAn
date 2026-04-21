@@ -34,6 +34,13 @@ public class ChaseState_Melee : EnemyState
             return;
         }
 
+        if (enemy.CanThrowAxe())
+        {
+            enemy.agent.isStopped = true;
+            stateMachine.ChangeState(enemy.abilityState);
+            return;
+        }
+
         //out chase
         if (enemy.PlayerOutMaxChaseRange())
         {

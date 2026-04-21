@@ -6850,12 +6850,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8695453366832261935, guid: 18cfecabbf783f94380bc0f5500ebc25, type: 3}
     - target: {fileID: 3963392253472578572, guid: 599d192080974654b927695606c33515, type: 3}
+      propertyPath: axeThrowCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963392253472578572, guid: 599d192080974654b927695606c33515, type: 3}
       propertyPath: attackData.attackRange
       value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3963392253472578572, guid: 599d192080974654b927695606c33515, type: 3}
       propertyPath: meleeTypes.Array.data[0]
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3963392253472578572, guid: 599d192080974654b927695606c33515, type: 3}
       propertyPath: attackList.Array.data[1].attackRange
