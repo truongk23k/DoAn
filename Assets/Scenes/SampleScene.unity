@@ -1465,6 +1465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Range
       objectReference: {fileID: 0}
+    - target: {fileID: 3852356624857712788, guid: 0a391c2649646f748bc324cc7146a00a, type: 3}
+      propertyPath: gernadePerk
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8577518304697958009, guid: 0a391c2649646f748bc324cc7146a00a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3
