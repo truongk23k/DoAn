@@ -38,6 +38,13 @@ public class Enemy_Boss : Enemy
     [SerializeField] private float upforceMultiplier = 10f;
     [Space]
     [SerializeField] private LayerMask whatToIgnore;
+
+    [Header("Attack")]
+    [SerializeField] private Transform[] damagePoints;
+    [SerializeField] private float attackCheckRadius;
+    [SerializeField] private GameObject meleeAttackFx;
+
+
     public IdleState_Boss idleState { get; private set; }
     public MoveState_Boss moveState { get; private set; }
     public AttackState_Boss attackState { get; private set; }
@@ -76,6 +83,8 @@ public class Enemy_Boss : Enemy
 
         if (ShouldEnterBattleMode())
             EnterBattleMode();
+
+        MeleeAttackCheck(damagePoints, attackCheckRadius, meleeAttackFx);
     }
 
     public override void Die()
@@ -203,8 +212,7 @@ public class Enemy_Boss : Enemy
             Gizmos.DrawLine(myPos, Player.instance.transform.position);
         }
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, minJumpDistanceRequired);
+
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, minAbilityDistance);
@@ -212,5 +220,15 @@ public class Enemy_Boss : Enemy
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, impactRadius);
 
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, minJumpDistanceRequired);
+
+        if (damagePoints.Length > 0)
+        {
+            foreach (var damagePoint in damagePoints)
+            {
+                Gizmos.DrawWireSphere(damagePoint.position, attackCheckRadius);
+            }
+        }
     }
 }

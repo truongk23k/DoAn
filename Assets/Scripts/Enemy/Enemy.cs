@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
 
     public bool inBattleMode { get; private set; }
 
+    protected bool isMeleeAttackReady;
+
     public Animator anim { get; private set; }
 
     public NavMeshAgent agent { get; private set; }
@@ -133,6 +135,34 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+    public virtual void MeleeAttackCheck(Transform[] damagePoints, float attackCheckRadius, GameObject fx)
+    {
+        if (!isMeleeAttackReady)
+            return;
+
+        foreach (Transform attackPoint in damagePoints)
+        {
+            Collider[] detectedHits = Physics.OverlapSphere(attackPoint.position, attackCheckRadius, whatIsPlayer);
+
+            for (int i = 0; i < detectedHits.Length; i++)
+            {
+                IDamagable damagable = detectedHits[i].GetComponent<IDamagable>();
+
+                if (damagable != null)
+                {
+                    damagable.TakeDamage();
+                    isMeleeAttackReady = false;
+                    GameObject newAttackFx = ObjectPool.instance.GetObject(fx, attackPoint);
+                    ObjectPool.instance.ReturnObject(newAttackFx, 1f);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void EnableMeleeAttackCheck(bool enable) => isMeleeAttackReady = enable;
+
 
     public virtual void BulletImpact(Vector3 force, Vector3 hitPoint, Rigidbody rb)
     {

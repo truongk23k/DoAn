@@ -95,35 +95,9 @@ public class Enemy_Melee : Enemy
     {
         base.Update();
 
-        AttackCheck();
+        MeleeAttackCheck(currentWeapon.damagePoints, currentWeapon.attackRadius, meleeAttackFx);
     }
-
-    public void AttackCheck()
-    {
-        if (!isAttackReady)
-            return;
-
-        foreach (Transform attackPoint in currentWeapon.damagePoints)
-        {
-            Collider[] detectedHits = Physics.OverlapSphere(attackPoint.position, currentWeapon.attackRadius, whatIsPlayer);
-
-            for (int i = 0; i < detectedHits.Length; i++)
-            {
-                IDamagable damagable = detectedHits[i].GetComponent<IDamagable>();
-                
-                if(damagable != null)
-                {
-                    damagable.TakeDamage();
-                    isAttackReady = false;
-                    GameObject newAttackFx = ObjectPool.instance.GetObject(meleeAttackFx, attackPoint);
-                    ObjectPool.instance.ReturnObject(newAttackFx, 1f);
-                    return;
-                }
-            }
-        }
-    }
-
-    public void EnableAttackCheck(bool enable) => isAttackReady = enable;
+    
 
     public override void EnterBattleMode()
     {
