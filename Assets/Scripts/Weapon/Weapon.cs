@@ -21,6 +21,8 @@ public class Weapon
     public string weaponName;
     public WeaponType weaponType;
 
+    public int bulletDamage;
+
     #region Regular mode variables
     public ShootType shotType;
     public int bulletsPerShoot { get; private set; }
@@ -67,6 +69,7 @@ public class Weapon
 
     public Weapon(Weapon_Data weaponData)
     {
+        bulletDamage = weaponData.bulletDamage;
         bulletInMagazine = weaponData.bulletInMagazine;
         magazineCapacity = weaponData.magazineCapacity;
         totalReserveAmmo = weaponData.totalReserveAmmo;

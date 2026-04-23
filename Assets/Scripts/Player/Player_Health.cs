@@ -5,9 +5,9 @@ using UnityEngine;
 public class Player_Health : HealthController
 {
     public bool isDead { get; private set; }
-    public override void ReduceHealth()
+    public override void ReduceHealth(int damage)
     {
-        base.ReduceHealth();
+        base.ReduceHealth(damage);
 
         if (ShouldDie())
             Die();

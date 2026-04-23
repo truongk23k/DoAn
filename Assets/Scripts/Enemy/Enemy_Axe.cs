@@ -14,7 +14,9 @@ public class Enemy_Axe : MonoBehaviour
 
     private bool canChangeDir;
 
-    public void AxeSetup(Vector3 originForward, float flySpeed, float timer)
+    private int damage;
+
+    public void AxeSetup(Vector3 originForward, float flySpeed, float timer, int damage)
     {
         canChangeDir = true;
         transform.forward = originForward;
@@ -22,6 +24,7 @@ public class Enemy_Axe : MonoBehaviour
 
         rotationSpeed = 1600;
 
+        this.damage = damage;
         this.flySpeed = flySpeed;
         this.timer = timer;
 
@@ -67,7 +70,7 @@ public class Enemy_Axe : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
-        damagable?.TakeDamage();
+        damagable?.TakeDamage(damage);
 
         GameObject newFx = ObjectPool.instance.GetObject(impactFx, transform);
 

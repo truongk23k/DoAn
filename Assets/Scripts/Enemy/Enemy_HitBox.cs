@@ -12,12 +12,9 @@ public class Enemy_HitBox : HitBox
         enemy = GetComponentInParent<Enemy>();
     }
 
-    override public void TakeDamage()
+    override public void TakeDamage(int damage)
     {
-        base.TakeDamage();
-
-        enemy.GetHit();
-         
+        enemy.GetHit(damage);
     }
 
 }

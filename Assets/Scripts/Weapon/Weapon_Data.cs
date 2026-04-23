@@ -7,6 +7,8 @@ using UnityEngine;
 public class Weapon_Data : ScriptableObject
 {
     public string weaponName;
+    [Header("Bullet info")]
+    public int bulletDamage;
 
     [Header("Magazine details")]
     public int bulletInMagazine;

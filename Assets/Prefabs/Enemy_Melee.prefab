@@ -1589,11 +1589,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425721878259973064}
+  - component: {fileID: 7159746193153621160}
   - component: {fileID: 3963392253472578572}
   - component: {fileID: 3973570238047151683}
   - component: {fileID: 1265165000295783964}
   - component: {fileID: 5224118674521805939}
-  - component: {fileID: 7159746193153621160}
   m_Layer: 11
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -1619,6 +1619,20 @@ Transform:
   - {fileID: 7558067889697220045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7159746193153621160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661816752226033765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de575036e635cec49a4ce3de1578a949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
 --- !u!114 &3963392253472578572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,12 +1667,14 @@ MonoBehaviour:
   shieldDurability: 20
   shieldTransform: {fileID: 2050241288764734821}
   dodgeCooldown: 5
+  axeDamage: 10
   axePrefab: {fileID: 5578750314841729409, guid: 4b2922f96f70e6d4680678d35a869d0c, type: 3}
   axeFlySpeed: 6
   axeAimTimer: 1
   axeThrowCooldown: 10
   axeStartPoint: {fileID: 7558067889697220045}
   attackData:
+    attackDamage: 5
     attackName: 
     attackType: 0
     attackRange: 0.8
@@ -1666,13 +1682,15 @@ MonoBehaviour:
     attackIndex: 1
     animationSpeed: 1.4
   attackList:
-  - attackName: Sword spin attack
+  - attackDamage: 7
+    attackName: Sword spin attack
     attackType: 1
     attackRange: 1.5
     moveSpeed: 2.5
     attackIndex: 0
     animationSpeed: 1
-  - attackName: Sword slash
+  - attackDamage: 5
+    attackName: Sword slash
     attackType: 0
     attackRange: 0.8
     moveSpeed: 0.1
@@ -1739,20 +1757,6 @@ MonoBehaviour:
   leftElbowIK: {fileID: 0}
   leftHandIKConstraint: {fileID: 0}
   weaponAimConstraint: {fileID: 0}
---- !u!114 &7159746193153621160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2661816752226033765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de575036e635cec49a4ce3de1578a949, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  currentHealth: 0
 --- !u!1 &2701538863430294174
 GameObject:
   m_ObjectHideFlags: 0

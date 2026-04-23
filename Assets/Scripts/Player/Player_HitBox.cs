@@ -13,8 +13,8 @@ public class Player_HitBox : HitBox
         player = GetComponentInParent<Player>();
     }
 
-    override public void TakeDamage()
+    override public void TakeDamage(int damage)
     {
-        player.health.ReduceHealth();
+        player.health.ReduceHealth(damage);
     }
 }

@@ -192,7 +192,7 @@ public class PlayerWeaponController : MonoBehaviour
         Vector3 bulletsDirection = currentWeapon.ApplySpread(BulletDirection());
 
         Bullet bulletScript = newBullet.GetComponent<Bullet>();
-        bulletScript.BulletSetup(whatIsAlly, bulletsDirection, bulletSpeed, currentWeapon.gunDistance, bulletImpactForce);
+        bulletScript.BulletSetup(whatIsAlly, bulletsDirection, bulletSpeed, currentWeapon.bulletDamage, currentWeapon.gunDistance, bulletImpactForce);
 
     }
 
