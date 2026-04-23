@@ -6,7 +6,7 @@ public class MoveState_Boss : EnemyState
     private Vector3 destination;
 
     private float actionTimer;
-    private float timeBeforeSpeedUp = 15;
+    private float timeBeforeSpeedUp = 10;
 
     private bool speedUpActivated;
 
