@@ -121,6 +121,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_RangeWeaponModel.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\IdleState_Melee.cs" />
+    <Compile Include="Assets\Scripts\Dummy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_HitBox.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamagable.cs" />
