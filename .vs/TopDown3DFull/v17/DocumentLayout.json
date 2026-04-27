@@ -3,7 +3,15 @@
   "WorkspaceRootPath": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\data\\enemy_rangeweapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\data\\enemy_rangeweapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\player\\player_health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\player_health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_melee\\enemy_melee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\dummy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\dummy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dummy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -25,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\enemy_range\\enemy_range.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemy_range\\enemy_range.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\enemy\\data\\enemy_rangeweapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\data\\enemy_rangeweapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -65,10 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\player\\player_health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\player_health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\hitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -278,11 +278,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 31,
+          "SelectedChildIndex": 32,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Dummy.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Dummy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Dummy.cs",
@@ -290,8 +290,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Dummy.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAkwCoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T05:09:33.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-25T05:09:33.268Z"
             },
             {
               "$type": "Document",
@@ -307,7 +306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Flamethrow_DamageArea.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\Flamethrow_DamageArea.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Boss\\Flamethrow_DamageArea.cs",
@@ -355,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Player_HitBox.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Player\\Player_HitBox.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player_HitBox.cs",
@@ -367,7 +366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 1,
               "Title": "Player_Health.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Player\\Player_Health.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player_Health.cs",
@@ -375,7 +374,8 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\Player_Health.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-19T16:16:32.221Z"
+              "WhenOpened": "2026-04-19T16:16:32.221Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -403,7 +403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "HealthController.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\HealthController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HealthController.cs",
@@ -415,7 +415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Enemy_HitBox.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_HitBox.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_HitBox.cs",
@@ -535,7 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Enemy_Boss.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_Boss.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Boss\\Enemy_Boss.cs",
@@ -559,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Enemy_Grenade.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Grenade.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Grenade.cs",
@@ -655,28 +655,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Weapon.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Weapon\\Weapon.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Weapon\\Weapon.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Weapon\\Weapon.cs",
               "RelativeToolTip": "Assets\\Scripts\\Weapon\\Weapon.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAAAG4AAABZAAAAAAAAAA==",
+              "ViewState": "AgIAAGsAAAAAAAAAAABRwG4AAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-19T16:33:53.894Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Enemy_RangeWeaponData.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Data\\Enemy_RangeWeaponData.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Data\\Enemy_RangeWeaponData.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Data\\Enemy_RangeWeaponData.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Data\\Enemy_RangeWeaponData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwB4AAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T16:10:23.623Z"
+              "WhenOpened": "2026-01-19T16:10:23.623Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -764,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Enemy_Range.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Range\\Enemy_Range.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Range\\Enemy_Range.cs",
@@ -776,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Weapon_Data.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Weapon\\Weapon_Data.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Weapon\\Weapon_Data.cs",
@@ -784,8 +785,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Weapon\\Weapon_Data.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAAwCwAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T15:12:25.45Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-08T15:12:25.45Z"
             },
             {
               "$type": "Document",
@@ -861,7 +861,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Bullet.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Bullet.cs",
@@ -873,7 +873,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Enemy_Melee.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Melee\\Enemy_Melee.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Melee\\Enemy_Melee.cs",
@@ -881,12 +881,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemy\\Enemy_Melee\\Enemy_Melee.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAAAIoAAAB1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T12:53:16.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T12:53:16.903Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Enemy_Axe.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy_Axe.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy_Axe.cs",
@@ -958,7 +957,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Enemy\\Enemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Enemy.cs",
@@ -1054,7 +1053,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "PlayerWeaponController.cs",
               "DocumentMoniker": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\Player\\PlayerWeaponController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerWeaponController.cs",

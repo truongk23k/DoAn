@@ -2607,7 +2607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2754675766613848833}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3511774, y: 0.53824407, z: 0.5885694, w: 0.4904629}
+  m_LocalRotation: {x: -0.39696264, y: 0.5873743, z: 0.54854566, w: 0.44329423}
   m_LocalPosition: {x: -0.0436, y: 0.1053, z: 0.0526}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 1
@@ -2618,7 +2618,7 @@ Transform:
   - {fileID: 7181950800424548277}
   - {fileID: 5091381785095481336}
   m_Father: {fileID: 3711077569242876542}
-  m_LocalEulerAnglesHint: {x: -77.978, y: 33.378, z: 73.109}
+  m_LocalEulerAnglesHint: {x: -85.1, y: 93.474, z: 13.544}
 --- !u!33 &5472974571498583588
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3159,6 +3159,9 @@ MonoBehaviour:
   whatIsAlly:
     serializedVersion: 2
     m_Bits: 2048
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
   healthPoints: 2
   maxChaseRange: 0
   aggresionRange: 9.35
@@ -3173,6 +3176,7 @@ MonoBehaviour:
   coverPerk: 0
   unstoppablePerk: 0
   gernadePerk: 0
+  grenadeDamage: 50
   grenadePrefab: {fileID: 6951391754333374202, guid: 09934f9f513a7d841b4cf0a6971d531f, type: 3}
   impactPower: 5
   timeToTarget: 1.2

@@ -1656,7 +1656,7 @@ MonoBehaviour:
   aggresionRange: 3
   idleTime: 0
   walkSpeed: 1.5
-  runSpeed: 3
+  runSpeed: 4
   turnSpeed: 6
   patrolPoints:
   - {fileID: 4676560928989702665}
@@ -1664,13 +1664,13 @@ MonoBehaviour:
   - {fileID: 7790468034490440846}
   meleeTypes: 00000000
   weaponType: 0
-  shieldDurability: 20
+  shieldDurability: 400
   shieldTransform: {fileID: 2050241288764734821}
   dodgeCooldown: 5
-  axeDamage: 10
+  axeDamage: 70
   axePrefab: {fileID: 5578750314841729409, guid: 4b2922f96f70e6d4680678d35a869d0c, type: 3}
   axeFlySpeed: 6
-  axeAimTimer: 1
+  axeAimTimer: 1.25
   axeThrowCooldown: 10
   axeStartPoint: {fileID: 7558067889697220045}
   attackData:
@@ -1682,20 +1682,20 @@ MonoBehaviour:
     attackIndex: 1
     animationSpeed: 1.4
   attackList:
-  - attackDamage: 7
+  - attackDamage: 25
     attackName: Sword spin attack
     attackType: 1
     attackRange: 1.5
-    moveSpeed: 2.5
+    moveSpeed: 3.5
     attackIndex: 0
     animationSpeed: 1
-  - attackDamage: 5
+  - attackDamage: 21
     attackName: Sword slash
     attackType: 0
     attackRange: 0.8
     moveSpeed: 0.1
     attackIndex: 1
-    animationSpeed: 1.5
+    animationSpeed: 1.7
   meleeAttackFx: {fileID: 8695453366832261935, guid: 18cfecabbf783f94380bc0f5500ebc25, type: 3}
 --- !u!195 &3973570238047151683
 NavMeshAgent:
