@@ -300,7 +300,7 @@ public class Enemy_Range : Enemy
 
         if (Physics.Raycast(myPosition, directionToPlayer, out RaycastHit hit, Mathf.Infinity, ~whatToIgnore))
         {
-            if (hit.transform.GetComponentInParent<Player>() != null)
+            if (/*hit.transform.GetComponentInParent<Player>() != null*/hit.transform.root == Player.instance.transform.root)
             {
                 UpdateAimPosition();
                 return true;

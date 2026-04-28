@@ -9850,6 +9850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Boss_Hummer
       objectReference: {fileID: 0}
+    - target: {fileID: 2307417475917185369, guid: 4afe58c072cb64049bb30e7fa30742bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10326,11 +10330,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1778173095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9298ea8db1367224f8c8449e39980cdd, type: 3}
+  m_Script: {fileID: 11500000, guid: 8308f0c602dc9ae4986550c72aab198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
-  runSpeed: 3.5
+  runSpeed: 4
   turnSpeed: 10
   gravityScale: 9.81
 --- !u!143 &1778173097
@@ -10398,7 +10402,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1778173095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ec95ff83d832a4684068541eab86d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bcb579009efc6246af520584a227147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   whatIsAlly:
@@ -10410,7 +10414,7 @@ MonoBehaviour:
     weaponType: 0
     bulletDamage: 0
     shotType: 0
-    fireRate: 1
+    fireRate: 0
     burstAvalible: 0
     burstActive: 0
     bulletInMagazine: 0
@@ -10418,7 +10422,7 @@ MonoBehaviour:
     totalReserveAmmo: 0
   bulletImpactForce: 100
   bulletPrefab: {fileID: 3024902520240881030, guid: 6d4915b23ad95bf4c90a9bb92bc3aa83, type: 3}
-  bulletSpeed: 50
+  bulletSpeed: 15
   weaponHolder: {fileID: 762229060}
   maxSlots: 2
   weaponSlots: []
@@ -10450,20 +10454,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1778173095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 300058b9fcfed9e46a1d3845b9cc5fe6, type: 3}
+  m_Script: {fileID: 11500000, guid: d51575fb95f62eb4f85c13bd747eb19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aimLaser: {fileID: 2047199198}
   aim: {fileID: 1113050036}
-  isAimingPrecisely: 1
-  isLockingToTarget: 1
+  isAimingPrecisely: 0
+  isLockingToTarget: 0
   cameraTarget: {fileID: 1776649286}
   minCameraDistance: 1
-  maxCameraDistance: 2.5
-  cameraSensitivity: 3.5
+  maxCameraDistance: 3
+  cameraSensitivity: 5
   aimLayerMask:
     serializedVersion: 2
-    m_Bits: 2240
+    m_Bits: 7927
 --- !u!114 &1778173106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10473,7 +10477,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1778173095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76394ce629f9ac74097f5eab57aa8ec7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d41edb9b747c844387c70501bdfea0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactables: []
@@ -15975,6 +15979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &4254682187392135446
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -16253,6 +16258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &4885024441568945213
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -17296,6 +17302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!65 &6580962636854443076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17358,6 +17365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &6668835839197754854
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -17608,6 +17616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &6862570426411372501
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -17748,6 +17757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &7048651805658450817
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18025,6 +18035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &7697167737182244543
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18213,6 +18224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &7744398150072452291
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18554,6 +18566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &8336180031426403813
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18743,6 +18756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &8528108494501610953
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -18944,6 +18958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d96930550b24ac4f91540f36576f900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultilier: 1
 --- !u!144 &8631699040732444764
 CharacterJoint:
   m_ObjectHideFlags: 0

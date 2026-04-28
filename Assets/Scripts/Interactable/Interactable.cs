@@ -1,0 +1,68 @@
+using UnityEngine;
+
+public class Interactable : MonoBehaviour
+{
+    protected Player_WeaponController weaponController;
+    protected Player_Interaction playerInteraction;
+
+    protected MeshRenderer mesh;
+    protected Material defaultMaterial;
+    [SerializeField] private Material highlightMaterial;
+
+    private void Start()
+    {
+        if (mesh == null)
+            mesh = GetComponentInChildren<MeshRenderer>();
+
+        defaultMaterial = mesh.material;
+    }
+
+    protected void UpdateMeshAndMaterial(MeshRenderer newMesh)
+    {
+        mesh = newMesh;
+        defaultMaterial = newMesh.sharedMaterial;
+    }
+
+    public virtual void Interaction()
+    {
+        Debug.Log("Ineraction");
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (weaponController == null)
+            weaponController = other.GetComponent<Player_WeaponController>();
+
+        if (playerInteraction == null)
+            playerInteraction = other.GetComponent<Player_Interaction>();
+
+        if (playerInteraction == null)
+            return;
+
+        // Ki?m tra xem object này ?ã có trong list ch?a
+        if (!playerInteraction.GetInteractable().Contains(this))
+        {
+            playerInteraction.GetInteractable().Add(this);
+            playerInteraction.UpdateClosestInteractable();
+        }
+    }
+
+    public void HighlightActive(bool active)
+    {
+        if (active)
+            mesh.material = highlightMaterial;
+        else
+            mesh.material = defaultMaterial;
+    }
+
+    protected virtual void OnTriggerExit(Collider other)
+    {
+        Player_Interaction playerInteraction = other.GetComponent<Player_Interaction>();
+
+        if (playerInteraction == null)
+            return;
+
+        playerInteraction.GetInteractable().Remove(this);
+        playerInteraction.UpdateClosestInteractable();
+    }
+}

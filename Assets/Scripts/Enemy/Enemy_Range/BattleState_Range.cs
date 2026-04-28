@@ -131,7 +131,8 @@ public class BattleState_Range : EnemyState
         Vector3 directionToPlayer = Player.instance.transform.position - enemy.transform.position;
         if (Physics.Raycast(enemy.transform.position, directionToPlayer, out RaycastHit hit))
         {
-            if (hit.transform == Player.instance.transform || hit.transform.parent == Player.instance.transform)
+            //if (hit.transform == Player.instance.transform || hit.transform.parent == Player.instance.transform)
+            if (hit.transform.root == Player.instance.transform.root)
                 return true;
         }
 
