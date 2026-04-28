@@ -6625,7 +6625,7 @@ MonoBehaviour:
   aggresionRange: 15
   idleTime: 3
   walkSpeed: 1.25
-  runSpeed: 3
+  runSpeed: 4
   turnSpeed: 8
   patrolPoints:
   - {fileID: 7208981836047073920}
@@ -6636,13 +6636,16 @@ MonoBehaviour:
   attackRange: 1.6
   minAbilityDistance: 2.2
   abilityCooldown: 7
+  flameDamage: 25
   flameDamageCooldown: 1
   flamethrower: {fileID: 7873882615057847640}
   flamethrowDuration: 3
+  hummerDamage: 25
   activationPrefab: {fileID: 2965222256817593503, guid: a164e676dbbd6e54587237e619372c98, type: 3}
   hummerCheckRadius: 1.25
+  jumpAttackDamage: 25
   jumpAttackCooldown: 8
-  travelTimeToTarget: 1.8
+  travelTimeToTarget: 1
   minJumpDistanceRequired: 5
   impactRadius: 2.5
   impactPower: 15
@@ -6651,6 +6654,7 @@ MonoBehaviour:
   whatToIgnore:
     serializedVersion: 2
     m_Bits: 2048
+  meleeAttackDamage: 40
   damagePoints:
   - {fileID: 7324585591131551134}
   attackCheckRadius: 0.6
@@ -6698,7 +6702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de575036e635cec49a4ce3de1578a949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 2000
   currentHealth: 0
 --- !u!1 &2311666115217087784
 GameObject:
