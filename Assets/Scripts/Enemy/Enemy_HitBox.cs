@@ -14,7 +14,9 @@ public class Enemy_HitBox : HitBox
 
     override public void TakeDamage(int damage)
     {
-        enemy.GetHit(damage);
+        int newDamage = Mathf.RoundToInt(damage * damageMultilier);
+
+        enemy.GetHit(newDamage);
     }
 
 }
