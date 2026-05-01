@@ -2910,9 +2910,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastLevelPart: {fileID: 2115004650035912146, guid: 6835d5877aaf4a141b82e08b26c6bb17, type: 3}
   levelParts:
-  - {fileID: 1053337803910585409, guid: a64d002baa960f64fba0e713085a2ec0, type: 3}
   - {fileID: 5041066828483917334, guid: 851d90e77c10a2449a108fcfd2e7f44f, type: 3}
-  nextSnapPoints: {fileID: 1455389097}
+  - {fileID: 5041066828483917334, guid: 851d90e77c10a2449a108fcfd2e7f44f, type: 3}
+  - {fileID: 5041066828483917334, guid: 851d90e77c10a2449a108fcfd2e7f44f, type: 3}
+  - {fileID: 5041066828483917334, guid: 851d90e77c10a2449a108fcfd2e7f44f, type: 3}
+  nextSnapPoint: {fileID: 1455389097}
   generationCooldown: 0.25
 --- !u!4 &483017621
 Transform:

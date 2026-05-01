@@ -124,6 +124,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\IdleState_Melee.cs" />
     <Compile Include="Assets\Scripts\Dummy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_HitBox.cs" />
+    <Compile Include="Assets\Scripts\LevelGeneration\IntersectionCheck.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon\Weapon.cs" />
     <Compile Include="Assets\Scripts\LevelGeneration\LevelGenerator.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamagable.cs" />

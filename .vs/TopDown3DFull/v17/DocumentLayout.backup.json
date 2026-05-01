@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelgeneration\\levelgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|c:\\workspace_truonglv\\topdown3dfull\\assets\\scripts\\levelgeneration\\levelpart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\assets\\scripts\\levelgeneration\\levelpart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A84A911-04A5-158D-E62B-B45105FFAC6E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelgeneration\\levelpart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -286,7 +286,7 @@
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 214,
+      "VerticalTabListWidth": 175,
       "DocumentGroups": [
         {
           "DockedWidth": 200,
@@ -300,7 +300,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\LevelGeneration\\LevelPart.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\LevelGeneration\\LevelPart.cs",
               "RelativeToolTip": "Assets\\Scripts\\LevelGeneration\\LevelPart.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBEAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAwEwAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-01T16:06:26.514Z",
               "EditorCaption": ""
@@ -313,7 +313,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\LevelGeneration\\LevelGenerator.cs",
               "ToolTip": "C:\\WORKSPACE_TRUONGLV\\TopDown3DFull\\Assets\\Scripts\\LevelGeneration\\LevelGenerator.cs",
               "RelativeToolTip": "Assets\\Scripts\\LevelGeneration\\LevelGenerator.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAsAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAtwC4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-01T15:06:44.331Z",
               "EditorCaption": ""
