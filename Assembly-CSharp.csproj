@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Interactable\Pickup_Weapon.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\BattleState_Range.cs" />
+    <Compile Include="Assets\Scripts\LevelGeneration\SnapPoint.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon\Weapon_Data.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Health.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\Enemy_Range.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Assets\Scripts\Dummy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_HitBox.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon\Weapon.cs" />
+    <Compile Include="Assets\Scripts\LevelGeneration\LevelGenerator.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamagable.cs" />
     <Compile Include="Assets\Scripts\Player\Player_WeaponController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\DeadState_Boss.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\IdleState_Range.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\Enemy_Boss.cs" />
     <Compile Include="Assets\Scripts\Player\Player_HitBox.cs" />
+    <Compile Include="Assets\Scripts\LevelGeneration\LevelPart.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
