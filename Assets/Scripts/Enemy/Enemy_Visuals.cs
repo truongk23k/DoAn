@@ -15,7 +15,8 @@ public enum Enemy_RangeWeaponType
     Revolver,
     Shotgun,
     AutoRifle,
-    Rifle
+    Rifle,
+    Random
 }
 
 public class Enemy_Visuals : MonoBehaviour

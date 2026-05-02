@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public enum GernadePerk
 public class Enemy_Range : Enemy
 {
     [Header("Enemy perks")]
+    public Enemy_RangeWeaponType weaponType;
     public CoverPerk coverPerk;
     public UnstoppablePerk unstoppablePerk;
     public GernadePerk gernadePerk;
@@ -50,7 +52,6 @@ public class Enemy_Range : Enemy
 
     [Header("Weapon details")]
     public float attackDelay;
-    public Enemy_RangeWeaponType weaponType;
     public Enemy_RangeWeaponData weaponData;
 
     [Space]
@@ -153,11 +154,30 @@ public class Enemy_Range : Enemy
 
     protected override void InitializePerk()
     {
+        if(weaponType == Enemy_RangeWeaponType.Random)
+        {
+            ChooseRandomWeaponType();
+        }
+
         if (IsUnstoppable())
         {
             advanceSpeed = 1;
             anim.SetFloat("AdvanceAnimIndex", 1f); //1 is a slow walk animation
         }
+    }
+
+    private void ChooseRandomWeaponType()
+    {
+        List<Enemy_RangeWeaponType> validTypes = new List<Enemy_RangeWeaponType>();
+
+        foreach (Enemy_RangeWeaponType type in Enum.GetValues(typeof(Enemy_RangeWeaponType)))
+        {
+            if (type != Enemy_RangeWeaponType.Random && type != Enemy_RangeWeaponType.Rifle)
+                validTypes.Add(type);
+        }
+
+        int randomIndex = UnityEngine.Random.Range(0, validTypes.Count);
+        weaponType = validTypes[randomIndex];
     }
 
     public override void EnterBattleMode()
@@ -271,7 +291,7 @@ public class Enemy_Range : Enemy
         if (filteredData.Count == 0)
             return;
 
-        int randomIndex = Random.Range(0, filteredData.Count);
+        int randomIndex = UnityEngine.Random.Range(0, filteredData.Count);
 
         weaponData = filteredData[randomIndex];
 
@@ -312,4 +332,12 @@ public class Enemy_Range : Enemy
     #endregion
 
     public bool IsUnstoppable() => unstoppablePerk == UnstoppablePerk.Unstoppable;
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, advanceStoppingDistance);
+    }
 }

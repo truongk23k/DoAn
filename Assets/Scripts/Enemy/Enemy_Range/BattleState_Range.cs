@@ -168,6 +168,10 @@ public class BattleState_Range : EnemyState
     {
         if (firstTimeAttack)
         {
+            //Advance stop distance should be less than aggresion range so that 
+            //enemy to advance player all the time
+            enemy.aggresionRange = enemy.advanceStoppingDistance + 2f;
+
             firstTimeAttack = false;
             bulletsPerAttack = enemy.weaponData.GetBulletsPerAttack();
             weaponCooldown = enemy.weaponData.GetWeaponCooldown();
