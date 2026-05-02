@@ -1281,8 +1281,9 @@ GameObject:
   - component: {fileID: 8417605974106452671}
   - component: {fileID: 1334962230449788716}
   - component: {fileID: 2371943364573879428}
+  - component: {fileID: 4058300129331568020}
   m_Layer: 0
-  m_Name: Exit_1_T_point
+  m_Name: ' Snap Point - Exit'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1331,7 +1332,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4720c7f09db530c4e9e30262124db332, type: 2}
+  - {fileID: 2100000, guid: 1cc692180c674214e8fb08f4a138ca11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1353,6 +1354,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4058300129331568020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342870620907337688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199c7350dadd56147bf648e9a956cd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointType: 1
 --- !u!1 &6363230054788383439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,8 +1494,9 @@ GameObject:
   - component: {fileID: 308088885976204133}
   - component: {fileID: 7890829489081825288}
   - component: {fileID: 6339149509779152853}
+  - component: {fileID: 5955600803495905133}
   m_Layer: 0
-  m_Name: Exit_2_T_point
+  m_Name: ' Snap Point - Exit'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1530,7 +1545,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4720c7f09db530c4e9e30262124db332, type: 2}
+  - {fileID: 2100000, guid: 1cc692180c674214e8fb08f4a138ca11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1552,6 +1567,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5955600803495905133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598535062995348407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199c7350dadd56147bf648e9a956cd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointType: 1
 --- !u!1 &7937666250505713321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,8 +1711,9 @@ GameObject:
   - component: {fileID: 5391468347549525086}
   - component: {fileID: 6821211608871923476}
   - component: {fileID: 4333009422163174290}
+  - component: {fileID: 843650294372480439}
   m_Layer: 0
-  m_Name: Entrance_T_point
+  m_Name: ' Snap Point - Enter'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1733,7 +1762,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4720c7f09db530c4e9e30262124db332, type: 2}
+  - {fileID: 2100000, guid: 1cc692180c674214e8fb08f4a138ca11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1755,6 +1784,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &843650294372480439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8770695698067938476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199c7350dadd56147bf648e9a956cd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointType: 0
 --- !u!1 &8894187009955060356
 GameObject:
   m_ObjectHideFlags: 0

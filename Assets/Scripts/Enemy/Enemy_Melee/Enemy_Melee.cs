@@ -136,7 +136,7 @@ public class Enemy_Melee : Enemy
         }
         else
         {
-            Debug.LogWarning($"Cannot update attack data for {gameObject.name}. Weapon data is missing or invalid.");
+            //Debug.LogWarning($"Cannot update attack data for {gameObject.name}. Weapon data is missing or invalid.");
         }
     }
 
