@@ -1594,6 +1594,7 @@ GameObject:
   - component: {fileID: 3973570238047151683}
   - component: {fileID: 1265165000295783964}
   - component: {fileID: 5224118674521805939}
+  - component: {fileID: 4273033139575738046}
   m_Layer: 11
   m_Name: Enemy_Melee
   m_TagString: Untagged
@@ -1756,6 +1757,18 @@ MonoBehaviour:
   leftElbowIK: {fileID: 0}
   leftHandIKConstraint: {fileID: 0}
   weaponAimConstraint: {fileID: 0}
+--- !u!114 &4273033139575738046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661816752226033765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca9ce5d705e1c9448972df84937c879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2701538863430294174
 GameObject:
   m_ObjectHideFlags: 0

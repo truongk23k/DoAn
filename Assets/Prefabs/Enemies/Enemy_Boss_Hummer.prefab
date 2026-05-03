@@ -6557,6 +6557,7 @@ GameObject:
   - component: {fileID: 5610141815591456223}
   - component: {fileID: 4063616425719231862}
   - component: {fileID: 7844037180720970125}
+  - component: {fileID: -3825964721835249253}
   m_Layer: 11
   m_Name: Enemy_Boss_Hummer
   m_TagString: Untagged
@@ -6617,13 +6618,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c002b54c1f62e074097f8b4e00d7bf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 2
   whatIsAlly:
     serializedVersion: 2
     m_Bits: 2048
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  healthPoints: 10
   maxChaseRange: 0
   aggresionRange: 15
   idleTime: 3
@@ -6707,6 +6708,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2000
   currentHealth: 0
+--- !u!114 &-3825964721835249253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307417475917185369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca9ce5d705e1c9448972df84937c879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionObjectKey: {fileID: 0}
 --- !u!1 &2311666115217087784
 GameObject:
   m_ObjectHideFlags: 0

@@ -3063,6 +3063,7 @@ GameObject:
   - component: {fileID: 6238758252204127310}
   - component: {fileID: 8912735910592572553}
   - component: {fileID: 3852356624857712788}
+  - component: {fileID: -5209770216998367581}
   m_Layer: 11
   m_Name: Enemy_Range
   m_TagString: Untagged
@@ -3175,6 +3176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43d1391c30d2a544b8357a900da41a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 1
   whatIsAlly:
     serializedVersion: 2
     m_Bits: 2048
@@ -3225,6 +3227,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e23684801a2a08b46994f19c90074d75, type: 2}
   - {fileID: 11400000, guid: 6e30cee4d904f5c45b533cb706d22908, type: 2}
   - {fileID: 11400000, guid: cc4829600c0ad5b42a5ca3656b127b3e, type: 2}
+--- !u!114 &-5209770216998367581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510898230161289459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca9ce5d705e1c9448972df84937c879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionObjectKey: {fileID: 0}
 --- !u!1 &3541631194719455878
 GameObject:
   m_ObjectHideFlags: 0
