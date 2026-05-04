@@ -8,15 +8,18 @@ public class Mission_CarDelivery : Mission
 
     public override void StartMission()
     {
+        FindObjectOfType<MissionObject_CarDeliveryZone>(true).gameObject.SetActive(true);
+
         carWasDelivered = false;
         MissionObject_CarToDeliver.OnCarDelivery += CarDeliveryCompleted;
 
         Car[] cars = FindObjectsOfType<Car>();
-        
+
         foreach (Car car in cars)
         {
             car.AddComponent<MissionObject_CarToDeliver>();
         }
+
     }
 
     public override bool MissionCompleted()
