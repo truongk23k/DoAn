@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\AttackState_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\Enemy_Melee.cs" />
     <Compile Include="Assets\Scripts\MissionManager\MissionObject_HuntTarget.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_TransparentOnHover.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon\WeaponModel.cs" />
     <Compile Include="Assets\Scripts\Enemy\CoverSystem\Cover.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\Flamethrow_DamageArea.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_PatrolPoint.cs" />
     <Compile Include="Assets\Scripts\MissionManager\Mission_Timer.cs" />
     <Compile Include="Assets\Scripts\Object Pool\PooledObject.cs" />
+    <Compile Include="Assets\Scripts\UI\UI.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_RangeWeaponModel.cs" />
     <Compile Include="Assets\Scripts\MissionManager\MissionEnd_Trigger.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="Assets\Scripts\Player\Player_WeaponController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\DeadState_Boss.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\RunToCoverState_Range.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_InGame.cs" />
     <Compile Include="Assets\Scripts\Player\Player_WeaponVisuals.cs" />
     <Compile Include="Assets\Scripts\Interactable\Pickup_Ammo.cs" />
     <Compile Include="Assets\Scripts\MissionManager\MissionObject_CarDeliveryZone.cs" />
@@ -151,8 +154,32 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\IdleState_Range.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\Enemy_Boss.cs" />
     <Compile Include="Assets\Scripts\MissionManager\Mission_LastDefence.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_WeaponSlot.cs" />
     <Compile Include="Assets\Scripts\Player\Player_HitBox.cs" />
     <Compile Include="Assets\Scripts\LevelGeneration\LevelPart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1077,6 +1104,10 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">

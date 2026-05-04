@@ -11,6 +11,8 @@ public class Mision_KeyFind : Mission
     public override void StartMission()
     {
         MissionObject_Key.OnKeyPickedUp += PickUpKey;
+
+        UI.instance.inGameUI.UpdateMissionInfo("Find a key-holder. Retrive the key.");
         
         Enemy enemy = LevelGenerator.instance.GetRandomEnemy();
         enemy.GetComponent<Enemy_DropController>()?.GiveKey(key);
@@ -26,7 +28,8 @@ public class Mision_KeyFind : Mission
     {
         keyFound = true;
         MissionObject_Key.OnKeyPickedUp -= PickUpKey;
-        Debug.Log(" I pick up a key");
+
+        UI.instance.inGameUI.UpdateMissionInfo("You've got the key! \nGet to the evacuation point.");
     }
     
 }

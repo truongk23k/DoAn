@@ -15,6 +15,7 @@ public class LevelGenerator : MonoBehaviour
     [Space]
 
     //Level parts
+    [SerializeField] private Transform startLevelPart;
     [SerializeField] private Transform lastLevelPart;
     [SerializeField] private List<Transform> levelParts;
     private List<Transform> currentLevelParts;
@@ -74,6 +75,7 @@ public class LevelGenerator : MonoBehaviour
         currentLevelParts = new List<Transform>(levelParts);
 
         DestroyOldLevelPartsAndEnemies();
+        enemyList.AddRange(startLevelPart.GetComponent<LevelPart>().MyEnemies());
     }
 
     private void DestroyOldLevelPartsAndEnemies()

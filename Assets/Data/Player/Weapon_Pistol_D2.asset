@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Weapon_Pistol_D2
   m_EditorClassIdentifier: 
   weaponName: Heaven 5672
+  bulletDamage: 0
   bulletInMagazine: 20
   magazineCapacity: 20
-  totalReserveAmmo: 99
+  totalReserveAmmo: 999
   shootType: 0
   bulletPerShoot: 1
   fireRate: 4
@@ -36,3 +37,4 @@ MonoBehaviour:
   equipmentSpeed: 1
   gunDistance: 6
   cameraDistance: 6
+  weaponIcon: {fileID: 502962284, guid: 6208c8c8e259e5f4197b8edde7d7bc85, type: 3}

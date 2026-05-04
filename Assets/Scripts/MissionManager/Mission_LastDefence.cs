@@ -33,6 +33,8 @@ public class Mission_LastDefence : Mission
         defencePoint = FindObjectOfType<MissionEnd_Trigger>(true).transform.position;
 
         respawnPoints = new List<Transform>(ClosestPoints(amountOfRespawnPoints));
+
+        UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point.");
     }
 
     public override void UpdateMission()
@@ -40,8 +42,10 @@ public class Mission_LastDefence : Mission
         if (!defenceBegun)
             return;
 
-        defenceTimer -= Time.deltaTime;
         waveTimer -= Time.deltaTime;
+
+        if (defenceTimer > 0)
+            defenceTimer -= Time.deltaTime;
 
         if (waveTimer <= 0)
         {
@@ -50,7 +54,11 @@ public class Mission_LastDefence : Mission
         }
 
         defenceTimerText = System.TimeSpan.FromSeconds(defenceTimer).ToString(@"mm\:ss");
-        Debug.Log(defenceTimerText);
+        
+        string missionText = "Defend yourself till plane is ready to take off.";
+        string missionDetails = "Time left: " + defenceTimerText;
+
+        UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
     }
 
     public override bool MissionCompleted()

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Heaven 567
   bulletDamage: 25
-  bulletInMagazine: 15
-  magazineCapacity: 5
-  totalReserveAmmo: 999999999
+  bulletInMagazine: 5
+  magazineCapacity: 15
+  totalReserveAmmo: 9999
   shootType: 0
   bulletPerShoot: 1
   fireRate: 6
@@ -37,3 +37,4 @@ MonoBehaviour:
   equipmentSpeed: 1.55
   gunDistance: 25
   cameraDistance: 6
+  weaponIcon: {fileID: 502962284, guid: 6208c8c8e259e5f4197b8edde7d7bc85, type: 3}

@@ -18,6 +18,8 @@ public class Player_AnimationEvent : MonoBehaviour
         weaponController.CurrentWeapon().RefillBullets();
 
         weaponController.SetWeaponReady(true);
+
+        weaponController.UpdateWeaponUI();
     }
 
     public void WeaponEquipIsOver()

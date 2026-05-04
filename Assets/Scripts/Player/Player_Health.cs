@@ -11,6 +11,8 @@ public class Player_Health : HealthController
 
         if (ShouldDie())
             Die();
+
+        UI.instance.inGameUI.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     private void Die()

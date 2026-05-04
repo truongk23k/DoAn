@@ -31,6 +31,9 @@ public class Mission_EnemyHunt : Mission
         }   
 
         killsToGo = Mathf.Min(amountToKill, validEnemies.Count);
+        amountToKill = killsToGo;
+
+        UpdateMissionUI();
 
         for (int i = 0; i < amountToKill; i++)
         {
@@ -51,10 +54,21 @@ public class Mission_EnemyHunt : Mission
     private void EliminateTarget()
     {
         killsToGo--;
+        UpdateMissionUI();
 
         if (killsToGo <= 0)
+        {
+            UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point.");
             MissionObject_HuntTarget.OnTargetKilled -= EliminateTarget;
+        }
 
+    }
+
+    private void UpdateMissionUI()
+    {
+        string missionText = "Eliminate " + amountToKill +" enemies with signal disruptor.";
+        string missionDetails = "Target left: " + killsToGo;
+        UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
     }
 
 }
