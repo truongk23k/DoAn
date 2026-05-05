@@ -6,7 +6,7 @@ public class Player_WeaponController : MonoBehaviour
 {
     [SerializeField] private LayerMask whatIsAlly;
     [Space]
-    public Weapon_Data dataWeaponStart;
+    public List <Weapon_Data> defaultWeaponData;
 
     private Player player;
 
@@ -34,7 +34,6 @@ public class Player_WeaponController : MonoBehaviour
         player = GetComponent<Player>();
         AssignInputEvents();
 
-        Invoke(nameof(EquipStartingWeapon), 0.1f);
     }
 
     private void Update()
@@ -45,9 +44,16 @@ public class Player_WeaponController : MonoBehaviour
     }
 
     #region Slot management - Pickup/Equip/Drop/Ready
-    private void EquipStartingWeapon()
+    public void SetDefaultWeapon(List<Weapon_Data> newWeaponData)
     {
-        PickupWeapon(new Weapon(dataWeaponStart));
+        defaultWeaponData = new List<Weapon_Data>(newWeaponData);
+        weaponSlots.Clear();
+
+        foreach (Weapon_Data weaponData in defaultWeaponData)
+        {
+            PickupWeapon(new Weapon(weaponData));
+        }
+
         EquipWeapon(0);
     }
 

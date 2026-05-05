@@ -38,3 +38,4 @@ MonoBehaviour:
   gunDistance: 6
   cameraDistance: 6
   weaponIcon: {fileID: 502962284, guid: 6208c8c8e259e5f4197b8edde7d7bc85, type: 3}
+  weaponInfo: Quick to draw, quick to use, quick to Kill

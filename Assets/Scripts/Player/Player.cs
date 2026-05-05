@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public Ragdoll ragdoll { get; private set; }
     public Animator anim { get; private set; }
 
+    public bool controlsEnabled { get; private set; }
+
     private void Awake()
     {
         if (instance == null)
@@ -40,10 +42,13 @@ public class Player : MonoBehaviour
         controls.Enable();
 
         controls.Character.UIMissionToolTipSwitch.performed += context => UI.instance.inGameUI.SwitchMissionTooltip();
+        controls.Character.UIPause.performed += context => UI.instance.PauseSwitch();
     }
 
     private void OnDisable()
     {
         controls.Disable();
     }
+
+    public void SetControlsEnabledTo(bool enabled) => controlsEnabled = enabled;
 }

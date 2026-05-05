@@ -23,7 +23,7 @@ public class UI_InGame : MonoBehaviour
     {
         weaponSlots_UI = GetComponentsInChildren<UI_WeaponSlot>();
 
-        missionHelpTooltip.SetActive(false);
+        //missionHelpTooltip.SetActive(false);
     }
 
     public void SwitchMissionTooltip()

@@ -38,3 +38,4 @@ MonoBehaviour:
   gunDistance: 25
   cameraDistance: 6
   weaponIcon: {fileID: -940019928, guid: 6208c8c8e259e5f4197b8edde7d7bc85, type: 3}
+  weaponInfo: Good on a big distance

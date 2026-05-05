@@ -46,9 +46,6 @@ public class Player_AimController : MonoBehaviour
             return;
         }
 
-        if (!player.controlsEnabled)
-            return;
-
         if (Input.GetKeyDown(KeyCode.P))
             isAimingPrecisely = !isAimingPrecisely;
 

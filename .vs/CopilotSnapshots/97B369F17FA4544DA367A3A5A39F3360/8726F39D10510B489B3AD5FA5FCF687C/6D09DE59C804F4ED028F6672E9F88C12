@@ -46,9 +46,6 @@ public class Player_AimController : MonoBehaviour
             return;
         }
 
-        if (!player.controlsEnabled)
-            return;
-
         if (Input.GetKeyDown(KeyCode.P))
             isAimingPrecisely = !isAimingPrecisely;
 
@@ -107,17 +104,6 @@ public class Player_AimController : MonoBehaviour
         }
 
         aim.position = GetMouseHitInfor().point;
-
-        // Tránh aim quá gần player
-        float minAimDistance = 1f; // Khoảng cách tối thiểu từ player
-        float distanceToAim = Vector3.Distance(transform.position, aim.position);
-
-        if (distanceToAim < minAimDistance)
-        {
-            // Đẩy aim point ra cách xa hơn
-            Vector3 directionFromPlayerToAim = (aim.position - transform.position).normalized;
-            aim.position = transform.position + directionFromPlayerToAim * minAimDistance;
-        }
 
         if (!isAimingPrecisely)
             aim.position = new Vector3(aim.position.x, transform.position.y + 1, aim.position.z);

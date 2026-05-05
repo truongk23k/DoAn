@@ -16,17 +16,18 @@ public class MissionManager : MonoBehaviour
             Destroy(instance.gameObject);
     }
 
-    private void Start()
-    {
-        Invoke(nameof(StartMission), 1f);
-    }
 
     private void Update()
     {
         currentMission?.UpdateMission();
     }
 
-    private void StartMission() => currentMission.StartMission();
+    public void SetCurrentMission(Mission newMission)
+    {
+        currentMission = newMission;
+    }
+
+    public void StartMission() => currentMission.StartMission();
 
     public bool MissionCompleted() => currentMission.MissionCompleted();
 }
