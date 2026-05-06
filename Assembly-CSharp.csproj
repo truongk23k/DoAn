@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\MissionManager\Mission_EnemyHunt.cs" />
     <Compile Include="Assets\Scripts\Interactable\Pickup_Weapon.cs" />
+    <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\UI\UI_MissionSelectionButton.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Range\BattleState_Range.cs" />
@@ -109,14 +110,18 @@
     <Compile Include="Assets\Scripts\UI\UI_Button.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon\WeaponModel.cs" />
     <Compile Include="Assets\Scripts\Enemy\CoverSystem\Cover.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_GameOver.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\Flamethrow_DamageArea.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Melee\AbilityState_Melee.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_Settings.cs" />
     <Compile Include="Assets\Scripts\Enemy\CoverSystem\CoverPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_TooltipOnHover.cs" />
     <Compile Include="Assets\Scripts\Player\Player_AimController.cs" />
     <Compile Include="Assets\Scripts\Player\Player_AnimationEvent.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_AnimationEvents.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_WeaponModel.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\AbilityState_Boss.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_ComicPanel.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Boss\IdleState_Boss.cs" />
     <Compile Include="Assets\Scripts\Managers\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Interactable\Interactable.cs" />

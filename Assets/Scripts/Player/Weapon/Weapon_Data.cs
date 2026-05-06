@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon Data", menuName = "Weapon System/Weapon Data")]

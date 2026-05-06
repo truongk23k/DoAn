@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,6 +25,14 @@ public class UI_InGame : MonoBehaviour
         //missionHelpTooltip.SetActive(false);
     }
 
+    public void InitSlots()
+    {
+        for (int i = 0; i < weaponSlots_UI.Length; i++)
+        {
+            weaponSlots_UI[i].UpdateWeaponSlot(null, false);
+        }
+    }
+
     public void SwitchMissionTooltip()
     {
         tooltipActive = !tooltipActive;
@@ -41,7 +48,7 @@ public class UI_InGame : MonoBehaviour
 
     public void UpdateWeaponUI(List<Weapon> weaponSlots, Weapon currentWeapon)
     {
-        for(int i = 0; i < weaponSlots_UI.Length; i++)
+        for (int i = 0; i < weaponSlots_UI.Length; i++)
         {
             if (i < weaponSlots.Count)
             {

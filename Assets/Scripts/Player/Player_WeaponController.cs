@@ -6,7 +6,7 @@ public class Player_WeaponController : MonoBehaviour
 {
     [SerializeField] private LayerMask whatIsAlly;
     [Space]
-    public List <Weapon_Data> defaultWeaponData;
+    public List<Weapon_Data> defaultWeaponData;
 
     private Player player;
 
@@ -117,6 +117,10 @@ public class Player_WeaponController : MonoBehaviour
         }
 
         weaponSlots.Add(newWeapon);
+
+        if (weaponSlots.Count == 1)
+            EquipWeapon(0);
+
         player.weaponVisuals.SwitchOnBackupWeaponModel();
 
         UpdateWeaponUI();
@@ -265,7 +269,7 @@ public class Player_WeaponController : MonoBehaviour
         Vector3 rayOrigin = GunPoint().position;
         Vector3 rayDirection = BulletDirection();
 
-        if(Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, Mathf.Infinity))
         {
             Enemy_Melee enemy_Melee = hit.collider.gameObject.GetComponentInParent<Enemy_Melee>();
 

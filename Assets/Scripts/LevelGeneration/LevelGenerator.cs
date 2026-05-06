@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
     public static LevelGenerator instance;
 
     //Enemies
-    private List<Enemy> enemyList;
+    [SerializeField]private List<Enemy> enemyList;
 
     //Navmesh
     [SerializeField] private NavMeshSurface navMeshSurface;
