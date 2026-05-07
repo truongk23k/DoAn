@@ -1,0 +1,87 @@
+﻿using UnityEngine;
+
+public class Car_Interaction : Interactable
+{
+    private Car_HealthController carHealthController;
+    private Car_Controller car;
+
+    private float defaultPlayerScale;
+
+    [Header("Exit Details")]
+    [SerializeField] private float exitCheckRadius;
+    [SerializeField] private Transform[] exitPoints;
+    [SerializeField] private LayerMask whatToIgnoreForExit;
+
+    private void Start()
+    {
+        carHealthController = GetComponent<Car_HealthController>();
+        car = GetComponent<Car_Controller>();
+
+        foreach(var point in exitPoints)
+        {
+            point.GetComponent<MeshRenderer>().enabled = false;
+            point.GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    public override void Interaction()
+    {
+        GetIntoTheCar();
+    }
+
+    private void GetIntoTheCar()
+    {
+        ControlsManager.instance.SwitchToCarControls();
+        carHealthController.UpdateCarHealthUI();
+        car.ActivateCar(true);
+
+        defaultPlayerScale = Player.instance.transform.localScale.x;
+
+        Player.instance.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        Player.instance.transform.parent = transform;
+        Player.instance.transform.localPosition = Vector3.up / 2;
+
+        CameraManager.instance.ChangeCameraTarget(transform, 12, 0.5f);
+    }
+
+    public void GetOutOfTheCar()
+    {
+        if (!car.carActive)
+            return;
+
+        car.ActivateCar(false);
+        Player.instance.transform.parent = null;
+        Player.instance.transform.position = GetExitPoint();
+        Player.instance.transform.localScale = new Vector3(defaultPlayerScale, defaultPlayerScale, defaultPlayerScale);
+
+        ControlsManager.instance.SwitchToCharacterControls();
+        CameraManager.instance.ChangeCameraTarget(Player.instance.aim.GetAimCameraTarget(), 8.5f, 0);
+    }
+
+    private Vector3 GetExitPoint()
+    {
+        foreach (Transform exitPoint in exitPoints)
+        {
+            if (IsExitClear(exitPoint.position))
+                return exitPoint.position;
+        }
+        return exitPoints[0].position;
+    }
+
+    private bool IsExitClear(Vector3 point)
+    {
+        Collider[] colliders = Physics.OverlapSphere(point, exitCheckRadius, ~whatToIgnoreForExit);
+        return colliders.Length == 0;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (exitPoints.Length > 0)
+        {
+            foreach (Transform exitPoint in exitPoints)
+            {
+                Gizmos.DrawWireSphere(exitPoint.position, exitCheckRadius);
+            }
+        }
+    }
+}

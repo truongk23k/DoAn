@@ -54,11 +54,7 @@ public class Pickup_Ammo : Interactable
             currentAmmoList.Remove(ammo);
         }
 
-        if (currentAmmoList.Count == 0)
-        {
-            playerInteraction.RemoveClosestInteractable();
-            ObjectPool.instance.ReturnObject(gameObject);
-        }
+        ObjectPool.instance.ReturnObject(gameObject);
     }
 
     private void SetupBulletAmount(AmmoData ammoData)

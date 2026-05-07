@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlsManager : MonoBehaviour
@@ -15,26 +13,42 @@ public class ControlsManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        controls = new PlayerControlls();
     }
 
     private void Start()
     {
-        controls = Player.instance.controls;
 
         SwitchToCharacterControls();
     }
 
     public void SwitchToCharacterControls()
     {
-        controls.UI.Disable();
         controls.Character.Enable();
+
+        controls.UI.Disable();
+        controls.Car.Disable();
         Player.instance.SetControlsEnabledTo(true);
+        UI.instance.inGameUI.SwitchToCharacterUI();
     }
 
     public void SwitchToUIControls()
     {
         controls.UI.Enable();
+
+        controls.Car.Disable();
         controls.Character.Disable();
         Player.instance.SetControlsEnabledTo(false);
+    }
+
+    public void SwitchToCarControls()
+    {
+        controls.Car.Enable();
+
+        controls.UI.Disable();
+        controls.Character.Disable();
+        Player.instance.SetControlsEnabledTo(false);
+        UI.instance.inGameUI.SwitchToCarUI();
     }
 }

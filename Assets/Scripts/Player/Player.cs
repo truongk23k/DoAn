@@ -19,14 +19,14 @@ public class Player : MonoBehaviour
 
     public bool controlsEnabled { get; private set; }
 
+    public bool isInCar { get; set; }
+
     private void Awake()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(instance.gameObject);
-
-        controls = new PlayerControlls();
 
         anim = GetComponentInChildren<Animator>();
         ragdoll = GetComponent<Ragdoll>();
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         weapon = GetComponent<Player_WeaponController>();
         weaponVisuals = GetComponent<Player_WeaponVisuals>();
         interaction = GetComponent<Player_Interaction>();
+        controls = ControlsManager.instance.controls;
     }
     private void OnEnable()
     {
@@ -50,5 +51,10 @@ public class Player : MonoBehaviour
         controls.Disable();
     }
 
-    public void SetControlsEnabledTo(bool enabled) => controlsEnabled = enabled;
+    public void SetControlsEnabledTo(bool enabled)
+    {
+        controlsEnabled = enabled;
+        ragdoll.CollidersActive(enabled);
+        aim.EnableAimLaser(enabled);
+    }
 }

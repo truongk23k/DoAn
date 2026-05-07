@@ -56,8 +56,6 @@ public class Pickup_Weapon : Interactable
     {
         weaponController.PickupWeapon(weapon);
 
-        playerInteraction.RemoveClosestInteractable();
-
         ObjectPool.instance.ReturnObject(gameObject);
     }
 

@@ -402,6 +402,118 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Car"",
+            ""id"": ""306a3ff2-af72-4ab7-8ceb-0580f1ac4db0"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""8eae0e0c-a6b7-4ae3-a674-6cd50c5d213c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CarExit"",
+                    ""type"": ""Button"",
+                    ""id"": ""d22b5060-8896-457d-be96-8812f79179c4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Button"",
+                    ""id"": ""1af8a37e-ea1e-4652-a87f-9761a5853801"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""84bde43c-8e90-442b-ac34-76884994a0c9"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""369ebe0a-dae6-4f66-97b7-f681b35d1939"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ddf856c8-e4e5-49e4-abdc-26a3e2843a77"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ddffd8ab-1183-48cc-aca7-568f9fc3892a"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""06b9201f-922d-4a47-978b-6135397a6d70"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48cca7dc-3668-4213-9156-57bffecfa9b5"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CarExit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efe7153d-78d6-4226-94ab-6c1fc07f1477"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -426,12 +538,18 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UIPause = m_UI.FindAction("UI Pause", throwIfNotFound: true);
+        // Car
+        m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
+        m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
+        m_Car_CarExit = m_Car.FindAction("CarExit", throwIfNotFound: true);
+        m_Car_Brake = m_Car.FindAction("Brake", throwIfNotFound: true);
     }
 
     ~@PlayerControlls()
     {
         UnityEngine.Debug.Assert(!m_Character.enabled, "This will cause a leak and performance issues, PlayerControlls.Character.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerControlls.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Car.enabled, "This will cause a leak and performance issues, PlayerControlls.Car.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -524,7 +642,7 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
         public InputAction @DropCurrentWeapon => m_Wrapper.m_Character_DropCurrentWeapon;
         public InputAction @Reload => m_Wrapper.m_Character_Reload;
         public InputAction @ToogleWeaponMode => m_Wrapper.m_Character_ToogleWeaponMode;
-        public InputAction @Ineraction => m_Wrapper.m_Character_Ineraction;
+        public InputAction Interaction => m_Wrapper.m_Character_Ineraction;
         public InputAction @UIMissionToolTipSwitch => m_Wrapper.m_Character_UIMissionToolTipSwitch;
         public InputAction @UIPause => m_Wrapper.m_Character_UIPause;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
@@ -572,9 +690,9 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
             @ToogleWeaponMode.started += instance.OnToogleWeaponMode;
             @ToogleWeaponMode.performed += instance.OnToogleWeaponMode;
             @ToogleWeaponMode.canceled += instance.OnToogleWeaponMode;
-            @Ineraction.started += instance.OnIneraction;
-            @Ineraction.performed += instance.OnIneraction;
-            @Ineraction.canceled += instance.OnIneraction;
+            Interaction.started += instance.OnIneraction;
+            Interaction.performed += instance.OnIneraction;
+            Interaction.canceled += instance.OnIneraction;
             @UIMissionToolTipSwitch.started += instance.OnUIMissionToolTipSwitch;
             @UIMissionToolTipSwitch.performed += instance.OnUIMissionToolTipSwitch;
             @UIMissionToolTipSwitch.canceled += instance.OnUIMissionToolTipSwitch;
@@ -621,9 +739,9 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
             @ToogleWeaponMode.started -= instance.OnToogleWeaponMode;
             @ToogleWeaponMode.performed -= instance.OnToogleWeaponMode;
             @ToogleWeaponMode.canceled -= instance.OnToogleWeaponMode;
-            @Ineraction.started -= instance.OnIneraction;
-            @Ineraction.performed -= instance.OnIneraction;
-            @Ineraction.canceled -= instance.OnIneraction;
+            Interaction.started -= instance.OnIneraction;
+            Interaction.performed -= instance.OnIneraction;
+            Interaction.canceled -= instance.OnIneraction;
             @UIMissionToolTipSwitch.started -= instance.OnUIMissionToolTipSwitch;
             @UIMissionToolTipSwitch.performed -= instance.OnUIMissionToolTipSwitch;
             @UIMissionToolTipSwitch.canceled -= instance.OnUIMissionToolTipSwitch;
@@ -693,6 +811,68 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Car
+    private readonly InputActionMap m_Car;
+    private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
+    private readonly InputAction m_Car_Movement;
+    private readonly InputAction m_Car_CarExit;
+    private readonly InputAction m_Car_Brake;
+    public struct CarActions
+    {
+        private @PlayerControlls m_Wrapper;
+        public CarActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Car_Movement;
+        public InputAction @CarExit => m_Wrapper.m_Car_CarExit;
+        public InputAction @Brake => m_Wrapper.m_Car_Brake;
+        public InputActionMap Get() { return m_Wrapper.m_Car; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CarActions set) { return set.Get(); }
+        public void AddCallbacks(ICarActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CarActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CarActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+            @CarExit.started += instance.OnCarExit;
+            @CarExit.performed += instance.OnCarExit;
+            @CarExit.canceled += instance.OnCarExit;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
+        }
+
+        private void UnregisterCallbacks(ICarActions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @CarExit.started -= instance.OnCarExit;
+            @CarExit.performed -= instance.OnCarExit;
+            @CarExit.canceled -= instance.OnCarExit;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
+        }
+
+        public void RemoveCallbacks(ICarActions instance)
+        {
+            if (m_Wrapper.m_CarActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICarActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CarActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CarActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CarActions @Car => new CarActions(this);
     public interface ICharacterActions
     {
         void OnFire(InputAction.CallbackContext context);
@@ -714,5 +894,11 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnUIPause(InputAction.CallbackContext context);
+    }
+    public interface ICarActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnCarExit(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
     }
 }

@@ -1,20 +1,20 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
     protected Player_WeaponController weaponController;
-    protected Player_Interaction playerInteraction;
+    [SerializeField] protected MeshRenderer mesh;
 
-    protected MeshRenderer mesh;
-    protected Material defaultMaterial;
+
     [SerializeField] private Material highlightMaterial;
+    [SerializeField] protected Material defaultMaterial;
 
     private void Start()
     {
         if (mesh == null)
             mesh = GetComponentInChildren<MeshRenderer>();
 
-        defaultMaterial = mesh.material;
+        defaultMaterial = mesh.sharedMaterial;
     }
 
     protected void UpdateMeshAndMaterial(MeshRenderer newMesh)
@@ -25,26 +25,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interaction()
     {
-        Debug.Log("Ineraction");
-    }
-
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        if (weaponController == null)
-            weaponController = other.GetComponent<Player_WeaponController>();
-
-        if (playerInteraction == null)
-            playerInteraction = other.GetComponent<Player_Interaction>();
-
-        if (playerInteraction == null)
-            return;
-
-        // Ki?m tra xem object này ?ã có trong list ch?a
-        if (!playerInteraction.GetInteractable().Contains(this))
-        {
-            playerInteraction.GetInteractable().Add(this);
-            playerInteraction.UpdateClosestInteractable();
-        }
+        Debug.Log("Interacted with " + gameObject.name);
     }
 
     public void HighlightActive(bool active)
@@ -55,6 +36,21 @@ public class Interactable : MonoBehaviour
             mesh.material = defaultMaterial;
     }
 
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (weaponController == null)
+            weaponController = other.GetComponent<Player_WeaponController>();
+
+        Player_Interaction playerInteraction = other.GetComponent<Player_Interaction>();
+
+        if (playerInteraction == null)
+            return;
+
+        playerInteraction.GetInteracbles().Add(this);
+        playerInteraction.UpdateClosestInteractble();
+    }
+
     protected virtual void OnTriggerExit(Collider other)
     {
         Player_Interaction playerInteraction = other.GetComponent<Player_Interaction>();
@@ -62,7 +58,7 @@ public class Interactable : MonoBehaviour
         if (playerInteraction == null)
             return;
 
-        playerInteraction.GetInteractable().Remove(this);
-        playerInteraction.UpdateClosestInteractable();
+        playerInteraction.GetInteracbles().Remove(this);
+        playerInteraction.UpdateClosestInteractble();
     }
 }
