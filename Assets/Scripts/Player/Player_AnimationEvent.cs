@@ -14,6 +14,7 @@ public class Player_AnimationEvent : MonoBehaviour
     public void ReloadIsOver()
     {
         visualController.MaximizeRigWeight();
+        visualController.CurrentWeaponModel().reloadSFX.Stop();
 
         weaponController.CurrentWeapon().RefillBullets();
 

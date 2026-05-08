@@ -117,7 +117,7 @@ public class Player_AimController : MonoBehaviour
         aim.position = GetMouseHitInfor().point;
 
         // Tránh aim quá gần player
-        float minAimDistance = 1f; // Khoảng cách tối thiểu từ player
+        float minAimDistance = 2.2f; // Khoảng cách tối thiểu từ player
         float distanceToAim = Vector3.Distance(transform.position, aim.position);
 
         if (distanceToAim < minAimDistance)

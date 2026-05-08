@@ -118,8 +118,13 @@ public class Bullet : MonoBehaviour
 
     protected void CreateImpactFx()
     {
-        GameObject newBulletImpactFx = ObjectPool.instance.GetObject(bulletImpactFX, transform);
-        ObjectPool.instance.ReturnObject(newBulletImpactFx, 1);
+        GameObject newFx = Instantiate(bulletImpactFX);
+        newFx.transform.position = transform.position;
+
+        Destroy(newFx, 1);
+
+        /*GameObject newBulletImpactFx = ObjectPool.instance.GetObject(bulletImpactFX, transform);
+        ObjectPool.instance.ReturnObject(newBulletImpactFx, 1);*/
     }
 
     private bool FriendlyFire() => GameManager.instance.friendlyFire;

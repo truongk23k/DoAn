@@ -1,0 +1,81 @@
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
+
+public class UI_Settings : MonoBehaviour
+{
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private float sliderMultiplier = 25;
+
+    [Header("SFX Settings")]
+    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private TextMeshProUGUI sfxSliderText;
+    [SerializeField] private string sfxParametr;
+
+    [Header("BGM Settings")]
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private TextMeshProUGUI bgmSliderText;
+    [SerializeField] private string bgmParametr;
+
+    [Header("Toggle")]
+    [SerializeField] private Toggle friendlyFireToggle;
+
+    private void Start()
+    {
+        // Gọi LoadSettings() khi game start để load giá trị âm thanh
+        LoadSettings();
+    }
+
+    public void SFXSliderValue(float value)
+    {
+        sfxSliderText.text = Mathf.RoundToInt(value * 100) + "%";
+        float newValue = Mathf.Log10(value) * sliderMultiplier;
+        audioMixer.SetFloat(sfxParametr, newValue);
+
+    }
+
+    public void BGMSliderValue(float value)
+    {
+        bgmSliderText.text = Mathf.RoundToInt(value * 100) + "%";
+        float newValue = Mathf.Log10(value) * sliderMultiplier;
+        audioMixer.SetFloat(bgmParametr, newValue);
+    }
+
+    public void OnFriendlyFireToggle()
+    {
+        bool friendlyFire = GameManager.instance.friendlyFire;
+        GameManager.instance.friendlyFire = !friendlyFire;
+    }
+
+    public void LoadSettings()
+    {
+        // Load âm thanh từ PlayerPrefs
+        float savedSfxVolume = PlayerPrefs.GetFloat(sfxParametr, 0.7f);
+        float savedBgmVolume = PlayerPrefs.GetFloat(bgmParametr, 0.7f);
+
+        Debug.Log($"Loaded SFX Volume: {savedSfxVolume}, BGM Volume: {savedBgmVolume}");
+
+        BGMSliderValue(savedBgmVolume);
+        SFXSliderValue(savedSfxVolume);
+
+        // Load Friendly Fire setting
+        int friendlyFireInt = PlayerPrefs.GetInt("FriendlyFire", 0);
+        bool newFriendlyFire = friendlyFireInt == 1;
+        friendlyFireToggle.isOn = newFriendlyFire;
+    }
+
+    private void OnDisable()
+    {
+        // Lưu các settings khi đóng game
+        bool friendlyFire = GameManager.instance.friendlyFire;
+        int friendlyFireInt = friendlyFire ? 1 : 0;
+
+        PlayerPrefs.SetInt("FriendlyFire", friendlyFireInt);
+        PlayerPrefs.SetFloat(sfxParametr, sfxSlider.value);
+        PlayerPrefs.SetFloat(bgmParametr, bgmSlider.value);
+        PlayerPrefs.Save(); // ← Thêm Save() để đảm bảo lưu
+
+        Debug.Log("Settings saved");
+    }
+}

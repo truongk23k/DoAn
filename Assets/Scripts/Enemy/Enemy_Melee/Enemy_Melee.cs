@@ -30,6 +30,8 @@ public enum EnemyMelee_Type
 
 public class Enemy_Melee : Enemy
 {
+    public Enemy_MeleeSFX meleeSFX { get; private set; }
+
 
     #region States
     public IdleState_Melee idleState { get; private set; }
@@ -80,6 +82,8 @@ public class Enemy_Melee : Enemy
         attackState = new AttackState_Melee(this, stateMachine, "Attack");
         deadState = new DeadState_Melee(this, stateMachine, "Idle"); // Idle anim is just a place holder, use ragdoll
         abilityState = new AbilityState_Melee(this, stateMachine, "AxeThrow");
+
+        meleeSFX = GetComponent<Enemy_MeleeSFX>();
     }
 
     protected override void Start()

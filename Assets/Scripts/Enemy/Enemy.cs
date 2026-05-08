@@ -57,6 +57,8 @@ public class Enemy : MonoBehaviour
 
     public Enemy_DropController dropController { get; private set; }
 
+    public AudioManager audioManager { get; private set; }
+
     protected virtual void Awake()
     {
         stateMachine = new EnemyStateMachine();
@@ -76,6 +78,8 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         InitializePatrolPoints();
+
+        audioManager = AudioManager.instance;
     }
 
     protected virtual void Update()

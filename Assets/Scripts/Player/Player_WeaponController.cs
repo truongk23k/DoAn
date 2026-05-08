@@ -145,7 +145,13 @@ public class Player_WeaponController : MonoBehaviour
         droppedWeapon.GetComponent<Pickup_Weapon>().SetupPickupWeapon(weapon, transform);
     }
 
-    public void SetWeaponReady(bool ready) => weaponReady = ready;
+    public void SetWeaponReady(bool ready)
+    {
+        weaponReady = ready;
+
+        if (ready)
+            player.sound.weaponReady.Play();
+    }
 
     public bool WeaponReady() => weaponReady;
     #endregion
@@ -207,6 +213,8 @@ public class Player_WeaponController : MonoBehaviour
         currentWeapon.bulletInMagazine--;
         UpdateWeaponUI();
 
+        player.weaponVisuals.CurrentWeaponModel().fireSFX.Play();
+
         GameObject newBullet = ObjectPool.instance.GetObject(bulletPrefab, GunPoint());
         newBullet.transform.rotation = Quaternion.LookRotation(GunPoint().forward);
 
@@ -221,6 +229,8 @@ public class Player_WeaponController : MonoBehaviour
     {
         SetWeaponReady(false);
         player.weaponVisuals.PlayReloadAnimation();
+
+        player.weaponVisuals.CurrentWeaponModel().reloadSFX.Play();
 
         //UpdateUI called in over load animation event ReloadIsOver
     }

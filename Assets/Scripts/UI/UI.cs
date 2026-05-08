@@ -9,6 +9,7 @@ public class UI : MonoBehaviour
     public UI_InGame inGameUI { get; private set; }
     public UI_WeaponSelection weaponSelectionUI { get; private set; }
     public UI_GameOver gameOverUI { get; private set; }
+    public UI_Settings settingsUI { get; private set; }
     public GameObject victoryScreenUI;
     public GameObject pauseUI;
 
@@ -30,6 +31,7 @@ public class UI : MonoBehaviour
         inGameUI = GetComponentInChildren<UI_InGame>(true);
         weaponSelectionUI = GetComponentInChildren<UI_WeaponSelection>(true);
         gameOverUI = GetComponentInChildren<UI_GameOver>(true);
+        settingsUI = GetComponentInChildren<UI_Settings>(true);
 
     }
 
@@ -54,6 +56,11 @@ public class UI : MonoBehaviour
         }
 
         uiToSwitchTOn.SetActive(true);
+
+        if(uiToSwitchTOn == settingsUI.gameObject)
+        {
+            settingsUI.LoadSettings();
+        }
     }
 
     public void StartTheGame()
@@ -152,5 +159,16 @@ public class UI : MonoBehaviour
         fadeImage.color = new Color(currentColor.r, currentColor.g, currentColor.b, targetAlpha);
 
         onComplete?.Invoke();
+    }
+
+    [ContextMenu("Assign Audio To Buttons")]
+    public void AssignAudioListenesrsToButtons()
+    {
+        UI_Button[] buttons = FindObjectsOfType<UI_Button>(true);
+
+        foreach (var button in buttons)
+        {
+            button.AssignAudioSource();
+        }
     }
 }

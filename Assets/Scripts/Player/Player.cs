@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public Ragdoll ragdoll { get; private set; }
     public Animator anim { get; private set; }
 
+    public Player_SoundFX sound { get; private set; }
+
     public bool controlsEnabled { get; private set; }
 
     public bool isInCar { get; set; }
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
         weapon = GetComponent<Player_WeaponController>();
         weaponVisuals = GetComponent<Player_WeaponVisuals>();
         interaction = GetComponent<Player_Interaction>();
+        sound = GetComponent<Player_SoundFX>();
         controls = ControlsManager.instance.controls;
     }
     private void OnEnable()

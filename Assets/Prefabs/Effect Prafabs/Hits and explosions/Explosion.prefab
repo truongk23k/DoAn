@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3986179179329749341}
   - component: {fileID: 4596544553357837919}
   - component: {fileID: 3005581896905022112}
+  - component: {fileID: 634092156847164010}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -4901,6 +4902,22 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &634092156847164010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358637981425055526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f6268d122fea546b3070772a093ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 4338226963068481020}
+  volume: 0.3
+  minPitch: 0.85
+  maxPitch: 1.1
 --- !u!1 &5084589283769131857
 GameObject:
   m_ObjectHideFlags: 0
@@ -14727,8 +14744,8 @@ AudioSource:
   m_GameObject: {fileID: 8220019583707461525}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d3247579c549643a5b3a95f9224eaf3c, type: 3}
+  OutputAudioMixerGroup: {fileID: 7240266472886219749, guid: 613451a505d6d99469bb9ae272f196ea, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 43ee40117187a3445b378e13d8779c2b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

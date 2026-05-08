@@ -58,7 +58,7 @@ public class Car_Interaction : Interactable
         Player.instance.transform.localScale = new Vector3(defaultPlayerScale, defaultPlayerScale, defaultPlayerScale);
 
         ControlsManager.instance.SwitchToCharacterControls();
-        CameraManager.instance.ChangeCameraTarget(Player.instance.aim.GetAimCameraTarget(), 6f, 0);
+        CameraManager.instance.ChangeCameraTarget(Player.instance.aim.GetAimCameraTarget(), Player.instance.weapon.CurrentWeapon().cameraDistance, 0);
     }
 
     private Vector3 GetExitPoint()

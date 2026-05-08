@@ -1,0 +1,37 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
+
+public class SaveLoad : MonoBehaviour
+{
+    public AudioMixer audioMixer;
+    [SerializeField] private float sliderMultiplier = 25;
+    public string sfxParametr;
+    public string bgmParametr;
+
+    //save in UI_Settings, load in SaveLoad
+    /*private void OnDisable()
+    {
+        float sfxValue;
+        audioMixer.GetFloat("SFXVolume", out sfxValue);
+        PlayerPrefs.SetFloat("SFXVolume", sfxValue);
+        float bgmValue;
+        audioMixer.GetFloat("BGMVolume", out bgmValue);
+        PlayerPrefs.SetFloat("BGMVolume", bgmValue);
+        int friendlyFireInt = GameManager.instance.friendlyFire ? 1 : 0;
+        PlayerPrefs.SetInt("FriendlyFire", friendlyFireInt);
+    }*/
+
+
+    private void Awake()
+    {
+        float sfxValue = PlayerPrefs.GetFloat(sfxParametr, .7f);
+        float newSFXValue = Mathf.Log10(sfxValue) * sliderMultiplier;
+        audioMixer.SetFloat(sfxParametr, newSFXValue);
+
+        float bgmValue = PlayerPrefs.GetFloat(bgmParametr, .7f);
+        float newBGMValue = Mathf.Log10(bgmValue) * sliderMultiplier;
+        audioMixer.SetFloat(bgmParametr, newBGMValue);
+    }
+}
