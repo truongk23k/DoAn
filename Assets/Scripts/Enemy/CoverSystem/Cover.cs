@@ -6,8 +6,8 @@ public class Cover : MonoBehaviour
     [Header("Cover points")]
     [SerializeField] private GameObject coverPointPrefab;
     [SerializeField] private List<CoverPoint> coverPoints = new List<CoverPoint>();
-    [SerializeField] private float xOffset = 1f;
-    [SerializeField] private float yOffset = 0.2f;
+    [SerializeField] private float xOffset = 1.25f;
+    [SerializeField] private float yOffset = 0.3f;
     [SerializeField] private float zOffset = 1f;
 
     /*private void Start()

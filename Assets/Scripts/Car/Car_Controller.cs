@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 
@@ -21,6 +21,8 @@ public class Car_Controller : MonoBehaviour
     private float steerInput;
 
     public float speed;
+
+    [SerializeField] private LayerMask whatIsGround;
 
     [Range(30f, 60f)]
     [SerializeField] private float turnSensitivity = 30f;
@@ -63,6 +65,7 @@ public class Car_Controller : MonoBehaviour
     [SerializeField] private float driftDuration = 1f;
     private float driftTimer;
     private bool isDrifting;
+    private bool canEmitTrails = true;
 
     private Car_Wheel[] wheels;
     private UI ui;
@@ -120,8 +123,10 @@ public class Car_Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
+        ApplyTrailsOnGround();
         if (!carActive)
             return;
+
 
         ApplyAnimationToWheels();
         ApplyDrive();
@@ -134,6 +139,7 @@ public class Car_Controller : MonoBehaviour
         else
             StopDrift();
     }
+
 
     private void ApplyDrive()
     {
@@ -236,12 +242,41 @@ public class Car_Controller : MonoBehaviour
             }
         }
     }
+    private void ApplyTrailsOnGround()
+    {
+        if (!canEmitTrails)
+            return;
+
+        foreach (var wheel in wheels)
+        {
+            WheelHit hit;
+            if (wheel.cd.GetGroundHit(out hit))
+            {
+                if (whatIsGround == (whatIsGround | (1 << hit.collider.gameObject.layer)))
+                {
+                    if (wheel.trail != null)
+                        wheel.trail.emitting = true;
+                }
+                else
+                {
+                    if (wheel.trail != null)
+                        wheel.trail.emitting = false;
+                }
+            }
+            else
+            {
+                if (wheel.trail != null)
+                    wheel.trail.emitting = false;
+            }
+        }
+    }
+
 
     public void ActivateCar(bool activate)
     {
         carActive = activate;
 
-        if(carSounds != null)
+        if (carSounds != null)
             carSounds.ActivateCarSFX(activate);
 
         /*if (activate)
@@ -253,10 +288,29 @@ public class Car_Controller : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }*/
 
+        /* if (!activate)
+         {
+             foreach (var wheel in wheels)
+             {
+                 wheel.RestoreDefaultSideStiffness();
+
+                 if (wheel.trail != null)
+                     wheel.trail.emitting = false;
+             }
+         }*/
     }
 
     public void BrakeTheCar()
     {
+        canEmitTrails = false;
+
+        foreach (var wheel in wheels)
+        {
+            if (wheel.trail != null)
+                wheel.trail.emitting = false;
+        }
+
+        rb.drag = 1;
         motorForce = 0;
         isDrifting = true;
         frontDriftFactor = 0.9f;

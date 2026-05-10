@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [Space]
     public bool quickStart;
 
+    public bool isGameStarted { get; private set; }
+
     private void Awake()
     {
         if (instance == null)
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
 
         TimeManager.instance.ResumeTime();
 
+        isGameStarted = true;
+
         //we start selected mission in a LevelGenerator script, after we done with level creation
     }
 
@@ -41,6 +45,8 @@ public class GameManager : MonoBehaviour
         UI.instance.ShowVictoryScreen();
         ControlsManager.instance.controls.Character.Disable();
         Player.instance.health.currentHealth += 99999; //so player won't die in last second
+
+        isGameStarted = false;
     }
 
     public void GameOver()
@@ -48,6 +54,8 @@ public class GameManager : MonoBehaviour
         TimeManager.instance.SlowMotionFor(1.5f);
         UI.instance.ShowGameOverUI();
         CameraManager.instance.ChangeCameraDistance(5);
+
+        isGameStarted = false;
     }
 
     public void SetDefaultWeaponsForPlayer()

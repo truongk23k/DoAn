@@ -82,6 +82,9 @@ public class UI : MonoBehaviour
 
     public void PauseSwitch()
     {
+        if(!GameManager.instance.isGameStarted)
+            return;
+
         bool gamePaused = pauseUI.activeSelf;
 
         if (gamePaused)

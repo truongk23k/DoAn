@@ -13,15 +13,19 @@ public class Car_Wheel : MonoBehaviour
 {
     public AxeType axeType;
     public WheelCollider cd { get; private set; }
+    public TrailRenderer trail { get; private set; }
     public GameObject model;
 
-    private float defaultSideStiffness;
+    public float defaultSideStiffness;
 
     private void Awake()
     {
         cd = GetComponent<WheelCollider>();
+        trail = GetComponentInChildren<TrailRenderer>();
 
-        if(model == null)
+        trail.emitting = false;
+
+        if (model == null)
             model = GetComponentInChildren<MeshRenderer>().gameObject;
 
     }

@@ -256,7 +256,7 @@ public class Enemy_Range : Enemy
             if (cover != null && !collectedCovers.Contains(cover))
                 collectedCovers.Add(cover);
         }
-
+        Debug.Log("Collected " + collectedCovers.Count + " covers");
         return collectedCovers;
     }
     #endregion

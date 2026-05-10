@@ -9,46 +9,55 @@ public class UI_Settings : MonoBehaviour
     [SerializeField] private float sliderMultiplier = 25;
 
     [Header("SFX Settings")]
-    [SerializeField] private Slider sfxSlider;
+    public Slider sfxSlider;
     [SerializeField] private TextMeshProUGUI sfxSliderText;
-    [SerializeField] private string sfxParametr;
 
     [Header("BGM Settings")]
-    [SerializeField] private Slider bgmSlider;
+    public Slider bgmSlider;
     [SerializeField] private TextMeshProUGUI bgmSliderText;
-    [SerializeField] private string bgmParametr;
 
     [Header("Toggle")]
-    [SerializeField] private Toggle friendlyFireToggle;
+    public Toggle friendlyFireToggle;
 
+    [Header("Dropdown")]
+    public TMP_Dropdown languageDropdown;
 
     public void SFXSliderValue(float value)
     {
         sfxSliderText.text = Mathf.RoundToInt(value * 100) + "%";
         float newValue = Mathf.Log10(value) * sliderMultiplier;
-        audioMixer.SetFloat(sfxParametr, newValue);
-
+        audioMixer.SetFloat(SaveLoad.instance.sfxParametr, newValue);
+        SaveLoad.instance.SaveSFXBGM();
     }
 
     public void BGMSliderValue(float value)
     {
         bgmSliderText.text = Mathf.RoundToInt(value * 100) + "%";
         float newValue = Mathf.Log10(value) * sliderMultiplier;
-        audioMixer.SetFloat(bgmParametr, newValue);
+        audioMixer.SetFloat(SaveLoad.instance.bgmParametr, newValue);
+        SaveLoad.instance.SaveSFXBGM();
     }
 
     public void OnFriendlyFireToggle()
     {
         bool friendlyFire = GameManager.instance.friendlyFire;
         GameManager.instance.friendlyFire = !friendlyFire;
+        SaveLoad.instance.SaveFriendlyFire();
+    }
+
+    public void OnLanguageDropdown()
+    {
+        int languageIndex = languageDropdown.value;
+        LocalizationManager.ChangeLanguage((Language)languageIndex);
+        SaveLoad.instance.SaveLanguage();
     }
 
     public void LoadSettings()
     {
-        sfxSlider.value = PlayerPrefs.GetFloat(sfxParametr, .7f);
-        bgmSlider.value = PlayerPrefs.GetFloat(bgmParametr, .7f);
+        sfxSlider.value = PlayerPrefs.GetFloat(SaveLoad.instance.sfxParametr, .7f);
+        bgmSlider.value = PlayerPrefs.GetFloat(SaveLoad.instance.bgmParametr, .7f);
 
-        int friendlyFireInt = PlayerPrefs.GetInt("FriendlyFire", 0);
+        int friendlyFireInt = PlayerPrefs.GetInt(SaveLoad.instance.friendlyFireParametr, 0);
         bool newFriendlyFire = false;
 
         if (friendlyFireInt == 1)
@@ -57,13 +66,4 @@ public class UI_Settings : MonoBehaviour
         friendlyFireToggle.isOn = newFriendlyFire;
     }
 
-    private void OnDisable()
-    {
-        bool friendlyFire = GameManager.instance.friendlyFire;
-        int friendlyFireInt = friendlyFire ? 1 : 0;
-
-        PlayerPrefs.SetInt("FriendlyFire", friendlyFireInt);
-        PlayerPrefs.SetFloat(sfxParametr, sfxSlider.value);
-        PlayerPrefs.SetFloat(bgmParametr, bgmSlider.value);
-    }
 }
