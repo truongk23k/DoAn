@@ -1,13 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
+/// <summary>
+/// Thin display layer for the Settings panel.
+/// Reads from <see cref="SaveLoad"/> on open, writes to <see cref="SaveLoad"/> on change.
+/// Never touches PlayerPrefs or the AudioMixer directly.
+/// </summary>
 public class UI_Settings : MonoBehaviour
 {
-    [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private float sliderMultiplier = 25;
-
     [Header("SFX Settings")]
     public Slider sfxSlider;
     [SerializeField] private TextMeshProUGUI sfxSliderText;
@@ -22,48 +23,58 @@ public class UI_Settings : MonoBehaviour
     [Header("Dropdown")]
     public TMP_Dropdown languageDropdown;
 
+    /// <summary>Hooked to <see cref="Slider.onValueChanged"/> (dynamic float).</summary>
     public void SFXSliderValue(float value)
     {
-        sfxSliderText.text = Mathf.RoundToInt(value * 100) + "%";
-        float newValue = Mathf.Log10(value) * sliderMultiplier;
-        audioMixer.SetFloat(SaveLoad.instance.sfxParametr, newValue);
-        SaveLoad.instance.SaveSFXBGM();
+        sfxSliderText.text = ToPercent(value);
+        if (SaveLoad.instance != null)
+            SaveLoad.instance.SaveSfx(value);
     }
 
+    /// <summary>Hooked to <see cref="Slider.onValueChanged"/> (dynamic float).</summary>
     public void BGMSliderValue(float value)
     {
-        bgmSliderText.text = Mathf.RoundToInt(value * 100) + "%";
-        float newValue = Mathf.Log10(value) * sliderMultiplier;
-        audioMixer.SetFloat(SaveLoad.instance.bgmParametr, newValue);
-        SaveLoad.instance.SaveSFXBGM();
+        bgmSliderText.text = ToPercent(value);
+        if (SaveLoad.instance != null)
+            SaveLoad.instance.SaveBgm(value);
     }
 
+    /// <summary>Hooked to <see cref="Toggle.onValueChanged"/> as a parameterless call.</summary>
     public void OnFriendlyFireToggle()
     {
-        bool friendlyFire = GameManager.instance.friendlyFire;
-        GameManager.instance.friendlyFire = !friendlyFire;
-        SaveLoad.instance.SaveFriendlyFire();
+        if (SaveLoad.instance != null)
+            SaveLoad.instance.SaveFriendlyFire(friendlyFireToggle.isOn);
     }
 
+    /// <summary>Hooked to <see cref="TMP_Dropdown.onValueChanged"/> as a parameterless call.</summary>
     public void OnLanguageDropdown()
     {
-        int languageIndex = languageDropdown.value;
-        LocalizationManager.ChangeLanguage((Language)languageIndex);
-        SaveLoad.instance.SaveLanguage();
+        if (SaveLoad.instance != null)
+            SaveLoad.instance.SaveLanguage(languageDropdown.value);
     }
 
+    /// <summary>
+    /// Pulls the current persisted values from <see cref="SaveLoad"/> and pushes them into the UI.
+    /// Uses *WithoutNotify variants to avoid re-firing OnValueChanged → re-saving.
+    /// </summary>
     public void LoadSettings()
     {
-        sfxSlider.value = PlayerPrefs.GetFloat(SaveLoad.instance.sfxParametr, .7f);
-        bgmSlider.value = PlayerPrefs.GetFloat(SaveLoad.instance.bgmParametr, .7f);
+        if (SaveLoad.instance == null) return;
 
-        int friendlyFireInt = PlayerPrefs.GetInt(SaveLoad.instance.friendlyFireParametr, 0);
-        bool newFriendlyFire = false;
+        float sfx = SaveLoad.instance.GetSfx();
+        float bgm = SaveLoad.instance.GetBgm();
+        bool friendlyFire = SaveLoad.instance.GetFriendlyFire();
+        int languageIndex = SaveLoad.instance.GetLanguageIndex();
 
-        if (friendlyFireInt == 1)
-            newFriendlyFire = true;
+        sfxSlider.SetValueWithoutNotify(sfx);
+        bgmSlider.SetValueWithoutNotify(bgm);
+        sfxSliderText.text = ToPercent(sfx);
+        bgmSliderText.text = ToPercent(bgm);
 
-        friendlyFireToggle.isOn = newFriendlyFire;
+        friendlyFireToggle.SetIsOnWithoutNotify(friendlyFire);
+        languageDropdown.SetValueWithoutNotify(languageIndex);
+        languageDropdown.RefreshShownValue();
     }
 
+    private static string ToPercent(float linearValue) => Mathf.RoundToInt(linearValue * 100) + "%";
 }

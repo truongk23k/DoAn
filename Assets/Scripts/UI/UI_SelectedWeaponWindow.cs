@@ -26,13 +26,19 @@ public class UI_SelectedWeaponWindow : MonoBehaviour
         if (weaponData == null)
         {
             weaponIcon.color = Color.clear;
-            weaponInfo.text = "Select a weapon...";
+            if(LocalizationManager.instance.currentLanguage == Language.EN)
+                weaponInfo.text = "Select a weapon...";
+            else
+                weaponInfo.text = "Chọn một vũ khí...";
             return;
         }
 
         weaponIcon.color = Color.white;
         weaponIcon.sprite = weaponData.weaponIcon;
-        weaponInfo.text = weaponData.weaponInfo;
+        if (LocalizationManager.instance.currentLanguage == Language.EN)
+            weaponInfo.text = weaponData.weaponInfo;
+        else
+            weaponInfo.text = weaponData.weaponInfo_VN;
     }
 
     public bool IsEmpty => weaponData == null;

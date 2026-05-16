@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+[DefaultExecutionOrder(-1000)]
 public class LocalizationManager : MonoBehaviour
 {
     public delegate void LocalizationChangedDelegate();
@@ -17,7 +18,7 @@ public class LocalizationManager : MonoBehaviour
     private List<LocalizationEntry> allLocalizations;
 
     private Dictionary<string, LocalizationEntry> localizedText = new();
-    private static LocalizationManager instance;
+    public static LocalizationManager instance;
 
 #if UNITY_EDITOR
     [Header("Source CSV")]
@@ -46,6 +47,10 @@ public class LocalizationManager : MonoBehaviour
             if (!localizedText.ContainsKey(entry.key))
                 localizedText.Add(entry.key, entry);
         }
+
+        // Bắn event ngay sau khi instance sẵn sàng, để các LocalizedText
+        // đã subscribe (qua OnEnable chạy trước) cập nhật lại text đúng.
+        OnLocalizationChanged?.Invoke();
     }
 
     private void OnDestroy()

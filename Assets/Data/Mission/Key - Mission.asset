@@ -15,4 +15,8 @@ MonoBehaviour:
   missionName: The Key to Flight
   missionDescription: You must locate and defeat the key-holder to retrieve the key.
     Be cautious, as this enemy is might be heavily guarded.
+  missionDescription_VN: "B\u1EA1n ph\u1EA3i t\xECm v\xE0 \u0111\xE1nh b\u1EA1i k\u1EBB
+    gi\u1EEF ch\xECa kh\xF3a \u0111\u1EC3 l\u1EA5y l\u1EA1i ch\xECa kh\xF3a. H\xE3y
+    c\u1EA9n th\u1EADn, v\xEC k\u1EBB th\xF9 n\xE0y c\xF3 th\u1EC3 \u0111\u01B0\u1EE3c
+    canh g\xE1c r\u1EA5t nghi\xEAm ng\u1EB7t."
   key: {fileID: 4042758615208366938, guid: ecf80b2758924ee4dbf30fc8a2d24d9a, type: 3}

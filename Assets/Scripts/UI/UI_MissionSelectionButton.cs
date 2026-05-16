@@ -27,13 +27,20 @@ public class UI_MissionSelectionButton : UI_Button
     {
         base.OnPointerEnter(eventData);
 
-        missionUI.UpdateMissionDescription(mission.missionDescription);
+        if (LocalizationManager.instance.currentLanguage == Language.EN)
+            missionUI.UpdateMissionDescription(mission.missionDescription);
+        else
+            missionUI.UpdateMissionDescription(mission.missionDescription_VN);
     }
 
     override public void OnPointerExit(PointerEventData eventData)
     {
         base.OnPointerExit(eventData);
-        missionUI.UpdateMissionDescription("Choose a mission!");
+
+        if (LocalizationManager.instance.currentLanguage == Language.EN)
+            missionUI.UpdateMissionDescription("Choose a mission!");
+        else
+            missionUI.UpdateMissionDescription("Chọn một nhiệm vụ!");
     }
 
     override public void OnPointerDown(PointerEventData eventData)

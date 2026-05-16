@@ -39,3 +39,4 @@ MonoBehaviour:
   cameraDistance: 6
   weaponIcon: {fileID: -1382835781, guid: 6208c8c8e259e5f4197b8edde7d7bc85, type: 3}
   weaponInfo: Good shreder for enemies
+  weaponInfo_VN: "M\xE1y h\u1EE7y di\u1EC7t t\u1ED1t d\xE0nh cho k\u1EBB th\xF9"

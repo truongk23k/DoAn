@@ -15,6 +15,10 @@ MonoBehaviour:
   missionName: Final Defense
   missionDescription: "Get to the exit point and defend the airplane till it\u2019s
     ready to take off."
+  missionDescription_VN: "H\xE3y \u0111\u1EBFn \u0111i\u1EC3m tho\xE1t hi\u1EC3m
+    v\xE0 b\u1EA3o v\u1EC7 m\xE1y bay cho \u0111\u1EBFn khi n\xF3 s\u1EB5n s\xE0ng
+    c\u1EA5t c\xE1nh."
+  defenceBegun: 0
   defenceDuration: 120
   waveCooldown: 15
   amountOfRespawnPoints: 2

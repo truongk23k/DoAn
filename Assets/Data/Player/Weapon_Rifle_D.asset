@@ -39,3 +39,4 @@ MonoBehaviour:
   cameraDistance: 8
   weaponIcon: {fileID: -940019928, guid: 6208c8c8e259e5f4197b8edde7d7bc85, type: 3}
   weaponInfo: Good on a big distance
+  weaponInfo_VN: "T\u1ED1t \u1EDF kho\u1EA3ng c\xE1ch xa."

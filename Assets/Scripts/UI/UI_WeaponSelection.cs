@@ -35,14 +35,20 @@ public class UI_WeaponSelection : MonoBehaviour
             //UI.instance.StartLevelGeneration();
         }
         else
-            ShowWarningMessage("Please select at least one weapon.");
+            if(LocalizationManager.instance.currentLanguage == Language.EN)
+                ShowWarningMessage("Please select at least one weapon.");
+            else
+                ShowWarningMessage("Vui lòng chọn ít nhất một vũ khí.");
     }
 
     public bool IsNoWeapon()
     {
         if (!AtLeastOneWeaponSelected())
         {
-            ShowWarningMessage("Please select at least one weapon.");
+            if(LocalizationManager.instance.currentLanguage == Language.EN)
+                ShowWarningMessage("Please select at least one weapon.");
+            else
+                ShowWarningMessage("Vui lòng chọn ít nhất một vũ khí.");
             return true;
         }
         return false;

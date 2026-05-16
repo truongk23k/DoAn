@@ -24,3 +24,12 @@ Guide,Guide,Hướng dẫn
 Credit,Credit,Ghi danh
 Quit,Quit,Thoát
 Press H for mission info,Press H for mission info,Nhấn H cho thông tin nhiệm vụ
+ASWD --- Move,ASWD --- Move,ASWD --- Di chuyển
+SHIFT --- Speed up,SHIFT --- Speed up,SHIFT --- Tăng tốc
+F --- Interact,F --- Interact,F --- Tương tác
+G --- Drop weapon,G --- Drop weapon,G --- Bỏ vũ khí
+Left Mouse --- Fire,Left Mouse --- Fire,Chuột trái --- Bắn
+P --- Swap Aiming Precisely Mode,P --- Swap Aiming Precisely Mode,P --- Chuyển đổi chế độ ngắm chính xác
+L --- Swap Locking To Target Mode,L --- Swap Locking To Target Mode,L --- Chuyển đổi chế độ khóa mục tiêu
+R --- Reload ammo,R --- Reload ammo,R --- Nạp đạn
+T --- Toogle weapon mode,T --- Toogle weapon mode,T --- Chuyển đổi chế độ vũ khí

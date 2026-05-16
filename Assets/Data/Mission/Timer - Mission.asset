@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: Race Against Time
   missionDescription: Your scanners detected upcoming sandstorm.You have less than
-    15 minutes to reach the airplane before the conditions become untenable for a
+    5 minutes to reach the airplane before the conditions become untenable for a
     safe takeoff.
+  missionDescription_VN: "M\xE1y qu\xE9t c\u1EE7a b\u1EA1n \u0111\xE3 ph\xE1t hi\u1EC7n
+    m\u1ED9t c\u01A1n b\xE3o c\xE1t s\u1EAFp t\u1EDBi. B\u1EA1n ch\u1EC9 c\xF2n ch\u01B0a
+    \u0111\u1EBFn 5 ph\xFAt \u0111\u1EC3 \u0111\u1EBFn \u0111\u01B0\u1EE3c m\xE1y
+    bay tr\u01B0\u1EDBc khi \u0111i\u1EC1u ki\u1EC7n tr\u1EDF n\xEAn kh\xF4ng th\u1EC3
+    ch\u1EA5p nh\u1EADn \u0111\u01B0\u1EE3c cho vi\u1EC7c c\u1EA5t c\xE1nh an to\xE0n."
   time: 300

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class LocalizedText : MonoBehaviour
 {
@@ -17,9 +18,22 @@ public class LocalizedText : MonoBehaviour
     private string originText = "";
     private bool hasOriginSaved = false;
 
+    // Unity callback: chỉ chạy khi Add Component / nhấn Reset trong Inspector
+    private void Reset()
+    {
+        if (tmpText == null) tmpText = GetComponentInChildren<TMP_Text>(true);
+        if (uiText == null) uiText = GetComponentInChildren<Text>(true);
+    }
+
     private void Awake()
     {
-        Reset();
+        // Không ghi đè field đã gán Inspector.
+        // Chỉ auto-bind khi cả 2 đều chưa được gán.
+        if (tmpText == null && uiText == null)
+        {
+            tmpText = GetComponentInChildren<TMP_Text>(true);
+            uiText = GetComponentInChildren<Text>(true);
+        }
 
         SaveOriginText();
     }
@@ -28,16 +42,24 @@ public class LocalizedText : MonoBehaviour
     {
         LocalizationManager.OnLocalizationChanged += UpdateLocalizedText;
 
-        // Update when enabled
-        UpdateLocalizedText();
+        // Chỉ update khi LocalizationManager đã sẵn sàng,
+        // còn không thì sẽ được cập nhật qua event hoặc Start().
+        if (LocalizationManager.instance != null)
+            UpdateLocalizedText();
     }
 
     private void Start()
     {
-        // đảm bảo originText có giá trị
         if (!hasOriginSaved)
             SaveOriginText();
 
+        UpdateLocalizedText();
+        StartCoroutine(UpdateLocalizedTextCoroutine());
+    }
+
+    private IEnumerator UpdateLocalizedTextCoroutine()
+    {
+        yield return null;
         UpdateLocalizedText();
     }
 
@@ -51,20 +73,13 @@ public class LocalizedText : MonoBehaviour
         LocalizationManager.OnLocalizationChanged -= UpdateLocalizedText;
     }
 
-    private void Reset()
-    {
-        tmpText = GetComponent<TMP_Text>();
-        uiText = GetComponent<Text>();
-    }
-
     private void SaveOriginText()
     {
         if (hasOriginSaved) return;
 
         if (tmpText)
             originText = tmpText.text;
-
-        if (uiText)
+        else if (uiText)
             originText = uiText.text;
 
         hasOriginSaved = true;
@@ -75,22 +90,16 @@ public class LocalizedText : MonoBehaviour
         // Nếu key rỗng => giữ nguyên text gốc (None)
         if (string.IsNullOrEmpty(key))
         {
-            if (tmpText)
-                tmpText.text = originText;
-
-            if (uiText)
-                uiText.text = originText;
-
+            if (tmpText) tmpText.text = originText;
+            if (uiText) uiText.text = originText;
             return;
         }
 
         // Nếu dynamic text thì dùng originText làm key
         string displayKey = isDynamicText ? originText : key;
+        string value = LocalizationManager.GetLocalizedValue(displayKey);
 
-        if (tmpText)
-            tmpText.text = LocalizationManager.GetLocalizedValue(displayKey);
-
-        if (uiText)
-            uiText.text = LocalizationManager.GetLocalizedValue(displayKey);
+        if (tmpText) tmpText.text = value;
+        if (uiText) uiText.text = value;
     }
 }

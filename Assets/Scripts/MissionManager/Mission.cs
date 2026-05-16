@@ -8,6 +8,8 @@ public abstract class Mission : ScriptableObject
 
     [TextArea]
     public string missionDescription;
+    [TextArea]
+    public string missionDescription_VN;
 
     public abstract void StartMission();
     public abstract bool MissionCompleted();
