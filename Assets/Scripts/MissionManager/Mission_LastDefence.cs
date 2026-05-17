@@ -33,8 +33,11 @@ public class Mission_LastDefence : Mission
         defencePoint = FindObjectOfType<MissionEnd_Trigger>(true).transform.position;
 
         respawnPoints = new List<Transform>(ClosestPoints(amountOfRespawnPoints));
-
-        UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point.");
+        
+        if(LocalizationManager.instance.currentLanguage == Language.EN)
+            UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point.");
+        else
+            UI.instance.inGameUI.UpdateMissionInfo("Đến điểm thoát hiểm.");
     }
 
     public override void UpdateMission()
@@ -58,6 +61,14 @@ public class Mission_LastDefence : Mission
         string missionText = "Defend yourself till plane is ready to take off.";
         string missionDetails = "Time left: " + defenceTimerText;
 
+        if(LocalizationManager.instance.currentLanguage == Language.EN){
+            missionText = "Defend yourself till plane is ready to take off.";
+            missionDetails = "Time left: " + defenceTimerText;
+        }
+        else{
+            missionText = "Bảo vệ mình cho đến khi máy bay sẵn sàng cất cánh.";
+            missionDetails = "Thời gian còn lại: " + defenceTimerText;
+        }
         UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
     }
 

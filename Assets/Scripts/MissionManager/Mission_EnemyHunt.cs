@@ -58,7 +58,11 @@ public class Mission_EnemyHunt : Mission
 
         if (killsToGo <= 0)
         {
-            UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point.");
+            if(LocalizationManager.instance.currentLanguage == Language.EN)
+                UI.instance.inGameUI.UpdateMissionInfo("Get to the evacuation point.");
+            else
+                UI.instance.inGameUI.UpdateMissionInfo("Đến điểm thoát hiểm.");
+
             MissionObject_HuntTarget.OnTargetKilled -= EliminateTarget;
         }
 
@@ -68,6 +72,15 @@ public class Mission_EnemyHunt : Mission
     {
         string missionText = "Eliminate " + amountToKill +" enemies with signal disruptor.";
         string missionDetails = "Target left: " + killsToGo;
+        if(LocalizationManager.instance.currentLanguage == Language.EN){
+            missionText = "Eliminate " + amountToKill +" enemies with signal disruptor.";
+            missionDetails = "Target left: " + killsToGo;
+        }
+        else{
+            missionText = "Loại bỏ " + amountToKill + " đối thủ có thiết bị phát tín hiệu.";
+            missionDetails = "Đối thủ còn lại: " + killsToGo;
+        }
+        
         UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
     }
 

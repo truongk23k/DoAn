@@ -526,7 +526,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2303f85f2de26214e830ce29c3d547b7, type: 2}
   m_sharedMaterial: {fileID: -3369708876143780558, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &15603282
@@ -5810,7 +5810,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2303f85f2de26214e830ce29c3d547b7, type: 2}
   m_sharedMaterial: {fileID: -3369708876143780558, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5874,7 +5874,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &265760477
@@ -8124,7 +8124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &426247071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8749,7 +8749,7 @@ MonoBehaviour:
   - key: G --- Drop weapon
     values:
     - G --- Drop weapon
-    - "G --- B\u1ECF vu~ kh\xED\r"
+    - "G --- B\u1ECF v\u0169 kh\xED\r"
   - key: Left Mouse --- Fire
     values:
     - Left Mouse --- Fire
@@ -8769,7 +8769,7 @@ MonoBehaviour:
   - key: T --- Toogle weapon mode
     values:
     - T --- Toogle weapon mode
-    - "T --- Chuy\u1EC3n \u0111\u1ED5i ch\u1EBF \u0111\u1ED9 vu~ kh\xED"
+    - "T --- Chuy\u1EC3n \u0111\u1ED5i ch\u1EBF \u0111\u1ED9 v\u0169 kh\xED"
   localizationSourceText: {fileID: 4900000, guid: 0ebdabeeb0fa0924dbc53d6b8724562a, type: 3}
 --- !u!4 &460604848
 Transform:
@@ -12358,7 +12358,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 130551
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -13186,7 +13186,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2303f85f2de26214e830ce29c3d547b7, type: 2}
   m_sharedMaterial: {fileID: -3369708876143780558, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -13250,7 +13250,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &758948955
@@ -21187,7 +21187,7 @@ MonoBehaviour:
 
     THANK YOU <3'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2303f85f2de26214e830ce29c3d547b7, type: 2}
   m_sharedMaterial: {fileID: -3369708876143780558, guid: aaeb36fe3760bb4469b7ce4f1c33cc32, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -21251,7 +21251,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1244923670

@@ -27,6 +27,15 @@ public class Mission_Timer : Mission
         string missionText = "Get to the evacuation point before plane takes off.";
         string missionDetails = "Time left: " + timeText;
 
+        if(LocalizationManager.instance.currentLanguage == Language.EN){
+            missionText = "Get to the evacuation point before plane takes off.";
+            missionDetails = "Time left: " + timeText;
+        }
+        else{
+            missionText = "Đến điểm caats trước khi máy bay cất cánh.";
+            missionDetails = "Thời gian còn lại: " + timeText;
+        }
+
         UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
     }
 

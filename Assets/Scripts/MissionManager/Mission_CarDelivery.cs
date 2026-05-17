@@ -13,6 +13,15 @@ public class Mission_CarDelivery : Mission
         string missionText = "Find a functional vehicle.";
         string missionDetails = "Deliver it to the evacuation point.";
 
+        if(LocalizationManager.instance.currentLanguage == Language.EN){
+            missionText = "Find a functional vehicle.";
+            missionDetails = "Deliver it to the evacuation point.";
+        }
+        else{
+            missionText = "Tìm một phương tiện hoạt động.";
+            missionDetails = "Giao nó đến điểm caats.";
+        }
+
         UI.instance.inGameUI.UpdateMissionInfo(missionText, missionDetails);
 
         carWasDelivered = false;
