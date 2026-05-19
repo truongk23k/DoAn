@@ -77,3 +77,5 @@ UserSettings/
 .vs/TopDown3DFull/FileContentIndex/ae613800-7252-4257-8cfe-201819df7998.vsidx
 .vs/TopDown3DFull/FileContentIndex/cfb8779e-449f-481f-aac7-57744001b523.vsidx
 .vs/TopDown3DFull/FileContentIndex/dbb8dcba-d975-4fe5-bce3-efa617a381f4.vsidx
+Assets/GameObject.prefab
+mlagents-env/
